@@ -5,38 +5,11 @@
 </head>
 <body>
 	<h1>Virtual Lending Library</h1>
-	<div id="lending-box">
+	<form action="upload.php" method="post" enctype="multipart/form-data">
 		<p>Box is empty.</p>
-		<input type="file" id="file-input">
-		<button id="upload-btn">Upload</button>
-	</div>
-
-	<script>
-		document.getElementById('upload-btn').addEventListener('click', function() {
-			var fileInput = document.getElementById('file-input');
-			var file = fileInput.files[0];
-			var formData = new FormData();
-			formData.append('file', file);
-
-			fetch('upload.php', {
-                method: 'POST',
-                body: formData
-            }).then(function(response) {
-                if (response.ok) {
-                    var newFilename = response.headers.get('X-Filename');
-                    var link = document.createElement('a');
-                    link.href = 'uploaded_files/'+newFilename;
-                    link.innerHTML = 'Download '+newFilename;
-                    document.getElementById('lending-box').innerHTML = '<p>Box is no longer empty.</p>';
-                    document.getElementById('lending-box').appendChild(link);
-                } else {
-                    alert('Upload failed.');
-                }
-            }).catch(function(error) {
-                alert('Upload failed: '+error.message);
-            });
-		});
-	</script>
+		<input type="file" name="fileToUpload" id="fileToUpload">
+		<input type="submit" value="Upload Image" name="submit">
+	</form>
 
 </body>
 </html>
