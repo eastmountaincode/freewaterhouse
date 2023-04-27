@@ -1,62 +1,69 @@
-// Get references to the DOM elements we will be using
-const lendingBox = $('#lending-box');
-const fileInput = $('#file-input');
-const uploadBtn = $('#upload-btn');
-
-// Check if a file has been uploaded
-if (localStorage.getItem('uploadedFile')) {
-	// If a file has been uploaded, display an icon indicating that the box is not empty
-	lendingBox.html('<p>File uploaded. <a href="#" id="download-link">Download</a></p>');
+$(document).ready(function() {
+	// Check if there is a file uploaded already
+	if (localStorage.getItem('file_uploaded') !== null) {
+		showFileIcon();
+	}
 	
-	// Add a click handler to the "Download" link
-	$('#download-link').on('click', function() {
-		// When the link is clicked, download the file and delete it from storage
-		const fileUrl = localStorage.getItem('uploadedFile');
-		window.location.href = fileUrl;
-		localStorage.removeItem('uploadedFile');
-		
-		// Reset the lending box to its empty state
-		lendingBox.html('<p>Box is empty.</p>');
-		
-		// Prevent the default link behavior (which is to navigate to a new page)
-		return false;
+	// Handle file upload
+	$('#upload-btn').on('click', function() {
+		$('#file-input').trigger('click');
 	});
-}
-
-// Add a click handler to the "Upload" button
-uploadBtn.on('click', function() {
-	// When the button is clicked, trigger the file input click event
-	fileInput.click();
-});
-
-// Add a change handler to the file input
-fileInput.on('change', function() {
-	// When a file is selected, upload it and store its URL in local storage
-	const file = fileInput[0].files[0];
-	const fileName = file.name;
-	const fileUrl = URL.createObjectURL(file);
 	
-	// Send a POST request to the server to save the file
-	$.ajax({
-		url: 'library/save_file.php',
-		type: 'POST',
-		data: {filename: fileName, fileurl: fileUrl},
-		success: function(data) {
-			// Update the lending box to indicate that a file has been uploaded
-			lendingBox.html('<p>File uploaded. <a href="#" id="download-link">Download</a></p>');
-			
-			// Add a click handler to the "Download" link
-			$('#download-link').on('click', function() {
-				// When the link is clicked, download the file and delete it from the server
-				window.location.href = 'library/download_file.php?filename=' + fileName;
-				
-				// Reset the lending box to its empty state
-				lendingBox.html('<p>Box is empty.</p>');
-				
-				// Prevent the default link behavior (which is to navigate to a new page)
-				return false;
-			});
-		}
+	$('#file-input').on('change', function() {
+		var file = this.files[0];
+		uploadFile(file);
 	});
+	
+	function uploadFile(file) {
+		var formData = new FormData();
+		formData.append('file', file);
+		
+		$.ajax({
+			url: 'upload.php',
+			type: 'POST',
+			data: formData,
+			processData: false,
+			contentType: false,
+			success: function(response) {
+				localStorage.setItem('file_uploaded', response);
+				showFileIcon();
+			},
+			error: function(jqXHR, textStatus, errorMessage) {
+				alert('Upload failed: ' + errorMessage);
+			}
+		});
+	}
+	
+	function showFileIcon() {
+		var downloadLink = $('#download-link');
+		var filename = localStorage.getItem('file_uploaded');
+		downloadLink.attr('href', 'uploaded_files/' + filename);
+		downloadLink.html('Download ' + filename);
+		
+		$('#lending-box p').hide();
+		$('#lending-box button').hide();
+		downloadLink.show();
+		
+		// Handle file download
+		downloadLink.on('click', function() {
+			deleteFile(filename);
+			localStorage.removeItem('file_uploaded');
+			$('#lending-box p').show();
+			$('#lending-box button').show();
+			downloadLink.hide();
+		});
+	}
+	
+	function deleteFile(filename) {
+		$.ajax({
+			url: 'delete.php',
+			type: 'POST',
+			data: {'filename': filename},
+			success: function(response) {},
+			error: function(jqXHR, textStatus, errorMessage) {
+				alert('Failed to delete file: ' + errorMessage);
+			}
+		});
+	}
 });
 
