@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Virtual Lending Library</title>
+</head>
+<body>
+    <h1>Virtual Lending Library</h1>
+    <form action="{{ url_for('lending_library') }}" method="POST" enctype="multipart/form-data">
+        {% for file, index in files|zip(range(1, 7)) %}
+            <div>
+                <label for="file{{ index }}">Box {{ index }}:</label>
+                {% if file %}
+                    <span>{{ file }}</span>
+                    <a href="{{ url_for('download_file', filename=file) }}">Download</a>
+                {% else %}
+                    <span>Empty</span>
+                    <input type="file" name="file{{ index }}" id="file{{ index }}">
+                {% endif %}
+            </div>
+        {% endfor %}
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
