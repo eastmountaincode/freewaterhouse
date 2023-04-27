@@ -19,22 +19,22 @@
 			formData.append('file', file);
 
 			fetch('upload.php', {
-				method: 'POST',
-				body: formData
-			}).then(function(response) {
-				if (response.ok) {
-					var link = document.createElement('a');
-					link.href = 'uploaded_files/'+response.headers.get('X-Filename');
-					link.download = file.name;
-					link.innerHTML = 'Download '+file.name;
-					document.getElementById('lending-box').innerHTML = '<p>Box is no longer empty.</p>';
-					document.getElementById('lending-box').appendChild(link);
-				} else {
-					alert('Upload failed.');
-				}
-			}).catch(function(error) {
-				alert('Upload failed: '+error.message);
-			});
+                method: 'POST',
+                body: formData
+            }).then(function(response) {
+                if (response.ok) {
+                    var newFilename = response.headers.get('X-Filename');
+                    var link = document.createElement('a');
+                    link.href = 'uploaded_files/'+newFilename;
+                    link.innerHTML = 'Download '+newFilename;
+                    document.getElementById('lending-box').innerHTML = '<p>Box is no longer empty.</p>';
+                    document.getElementById('lending-box').appendChild(link);
+                } else {
+                    alert('Upload failed.');
+                }
+            }).catch(function(error) {
+                alert('Upload failed: '+error.message);
+            });
 		});
 	</script>
 
