@@ -9,9 +9,31 @@
 		<p>Box is empty.</p>
 		<input type="file" id="file-input">
 		<button id="upload-btn">Upload</button>
-        <a id="download-link" href="" download></a>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="lending_library.js"></script>
+
+	<script>
+		document.getElementById('upload-btn').addEventListener('click', function() {
+			var fileInput = document.getElementById('file-input');
+			var file = fileInput.files[0];
+			var formData = new FormData();
+			formData.append('file', file);
+
+			fetch('upload.php', {
+				method: 'POST',
+				body: formData
+			}).then(function(response) {
+				if (response.ok) {
+					document.getElementById('lending-box').innerHTML = '<p>Box is no longer empty.</p><a href="uploaded_files/'+file.name+'" download>Download '+file.name+'</a>';
+				} else {
+					alert('Upload failed.');
+				}
+			}).catch(function(error) {
+				alert('Upload failed: '+error.message);
+			});
+
+
+		});
+	</script>
+
 </body>
 </html>
