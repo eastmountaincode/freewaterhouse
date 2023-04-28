@@ -3,29 +3,39 @@ var_dump($_FILES);
 $target_dir = "uploaded_files/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-// Check if image file is a actual image or fake image
-if(isset($_POST["submit"])) {
-  $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-  if($check !== false) {
-    echo "File is an image - " . $check["mime"] . ".\n";
-    echo "Target file: " . $target_file . "\n";
-    $uploadOk = 1;
-  } else {
-    echo "File is not an image.";
-    $uploadOk = 0;
-  }
+
+// $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+// // Check if image file is a actual image or fake image
+// if(isset($_POST["submit"])) {
+//   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+//   if($check !== false) {
+//     echo "File is an image - " . $check["mime"] . ".\n";
+//     echo "Target file: " . $target_file . "\n";
+//     $uploadOk = 1;
+//   } else {
+//     echo "File is not an image.";
+//     $uploadOk = 0;
+//   }
+// }
+
+// Check if file is uploaded and has no errors
+if (isset($_POST["submit"]) && $_FILES["fileToUpload"]["error"] === 0) {
+  $uploadOk = 1;
+} else {
+  echo "File upload error.";
+  $uploadOk = 0;
 }
+
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-  // if everything is ok, try to upload file
+  echo "Sorry, your file was not uploaded.";
+// if everything is ok, try to upload file
+} else {
+  if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+      echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
   } else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-      echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-    } else {
       echo "Target file: " . $target_file . "\n";
       echo "Sorry, there was an error uploading your file.";
-    }
   }
+}
 ?>
