@@ -1,6 +1,6 @@
 <?php
 //var_dump($_FILES);
-$target_dir = "uploaded_files/box1";
+$target_dir = "uploaded_files/box1/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $uploadOk = 1;
 

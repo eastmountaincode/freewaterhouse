@@ -7,7 +7,7 @@
     <h1>Virtual Lending Library</h1>
     <form action="upload.php" method="post" enctype="multipart/form-data">
         <?php
-        $target_dir = "uploaded_files/box1";
+        $target_dir = "uploaded_files/box1/";
         $files = array_diff(scandir($target_dir), array('.', '..', '.gitkeep'));
         
         if (!empty($files)) {
