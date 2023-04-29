@@ -4,20 +4,26 @@
     <title>Virtual Lending Library</title>
     <script>
         function uploadFile(event) {
-            event.preventDefault();
-            
-            var formData = new FormData(event.target);
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "upload.php", true);
-            xhr.onreadystatechange = function() {
-                console.log("Ready state: " + xhr.readyState);
-                console.log("Status: " + xhr.status);
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    location.reload(); // Reload the page to update the file list
-                }
-            };
-            xhr.send(formData);
-        }
+			event.preventDefault();
+
+			var fileInput = document.getElementById("fileToUpload");
+			console.log("Selected file: ", fileInput.files[0]);
+
+			var formData = new FormData(event.target);
+			formData.append("fileToUpload", fileInput.files[0]);
+			console.log("FormData: ", formData);
+
+			var xhr = new XMLHttpRequest();
+			xhr.open("POST", "upload.php", true);
+			xhr.onreadystatechange = function() {
+				console.log("Ready state: " + xhr.readyState);
+				console.log("Status: " + xhr.status);
+				if (xhr.readyState === 4 && xhr.status === 200) {
+					location.reload(); // Reload the page to update the file list
+				}
+			};
+			xhr.send(formData);
+		}
     </script>
 </head>
 <body>
