@@ -23,12 +23,14 @@
 				}
 			};
 			xhr.send(formData);
+
+			return false;
 		}
     </script>
 </head>
 <body>
     <h1>Virtual Lending Library</h1>
-    <form onsubmit="uploadFile(event)" method="post" enctype="multipart/form-data">
+    <form onsubmit="return uploadFile(event)" method="post" enctype="multipart/form-data">
         <?php
         $target_dir = "uploaded_files/";
         $files = array_diff(scandir($target_dir), array('.', '..', '.gitkeep'));
