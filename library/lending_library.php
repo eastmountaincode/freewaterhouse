@@ -2,41 +2,16 @@
 <html>
 <head>
     <title>Virtual Lending Library</title>
-    <script>
-        function uploadFile(event) {
-			event.preventDefault();
-
-			var fileInput = document.getElementById("fileToUpload");
-			console.log("Selected file: ", fileInput.files[0]);
-
-			var formData = new FormData(event.target);
-			formData.append("fileToUpload", fileInput.files[0]);
-			console.log("FormData: ", formData);
-
-			var xhr = new XMLHttpRequest();
-			xhr.open("POST", "upload.php", true);
-			xhr.onreadystatechange = function() {
-				console.log("Ready state: " + xhr.readyState);
-				console.log("Status: " + xhr.status);
-				if (xhr.readyState === 4 && xhr.status === 200) {
-					location.reload(); // Reload the page to update the file list
-				}
-			};
-			xhr.send(formData);
-
-			return false;
-		}
-    </script>
 </head>
 <body>
     <h1>Virtual Lending Library</h1>
-    <form onsubmit="return uploadFile(event)" method="post" enctype="multipart/form-data">
+    <form action="upload.php" method="post" enctype="multipart/form-data">
         <?php
         $target_dir = "uploaded_files/";
-        $files = array_diff(scandir($target_dir), array('.', '..', '.gitkeep'));
+        $files = array_diff(scandir($target_dir), array('.', '..'));
         
         if (!empty($files)) {
-            $filename = array_pop($files);
+            $filename = array_pop($files); // Get the last file in the array (you can change this logic if needed)
             echo "<p>Current file in the box:</p>";
             echo "<p><a href=\"" . $target_dir . htmlspecialchars($filename) . "\">" . htmlspecialchars($filename) . "</a></p>";
         } else {
