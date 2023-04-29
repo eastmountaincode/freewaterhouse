@@ -10,6 +10,8 @@
             var xhr = new XMLHttpRequest();
             xhr.open("POST", "upload.php", true);
             xhr.onreadystatechange = function() {
+                console.log("Ready state: " + xhr.readyState);
+                console.log("Status: " + xhr.status);
                 if (xhr.readyState === 4 && xhr.status === 200) {
                     location.reload(); // Reload the page to update the file list
                 }
