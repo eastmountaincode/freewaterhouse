@@ -8,7 +8,7 @@
     <form action="upload.php" method="post" enctype="multipart/form-data">
         <?php
         $target_dir = "uploaded_files/";
-        $files = array_diff(scandir($target_dir), array('.', '..'));
+        $files = array_diff(scandir($target_dir), array('.', '..', '.gitkeep'));
         
         if (!empty($files)) {
             $filename = array_pop($files); // Get the last file in the array (you can change this logic if needed)
