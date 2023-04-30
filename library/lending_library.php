@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>yo</title>
     <title>Virtual Lending Library</title>
 </head>
 <body>
