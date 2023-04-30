@@ -3,6 +3,11 @@
 <head>
     <title>yo</title>
     <title>Virtual Lending Library</title>
+    <style type="type/css">
+        #body {
+            align: center;
+        }
+    </style>
 </head>
 <body>
     <h1>Virtual Lending Library</h1>
@@ -22,6 +27,11 @@
         }
         ?>
     </form>
+
+    <div id = "uploadArea">
+        <input type="file" id="fileupload" name="attachments[]">
+    </div>
+
 </body>
 </html>
 
