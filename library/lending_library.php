@@ -4,9 +4,6 @@
     <title>yo</title>
     <title>Virtual Lending Library</title>
     <style type="type/css">
-        #body {
-            align: center;
-        }
     </style>
 </head>
 <body>
