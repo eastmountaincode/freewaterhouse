@@ -24,7 +24,9 @@
         }
         ?>
     </form>
-
+    <br>
+    <br>
+    <h1>New one</h1>
     <div id = "uploadArea">
         <input type="file" id="fileupload" name="attachments[]">
     </div>
