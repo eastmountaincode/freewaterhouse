@@ -29,6 +29,7 @@
     <h1>New one</h1>
     <div id = "uploadArea">
         <input type="file" id="fileupload" name="attachments[]">
+        <h1 id="progress1"></h1>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
@@ -36,7 +37,15 @@
     <script type="text/javascript">
         $(function () {
             $("#fileupload").fileupload({
-                url: 'lending_library.php'
+                url: 'lending_library.php',
+                dataType: 'json',
+                autoUpload: false
+            }).on('fileuploadadd', function(e, data) {
+                console.log(data);
+            }).on('fileuploaddone', function(e, data) {
+
+            }).on('fileuploadprogressall', function(e, data) {
+
             });
         });
     </script>
