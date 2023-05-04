@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Virtual Lending Library</h1>
-    <form action="upload.php" method="post" enctype="multipart/form-data">
+    <!-- <form action="upload.php" method="post" enctype="multipart/form-data">
         <?php
         $target_dir = "uploaded_files/box1/";
         $files = array_diff(scandir($target_dir), array('.', '..', '.gitkeep'));
@@ -23,7 +23,7 @@
             echo "<input type=\"submit\" value=\"Upload File\" name=\"submit\">";
         }
         ?>
-    </form>
+    </form> -->
     <br>
     <br>
     <h1>New one</h1>
