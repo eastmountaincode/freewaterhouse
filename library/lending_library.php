@@ -35,6 +35,7 @@
     <div id = "uploadArea">
         <input type="file" id="fileupload" name="attachments[]">
         <h1 id="progress1"></h1>
+        <h1 id="error"></h1>
     </div>
 
     <script type="text/javascript">
@@ -45,7 +46,9 @@
                 autoUpload: false
             }).on('fileuploadadd', function(e, data) {
                 console.log(data);
-                console.log("Hello")
+                var fileSize = data.originalFiles[0]['size'];
+                if (fileSize > 1073741824) // 1 GB in bytes
+                    $("#error").html('Your file is too big.')
             }).on('fileuploaddone', function(e, data) {
 
             }).on('fileuploadprogressall', function(e, data) {
