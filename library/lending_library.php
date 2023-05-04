@@ -69,7 +69,7 @@
             }).on('fileuploaddone', function(e, data) {
 
             }).on('fileuploadprogressall', function(e, data) {
-                var progress = parseInt(data.loaded / (data.total * 100));
+                var progress = parseInt((data.loaded / data.total) * 100);
                 $("#progress1").html("Completed " + progress + "%")
 
             });
