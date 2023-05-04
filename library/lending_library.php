@@ -40,6 +40,7 @@
                 autoUpload: false
             }).on('fileuploadadd', function(e, data) {
                 console.log(data);
+                console.log("Hello")
             }).on('fileuploaddone', function(e, data) {
 
             }).on('fileuploadprogressall', function(e, data) {
