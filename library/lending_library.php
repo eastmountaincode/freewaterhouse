@@ -5,6 +5,11 @@
     <title>Virtual Lending Library</title>
     <style type="type/css">
     </style>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="../js/jquery.ui.widget.js" type="text/javascript"></script>
+    <script src="../js/jquery.iframe-transport.js" type="text/javascript"></script>
+    <script src="../js/jquery.fileupload.js" type="text/javascript"></script>
 </head>
 <body>
     <h1>Virtual Lending Library</h1>
@@ -48,11 +53,6 @@
             });
         });
     </script>
-
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    <script src="../js/vendor/jquery.ui.widget.js" type="text/javascript"></script>
-    <script src="../js/vendor/jquery.iframe-transport.js" type="text/javascript"></script>
-    <script src="../js/vendor/jquery.fileupload.js" type="text/javascript"></script>
 </body>
 </html>
 
