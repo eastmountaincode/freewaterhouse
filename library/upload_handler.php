@@ -1,5 +1,6 @@
 <?php
     header('Content-Type: application/json');
+    echo json_encode(array("status" => 2, "msg" => "Test response"));
 
     if (isset($_FILES['attachments'])) {
         $msg = "";
