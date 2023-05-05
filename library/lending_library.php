@@ -18,6 +18,7 @@
         <input type="file" id="fileupload" name="attachments[]">
         <h1 id="progress1"></h1>
         <h1 id="error"></h1>
+        <h1 id="files"></h1>
     </div>
 
     <script type="text/javascript">
@@ -36,6 +37,14 @@
                 }
             }).on('fileuploaddone', function(e, data) {
                 console.log(data);
+                var status = data.jqXHR.responseJSON.status;
+                var msg = data.jqXHR.responseJSON.msg;
+                if (status == 1) {
+                    var path = data.jqXHR.responseJSON.path;
+                    $("#files").fadeIn().append('<p>got one</p>');
+                }
+                else
+                    $("#error").html('error message down below!!');
 
             }).on('fileuploadprogressall', function(e, data) {
                 var progress = parseInt((data.loaded / data.total) * 100);
