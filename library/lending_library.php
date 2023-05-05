@@ -1,4 +1,5 @@
 <?php
+    header('Content-Type: application/json');
     if (isset($_FILES['attachments'])) {
         $msg = "";
         $targetFile = "uploaded_files/box_1/" . basename($_FILES['attachments']['name'][0]);
