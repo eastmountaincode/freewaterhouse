@@ -46,6 +46,10 @@
                 else
                     $("#error").html('error message down below!!');
 
+            }).on('fileuploadfail', function(e, data) {
+                console.log('File upload failed');
+                console.log(data);
+
             }).on('fileuploadprogressall', function(e, data) {
                 var progress = parseInt((data.loaded / data.total) * 100);
                 $("#progress1").html("Completed " + progress + "%")
