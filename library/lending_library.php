@@ -66,6 +66,7 @@
                     data.submit();
                 }
             }).on('fileuploaddone', function(e, data) {
+                console.log(data);
 
             }).on('fileuploadprogressall', function(e, data) {
                 var progress = parseInt((data.loaded / data.total) * 100);
