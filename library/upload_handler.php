@@ -9,11 +9,11 @@
         else if (move_uploaded_file($_FILES['attachments']['tmp_name'][0], $targetFile))
             $msg = array("status" => 1, "msg" => "File Has Been Uploaded", "path" => $targetFile);
         echo json_encode($msg);
-        exit(json_encode($msg));
+        
     } else {
         // Default JSON response when no file is uploaded
         $msg = array("status" => -1, "msg" => "No file received.");
         echo json_encode($msg);
-        exit(json_encode($msg));
+        
     }
 ?>
