@@ -44,7 +44,6 @@
                 dataType: 'json',
                 autoUpload: false
             }).on('fileuploadadd', function(e, data) {
-                console.log(data)
                 var fileSize = data.originalFiles[0]['size'];
                 if (fileSize > 209715200) // 200MB in bytes
                     $("#error").html('Your file is too big.')
