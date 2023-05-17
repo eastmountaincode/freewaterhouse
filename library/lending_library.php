@@ -1,14 +1,8 @@
 <html>
 <head>
-    <title>yo</title>
     <title>Virtual Lending Library</title>
-    <style type="type/css">
+    <style type="text/css">
     </style>
-
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    <script src="../js/jquery.ui.widget.js" type="text/javascript"></script>
-    <script src="../js/jquery.iframe-transport.js" type="text/javascript"></script>
-    <script src="../js/jquery.fileupload.js" type="text/javascript"></script>
 </head>
 <body>
     <h1>Virtual Lending Library</h1>
@@ -22,42 +16,49 @@
     </div>
 
     <script type="text/javascript">
-        $(function () {
-            $("#fileupload").fileupload({
-                url: 'upload_handler.php',
-                dataType: 'json',
-                autoUpload: false
-            }).on('fileuploadadd', function(e, data) {
-                var fileSize = data.originalFiles[0]['size'];
-                if (fileSize > 209715200) // 200MB in bytes
-                    $("#error").html('Your file is too big.')
-                else {
-                    $("#error").html('');
-                    data.submit();
-                }
-            }).on('fileuploaddone', function(e, data) {
-                console.log(data);
-                var status = data.jqXHR.responseJSON.status;
-                var msg = data.jqXHR.responseJSON.msg;
+        document.getElementById("fileupload").addEventListener("change", function(e) {
+            var file = e.target.files[0];
+            if (!file) {
+                console.log("No file chosen");
+                return;
+            }
+
+            // Check file size
+            if (file.size > 209715200) { // 200MB in bytes
+                document.getElementById("error").innerText = 'Your file is too big.'
+                return;
+            } else {
+                document.getElementById("error").innerText = '';
+            }
+
+            // Create new formData instance
+            var formData = new FormData();
+            formData.append("attachments[]", file);
+
+            // Fetch API to send the file
+            fetch('upload_handler.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                var status = data.status;
+                var msg = data.msg;
+
                 if (status == 1) {
-                    var path = data.jqXHR.responseJSON.path;
-                    $("#files").fadeIn().append('<p>got one</p>');
+                    document.getElementById("files").innerText = 'got one';
+                } else {
+                    document.getElementById("error").innerText = 'error message down below!!';
                 }
-                else
-                    $("#error").html('error message down below!!');
-
-            }).on('fileuploadfail', function(e, data) {
+            })
+            .catch(error => {
                 console.log('File upload failed');
-                console.log(data);
-
-            }).on('fileuploadprogressall', function(e, data) {
-                var progress = parseInt((data.loaded / data.total) * 100);
-                $("#progress1").html("Completed " + progress + "%")
-
+                console.log(error);
             });
         });
     </script>
 </body>
 </html>
+
 
 

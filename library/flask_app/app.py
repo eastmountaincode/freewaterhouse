@@ -5,11 +5,15 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('lending_library.html')
+    return render_template('index.html')
 
 @app.route('/index')
 def index():
     return render_template('index.html')
+
+@app.route('/library/lending_library')
+def lending_library():
+    return render_template('lending_library.html')
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
