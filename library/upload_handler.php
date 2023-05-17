@@ -3,7 +3,7 @@
     if (isset($_FILES['attachments'])) {
         $msg = "";
 
-        $upload_directory = '/var/www/html/freewaterhouse/library/uploaded_files/box_1/';
+        $upload_directory = '/var/www/html/freewaterhouse/library/uploaded_files/box1/';
         $filename = basename($_FILES['attachments']['name'][0]);
         $targetFile = $upload_directory . $filename;
 
