@@ -27,6 +27,9 @@
 
             // Try to write the content of the temporary file to the target path
             if (file_put_contents($targetFile, $tmp_file_contents) !== false) {
+                // File upload succeeded, so adjust permissions to allow deletion
+                chmod($targetFile, 0777);
+
                 // File upload succeeded, so return a JSON response with a status code of 1, a success message, and the file path
                 $msg = array("status" => 1, "msg" => "File Has Been Uploaded", "path" => $targetFile);
             } else {
