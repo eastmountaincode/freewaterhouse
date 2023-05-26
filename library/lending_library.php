@@ -86,6 +86,35 @@
                 console.log(error);
             });
         });
+
+        // Function to check file status and adjust visibility of the upload and download buttons
+        function checkFileStatus(boxNumber) {
+            fetch(`upload_handler.php?checkFile=true&boxNumber=${boxNumber}`)
+                .then(response => response.json())
+                .then(data => {
+                    var status = data.status;
+
+                    var uploadElements = document.getElementById("uploadElements");
+                    var downloadButton = document.getElementById("downloadButton");
+
+                    if (status == 0) {
+                        // No file exists, so show the upload elements and hide the download button
+                        uploadElements.style.display = "block";
+                        downloadButton.style.display = "none";
+                    } else {
+                        // A file exists, so hide the upload elements and show the download button
+                        uploadElements.style.display = "none";
+                        downloadButton.style.display = "block";
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Check the file status when the page loads
+        window.onload = function() {
+            var boxNumber = "1"; // Replace with the desired box number
+            checkFileStatus(boxNumber);
+        };
     </script>
 </body>
 </html>
