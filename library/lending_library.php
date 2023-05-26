@@ -94,16 +94,16 @@
                 .then(data => {
                     var status = data.status;
 
-                    var uploadElements = document.getElementById("uploadElements");
+                    var uploadArea = document.getElementById("uploadArea");
                     var downloadButton = document.getElementById("downloadButton");
 
                     if (status == 0) {
                         // No file exists, so show the upload elements and hide the download button
-                        uploadElements.style.display = "block";
+                        uploadArea.style.display = "block";
                         downloadButton.style.display = "none";
                     } else {
                         // A file exists, so hide the upload elements and show the download button
-                        uploadElements.style.display = "none";
+                        uploadArea.style.display = "none";
                         downloadButton.style.display = "block";
                     }
                 })
