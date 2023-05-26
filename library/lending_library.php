@@ -20,8 +20,12 @@
         // Declare a variable to store the selected file
         var selectedFile;
 
+        // Listen for a file selection in the file input
         document.getElementById("fileSelect").addEventListener("change", function(e) {
+            // Get the first selected file
             var file = e.target.files[0];
+
+            // If there is no file, log a message and return
             if (!file) {
                 console.log("No file chosen");
                 return;
@@ -32,6 +36,7 @@
                 document.getElementById("error").innerText = 'Your file is too big.'
                 return;
             } else {
+                // If the file size is acceptable, clear any previous error messages
                 document.getElementById("error").innerText = '';
             }
 
@@ -42,9 +47,11 @@
             document.getElementById("uploadButton").disabled = false;
         });
 
+        // Listen for a click on the Upload button
         document.getElementById("uploadButton").addEventListener("click", function() {
             // Create new formData instance
             var formData = new FormData();
+            // Add the selected file to the formData
             formData.append("attachments[]", selectedFile);
 
             // Fetch API to send the file
@@ -52,14 +59,19 @@
                 method: 'POST',
                 body: formData
             })
+            // This block is executed when the promise returned by fetch is resolved.
+            // The response is a ReadableStream object, which is converted to JSON.
             .then(response => response.json())
             .then(data => {
                 var status = data.status;
                 var msg = data.msg;
 
+                // The data object contains the data returned by the server.
+                // If the status is 1, the upload was successful.
                 if (status == 1) {
                     document.getElementById("files").innerText = 'got one';
                 } else {
+                    // If the status is not 1, an error occurred, so display an error message.
                     document.getElementById("error").innerText = 'error message down below!!';
                 }
 
@@ -67,6 +79,8 @@
                 selectedFile = null;
                 document.getElementById("uploadButton").disabled = true;
             })
+            // The catch block is executed if the promise returned by fetch is rejected.
+            // The error object contains information about what went wrong.
             .catch(error => {
                 console.log('File upload failed');
                 console.log(error);
