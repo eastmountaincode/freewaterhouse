@@ -9,7 +9,7 @@
     <br>
     <h1>New one</h1>
     <div id = "uploadArea">
-        <input type="file" id="fileupload" name="attachments[]">
+        <input type="file" id="fileSelect" name="attachments[]">
         <button id="uploadButton" disabled>Upload</button>
         <h1 id="progress1"></h1>
         <h1 id="error"></h1>
@@ -17,7 +17,10 @@
     </div>
 
     <script type="text/javascript">
-        document.getElementById("fileupload").addEventListener("change", function(e) {
+        // Declare a variable to store the selected file
+        var selectedFile;
+
+        document.getElementById("fileSelect").addEventListener("change", function(e) {
             var file = e.target.files[0];
             if (!file) {
                 console.log("No file chosen");
@@ -32,9 +35,17 @@
                 document.getElementById("error").innerText = '';
             }
 
+            // Store the selected file in the selectedFile variable
+            selectedFile = file;
+
+            // Enable the Upload button
+            document.getElementById("uploadButton").disabled = false;
+        });
+
+        document.getElementById("uploadButton").addEventListener("click", function() {
             // Create new formData instance
             var formData = new FormData();
-            formData.append("attachments[]", file);
+            formData.append("attachments[]", selectedFile);
 
             // Fetch API to send the file
             fetch('upload_handler.php', {
@@ -51,6 +62,10 @@
                 } else {
                     document.getElementById("error").innerText = 'error message down below!!';
                 }
+
+                // Reset the selected file and disable the Upload button again
+                selectedFile = null;
+                document.getElementById("uploadButton").disabled = true;
             })
             .catch(error => {
                 console.log('File upload failed');
