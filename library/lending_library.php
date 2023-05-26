@@ -11,6 +11,7 @@
     <div id = "uploadArea">
         <input type="file" id="fileSelect" name="attachments[]">
         <button id="uploadButton" disabled>Upload</button>
+        <button id="downloadButton"><a href="path/to/your/file">Download</a></button>
         <h1 id="progress1"></h1>
         <h1 id="error"></h1>
         <h1 id="files"></h1>
