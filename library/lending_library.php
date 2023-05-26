@@ -10,10 +10,10 @@
     <h1>New one</h1>
     <div id = "uploadArea">
         <input type="file" id="fileupload" name="attachments[]">
+        <button id="uploadButton" disabled>Upload</button>
         <h1 id="progress1"></h1>
         <h1 id="error"></h1>
         <h1 id="files"></h1>
-        <button id="uploadButton" disabled>Upload</button>
     </div>
 
     <script type="text/javascript">
