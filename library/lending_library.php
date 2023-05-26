@@ -111,11 +111,11 @@
                 .catch(error => console.error('Error:', error));
         }
 
-        // Check the file status when the page loads
-        window.onload = function() {
-            var boxNumber = "1"; // Replace with the desired box number
-            checkFileStatus(boxNumber);
-        };
+        // // Check the file status when the page loads
+        // window.onload = function() {
+        //     var boxNumber = "1"; // Replace with the desired box number
+        //     checkFileStatus(boxNumber);
+        // };
     </script>
 </body>
 </html>
