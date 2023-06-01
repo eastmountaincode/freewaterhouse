@@ -79,6 +79,9 @@
                 // Reset the selected file and disable the Upload button again
                 selectedFile = null;
                 document.getElementById("uploadButton").disabled = true;
+
+                // Call the checkFileStatus function after upload is done.
+                checkFileStatus("1"); // Replace with the desired box number
             })
             // The catch block is executed if the promise returned by fetch is rejected.
             // The error object contains information about what went wrong.
@@ -95,27 +98,31 @@
                 .then(data => {
                     var status = data.status;
 
-                    var uploadArea = document.getElementById("uploadArea");
+                    var fileSelect = document.getElementById("fileSelect");
+                    var uploadButton = document.getElementById("uploadButton");
                     var downloadButton = document.getElementById("downloadButton");
 
                     if (status == 0) {
-                        // No file exists, so show the upload elements and hide the download button
-                        uploadArea.style.display = "block";
+                        // No file exists, so enable the file selection and upload buttons and hide the download button
+                        fileSelect.disabled = false;
+                        uploadButton.disabled = false;
                         downloadButton.style.display = "none";
                     } else {
-                        // A file exists, so hide the upload elements and show the download button
-                        uploadArea.style.display = "none";
+                        // A file exists, so disable the file selection and upload buttons and show the download button
+                        fileSelect.disabled = true;
+                        uploadButton.disabled = true;
                         downloadButton.style.display = "block";
                     }
                 })
                 .catch(error => console.error('Error:', error));
         }
 
-        // // Check the file status when the page loads
-        // window.onload = function() {
-        //     var boxNumber = "1"; // Replace with the desired box number
-        //     checkFileStatus(boxNumber);
-        // };
+        // Check the file status when the page loads
+        window.onload = function() {
+            var boxNumber = "1"; // Replace with the desired box number
+            checkFileStatus(boxNumber);
+        };
+
     </script>
 </body>
 </html>
