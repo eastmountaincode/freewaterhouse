@@ -11,7 +11,7 @@
     <div id = "uploadArea">
         <input type="file" id="fileSelect" name="attachments[]">
         <button id="uploadButton" disabled>Upload</button>
-        <button id="downloadButton"><a href="path/to/your/file">Download</a></button>
+        <button id="downloadButton" disabled>Download</button>
         <h1 id="progress1"></h1>
         <h1 id="error"></h1>
         <h1 id="files"></h1>
@@ -107,11 +107,14 @@
                         fileSelect.disabled = false;
                         uploadButton.disabled = false;
                         downloadButton.disabled = true;
+                        downloadButton.onclick = null; // Remove any onclick event
                     } else {
                         // A file exists, so disable the file selection and upload buttons and show the download button
                         fileSelect.disabled = true;
                         // uploadButton.disabled = true;
                         downloadButton.disabled = false;
+                        downloadButton.onclick = function() { window.location.href = "path/to/your/file"; };
+
                     }
                 })
                 .catch(error => console.error('Error:', error));
