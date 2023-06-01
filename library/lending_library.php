@@ -106,12 +106,12 @@
                         // No file exists, so enable the file selection and upload buttons and hide the download button
                         fileSelect.disabled = false;
                         uploadButton.disabled = false;
-                        downloadButton.style.display = "none";
+                        downloadButton.disabled = true;
                     } else {
                         // A file exists, so disable the file selection and upload buttons and show the download button
                         fileSelect.disabled = true;
                         // uploadButton.disabled = true;
-                        downloadButton.style.display = "block";
+                        downloadButton.disabled = false;
                     }
                 })
                 .catch(error => console.error('Error:', error));
