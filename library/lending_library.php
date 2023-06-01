@@ -110,7 +110,7 @@
                     } else {
                         // A file exists, so disable the file selection and upload buttons and show the download button
                         fileSelect.disabled = true;
-                        uploadButton.disabled = true;
+                        // uploadButton.disabled = true;
                         downloadButton.style.display = "block";
                     }
                 })
