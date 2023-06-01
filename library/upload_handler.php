@@ -1,8 +1,9 @@
 <?php
+    header('Content-Type: application/json');
 
     // define the getFileStatus function
     function getFileStatus($boxNumber) {
-        $upload_directory = '/var/www/html/freewaterhouse/library/uploaded_files/box1' . $boxNumber . '/';
+        $upload_directory = '/var/www/html/freewaterhouse/library/uploaded_files/box' . $boxNumber . '/';
         $files = glob($upload_directory . "*");
         
         // If no files, return status 0, else return status 1
@@ -16,6 +17,7 @@
     if (isset($_GET['checkFile'])) {
         $boxNumber = $_GET['boxNumber']; // Get the box number from the query parameter
         echo getFileStatus($boxNumber);
+        exit(); // This prevents the rest of the script from executing when checkFile is set
     }
     
 
