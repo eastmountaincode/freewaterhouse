@@ -113,7 +113,7 @@
                         fileSelect.disabled = true;
                         // uploadButton.disabled = true;
                         downloadButton.disabled = false;
-                        downloadButton.onclick = function() { window.location.href = "path/to/your/file"; };
+                        downloadButton.onclick = function() { window.location.href = "uploaded_files/box" + boxNumber + "/" + data.filename; };
 
                     }
                 })

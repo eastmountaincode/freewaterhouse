@@ -2,6 +2,7 @@
     header('Content-Type: application/json');
 
     // define the getFileStatus function
+    // returns a 0 or a 1
     function getFileStatus($boxNumber) {
         $upload_directory = '/var/www/html/freewaterhouse/library/uploaded_files/box' . $boxNumber . '/';
         $files = glob($upload_directory . "*");
@@ -10,7 +11,8 @@
         if (empty($files)) {
             return json_encode(array("status" => 0));
         } else {
-            return json_encode(array("status" => 1));
+            $filename = basename($files[0]);
+            return json_encode(array("status" => 1, "filename" => $filename));
         }
     }
     
