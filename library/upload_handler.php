@@ -25,11 +25,8 @@
 
     // Check if files have been uploaded using the 'attachments' form field
     if (isset($_FILES['attachments'])) {
-
-        echo "<pre>";
         echo json_encode($_FILES);
-        echo "</pre>"
-        
+         
         // Initialize an empty message array
         $msg = "";
 
