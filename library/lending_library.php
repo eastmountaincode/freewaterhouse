@@ -50,49 +50,6 @@
             document.getElementById("uploadButton").disabled = false;
         });
 
-        // // Listen for a click on the Upload button
-        // document.getElementById("uploadButton").addEventListener("click", function() {
-        //     // Create new formData instance
-        //     var formData = new FormData();
-        //     // Add the selected file to the formData
-        //     formData.append("attachments[]", selectedFile);
-
-        //     // Fetch API to send the file
-        //     fetch('upload_handler.php', {
-        //         method: 'POST',
-        //         body: formData
-        //     })
-        //     // This block is executed when the promise returned by fetch is resolved.
-        //     // The response is a ReadableStream object, which is converted to JSON.
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         var status = data.status;
-        //         var msg = data.msg;
-
-        //         // The data object contains the data returned by the server.
-        //         // If the status is 1, the upload was successful.
-        //         if (status == 1) {
-        //             document.getElementById("files").innerText = 'got one';
-        //         } else {
-        //             // If the status is not 1, an error occurred, so display an error message.
-        //             document.getElementById("error").innerText = 'error message down below!!';
-        //         }
-
-        //         // Reset the selected file and disable the Upload button again
-        //         selectedFile = null;
-        //         document.getElementById("uploadButton").disabled = true;
-
-        //         // Call the checkFileStatus function after upload is done.
-        //         checkFileStatus("1"); // Replace with the desired box number
-        //     })
-        //     // The catch block is executed if the promise returned by fetch is rejected.
-        //     // The error object contains information about what went wrong.
-        //     .catch(error => {
-        //         console.log('File upload failed');
-        //         console.log(error);
-        //     });
-        // });
-
         // Listen for a click on the Upload button
         document.getElementById("uploadButton").addEventListener("click", function() {
             // Create new formData instance
@@ -170,13 +127,16 @@
                     if (status == 0) {
                         // No file exists, so enable the file selection and upload buttons and hide the download button
                         fileSelect.disabled = false;
-                        uploadButton.disabled = false;
+
+                        // Only enable the Upload button if a file is selected
+                        uploadButton.disabled = selectedFile ? false : true;
+
                         downloadButton.disabled = true;
                         downloadButton.onclick = null; // Remove any onclick event
                     } else {
                         // A file exists, so disable the file selection and upload buttons and show the download button
                         fileSelect.disabled = true;
-                        // uploadButton.disabled = true;
+                        uploadButton.disabled = true;
                         downloadButton.disabled = false;
                         downloadButton.onclick = function() { window.location.href = "download_handler.php?filename=" + data.filename + "&boxNumber=" + boxNumber; };
 
