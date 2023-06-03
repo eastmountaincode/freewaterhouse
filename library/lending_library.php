@@ -49,6 +49,49 @@
             document.getElementById("uploadButton").disabled = false;
         });
 
+        // // Listen for a click on the Upload button
+        // document.getElementById("uploadButton").addEventListener("click", function() {
+        //     // Create new formData instance
+        //     var formData = new FormData();
+        //     // Add the selected file to the formData
+        //     formData.append("attachments[]", selectedFile);
+
+        //     // Fetch API to send the file
+        //     fetch('upload_handler.php', {
+        //         method: 'POST',
+        //         body: formData
+        //     })
+        //     // This block is executed when the promise returned by fetch is resolved.
+        //     // The response is a ReadableStream object, which is converted to JSON.
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         var status = data.status;
+        //         var msg = data.msg;
+
+        //         // The data object contains the data returned by the server.
+        //         // If the status is 1, the upload was successful.
+        //         if (status == 1) {
+        //             document.getElementById("files").innerText = 'got one';
+        //         } else {
+        //             // If the status is not 1, an error occurred, so display an error message.
+        //             document.getElementById("error").innerText = 'error message down below!!';
+        //         }
+
+        //         // Reset the selected file and disable the Upload button again
+        //         selectedFile = null;
+        //         document.getElementById("uploadButton").disabled = true;
+
+        //         // Call the checkFileStatus function after upload is done.
+        //         checkFileStatus("1"); // Replace with the desired box number
+        //     })
+        //     // The catch block is executed if the promise returned by fetch is rejected.
+        //     // The error object contains information about what went wrong.
+        //     .catch(error => {
+        //         console.log('File upload failed');
+        //         console.log(error);
+        //     });
+        // });
+
         // Listen for a click on the Upload button
         document.getElementById("uploadButton").addEventListener("click", function() {
             // Create new formData instance
@@ -56,40 +99,51 @@
             // Add the selected file to the formData
             formData.append("attachments[]", selectedFile);
 
-            // Fetch API to send the file
-            fetch('upload_handler.php', {
-                method: 'POST',
-                body: formData
-            })
-            // This block is executed when the promise returned by fetch is resolved.
-            // The response is a ReadableStream object, which is converted to JSON.
-            .then(response => response.json())
-            .then(data => {
-                var status = data.status;
-                var msg = data.msg;
+            // Create new XMLHttpRequest
+            var xhr = new XMLHttpRequest();
 
-                // The data object contains the data returned by the server.
-                // If the status is 1, the upload was successful.
-                if (status == 1) {
-                    document.getElementById("files").innerText = 'got one';
-                } else {
-                    // If the status is not 1, an error occurred, so display an error message.
-                    document.getElementById("error").innerText = 'error message down below!!';
+            // Open the connection
+            xhr.open('POST', 'upload_handler.php', true);
+
+            // Set the upload progress event
+            xhr.upload.addEventListener("progress", function(e) {
+                if (e.lengthComputable) {
+                    // Calculate the percentage of upload completed
+                    var percentComplete = e.loaded / e.total * 100;
+                    document.getElementById('uploadProgress').style.width = percentComplete + '%';
                 }
+            }, false);
 
-                // Reset the selected file and disable the Upload button again
-                selectedFile = null;
-                document.getElementById("uploadButton").disabled = true;
+            // Set the callback for when the request completes
+            xhr.onload = function() {
+                if (this.status == 200) {
+                    var data = JSON.parse(this.response);
+                    var status = data.status;
+                    var msg = data.msg;
 
-                // Call the checkFileStatus function after upload is done.
-                checkFileStatus("1"); // Replace with the desired box number
-            })
-            // The catch block is executed if the promise returned by fetch is rejected.
-            // The error object contains information about what went wrong.
-            .catch(error => {
-                console.log('File upload failed');
-                console.log(error);
-            });
+                    // The data object contains the data returned by the server.
+                    // If the status is 1, the upload was successful.
+                    if (status == 1) {
+                        document.getElementById("files").innerText = 'got one';
+                    } else {
+                        // If the status is not 1, an error occurred, so display an error message.
+                        document.getElementById("error").innerText = 'error message down below!!';
+                    }
+
+                    // Reset the selected file and disable the Upload button again
+                    selectedFile = null;
+                    document.getElementById("uploadButton").disabled = true;
+
+                    // Call the checkFileStatus function after upload is done.
+                    checkFileStatus("1"); // Replace with the desired box number
+                } else {
+                    console.log('File upload failed');
+                    console.log(error);
+                }
+            };
+
+            // Send the request with the formData
+            xhr.send(formData);
         });
 
         // Function to check file status and adjust visibility of the upload and download buttons
