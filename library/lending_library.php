@@ -170,7 +170,7 @@
                         fileSelect.disabled = true;
                         // uploadButton.disabled = true;
                         downloadButton.disabled = false;
-                        downloadButton.onclick = function() { window.location.href = "download_file.php?filename=" + data.filename + "&boxNumber=" + boxNumber; };
+                        downloadButton.onclick = function() { window.location.href = "download_handler.php?filename=" + data.filename + "&boxNumber=" + boxNumber; };
 
                     }
                 })
