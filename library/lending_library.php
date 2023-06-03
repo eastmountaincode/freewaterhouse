@@ -112,7 +112,15 @@
                     // Calculate the percentage of upload completed
                     var percentComplete = e.loaded / e.total * 100;
                     document.getElementById('uploadProgress').style.width = percentComplete + '%';
-                    document.getElementById('progressPercent').textContent = percentComplete + '%';
+                    document.getElementById('progressPercent').textContent = percentComplete.toFixed(2) + '%';
+
+                    // After reaching 100%, wait for 1 second and then reset the progress bar and percentage text
+                    if (percentComplete === 100) {
+                        setTimeout(function() {
+                            document.getElementById('uploadProgress').style.width = '0%';
+                            document.getElementById('progressPercent').textContent = '';
+                        }, 1000);
+                    }
                 }
             }, false);
 
