@@ -12,6 +12,7 @@
         <input type="file" id="fileSelect" name="attachments[]">
         <button id="uploadButton" disabled>Upload</button>
         <button id="downloadButton" disabled>Download</button>
+        <div id="uploadProgress" style="width: 0%; height: 20px; background: green;"></div>
         <h1 id="progress1"></h1>
         <h1 id="error"></h1>
         <h1 id="files"></h1>
@@ -113,7 +114,7 @@
                         fileSelect.disabled = true;
                         // uploadButton.disabled = true;
                         downloadButton.disabled = false;
-                        downloadButton.onclick = function() { window.location.href = "uploaded_files/box" + boxNumber + "/" + data.filename; };
+                        downloadButton.onclick = function() { window.location.href = "download_file.php?filename=" + data.filename + "&boxNumber=" + boxNumber; };
 
                     }
                 })
