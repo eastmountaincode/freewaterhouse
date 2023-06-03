@@ -13,6 +13,7 @@
         <button id="uploadButton" disabled>Upload</button>
         <button id="downloadButton" disabled>Download</button>
         <div id="uploadProgress" style="width: 0%; height: 20px; background: green;"></div>
+        <p id="progressPercent"></p>
         <h1 id="progress1"></h1>
         <h1 id="error"></h1>
         <h1 id="files"></h1>
@@ -111,6 +112,7 @@
                     // Calculate the percentage of upload completed
                     var percentComplete = e.loaded / e.total * 100;
                     document.getElementById('uploadProgress').style.width = percentComplete + '%';
+                    document.getElementById('progressPercent').textContent = percentComplete + '%';
                 }
             }, false);
 
