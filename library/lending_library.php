@@ -35,7 +35,7 @@
             }
 
             // Check file size
-            if (file.size > 209715200) { // 200MB in bytes
+            if (file.size > 1073741824) { // 1GB in bytes
                 document.getElementById("error").innerText = 'Your file is too big.'
                 return;
             } else {
