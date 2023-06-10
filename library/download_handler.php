@@ -14,6 +14,10 @@
             header('Content-Length: ' . filesize($filepath));
 
             readfile($filepath);
+
+            // Remove the file after downloading
+            unlink($filepath);
+            
             exit();
         }
     }
