@@ -138,7 +138,12 @@
                         fileSelect.disabled = true;
                         uploadButton.disabled = true;
                         downloadButton.disabled = false;
-                        downloadButton.onclick = function() { window.location.href = "download_handler.php?filename=" + data.filename + "&boxNumber=" + boxNumber; };
+                        downloadButton.onclick = function() { 
+                            window.location.href = "download_handler.php?filename=" + data.filename + "&boxNumber=" + boxNumber; };
+                            // After initiating the download, wait for 2 seconds before rechecking the file status
+                            setTimeout(function() {
+                                checkFileStatus(boxNumber);
+                            }, 2000);
 
                     }
                 })
