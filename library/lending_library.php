@@ -28,7 +28,9 @@
                 top: -9999px;
                 left: -9999px;
             }
-            tr { border: 1px solid #ccc; }
+            tr { 
+                /* border: 1px solid #ccc; */
+            }
             
             td { 
                 /* Behave like a "row" */
