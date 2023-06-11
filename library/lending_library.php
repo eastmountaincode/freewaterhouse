@@ -154,7 +154,7 @@
                         };
 
                         var file = data.file;
-                        var fileInfo = `Filename: ${file.filename}, File Size: ${formatBytes(file.filesize)}, File Type: ${file.filetype}`;
+                        var fileInfo = `Filename: ${file.filename}\n File Size: ${formatBytes(file.filesize)}\n File Type: ${file.filetype}`;
                         document.getElementById("fileInfo").innerText = fileInfo;
 
                     }
