@@ -32,7 +32,7 @@
             top: 0;
             width: 100%;
             height: 0;
-            border-bottom: 50px solid #f00; /* Adjust color to match your design */
+            border-bottom: 50px solid black; /* Adjust color to match your design */
             border-left: 50px solid transparent;
             border-right: 50px solid transparent;
         }
