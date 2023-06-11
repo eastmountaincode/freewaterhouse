@@ -137,6 +137,7 @@
 
                         downloadButton.disabled = true;
                         downloadButton.onclick = null; // Remove any onclick event
+                        document.getElementById("fileInfo").innerText = '';
                     } else {
                         var file = data.file;
                         var fileInfo = `Filename: ${file.filename}\n File Size: ${formatBytes(file.filesize)}\n File Type: ${file.filetype}`;
