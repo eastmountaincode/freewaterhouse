@@ -156,7 +156,9 @@
                             // After initiating the download, wait for 2 seconds before rechecking the file status
                             setTimeout(function() {
                                 checkFileStatus(boxNumber);
-                            }, 2000);
+                            }, 4000);
+
+                            document.getElementById("fileInfo").innerText = '';
                         };
 
                         document.getElementById("fileInfo").innerText = fileInfo;

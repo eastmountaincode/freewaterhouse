@@ -34,13 +34,15 @@
 
     // Check if files have been uploaded using the 'attachments' form field
     if (isset($_FILES['attachments'])) {
+        $boxNumber = $_GET['boxNumber']; // Get the box number from the query parameter
+        $boxNumber = intval($_GET['boxNumber']);
         //echo json_encode($_FILES);
          
         // Initialize an empty message array
         $msg = "";
 
         // Define the directory where files will be uploaded
-        $upload_directory = '/var/www/html/freewaterhouse/library/uploaded_files/box1/';
+        $upload_directory = "/var/www/html/freewaterhouse/library/uploaded_files/box{$boxNumber}/";
 
         // Get the base name of the uploaded file (removes any directory paths from the filename)
         $filename = basename($_FILES['attachments']['name'][0]);
