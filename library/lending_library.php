@@ -14,9 +14,29 @@
         }
 
         #uploadArea1, #uploadArea2, #uploadArea3, #uploadArea4 {
-            border: 3px dashed pink;
             padding: 10px;
-            border-radius: 15px;
+        }
+
+        /* Style changes when the viewport is 600px or less */
+        @media screen and (max-width: 600px) {
+            table, thead, tbody, th, td, tr { 
+                display: block; 
+            }
+            /* Hide table headers (but not display: none;, for accessibility) */
+            thead tr { 
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr { border: 1px solid #ccc; }
+            
+            td { 
+                /* Behave like a "row" */
+                border: none;
+                border-bottom: 1px solid #eee; 
+                position: relative;
+                padding-left: 50%; 
+            }
         }
     </style>
 </head>
