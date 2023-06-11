@@ -32,10 +32,12 @@
             
             td { 
                 /* Behave like a "row" */
-                border: none;
-                border-bottom: 1px solid #eee; 
+                border: 1px solid black;
+                text-align: left;
+                padding: 15px;
+                /* border-bottom: 1px solid #eee; */
                 position: relative;
-                padding-left: 50%; 
+                /* padding-left: 50%; */
             }
         }
     </style>
