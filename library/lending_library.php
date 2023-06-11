@@ -55,7 +55,7 @@
         document.getElementById("uploadButton").addEventListener("click", function() {
             // Create new formData instance
             var formData = new FormData();
-            
+
             // Add the selected file to the formData
             formData.append("attachments[]", selectedFile);
 
@@ -100,7 +100,7 @@
                         document.getElementById("files").innerText = 'got one';
                     } else {
                         // If the status is not 1, an error occurred, so display an error message.
-                        document.getElementById("error").innerText = 'error message down below!!';
+                        document.getElementById("error").innerText = `Error: status ${status}, message: ${msg}`;
                     }
 
                     // Reset the selected file and disable the Upload button again
