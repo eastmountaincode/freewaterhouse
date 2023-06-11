@@ -3,7 +3,7 @@
 var selectedFiles = Array(7).fill(null); // Create an array of size 7 filled with nulls
 
 
-var numBoxes = 2;
+var numBoxes = 4;
 
 for (let i = 1; i <= numBoxes; i++) {
     document.getElementById(`fileSelect${i}`).addEventListener("change", function(e) {
