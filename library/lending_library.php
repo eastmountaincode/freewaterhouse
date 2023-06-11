@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>Virtual Lending Library</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
         table {
             border-collapse: collapse;
