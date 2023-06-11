@@ -16,7 +16,7 @@
         <div id="uploadProgressBar1" style="width: 0%; height: 20px; background: green;"></div>
         <p id="progressPercent1"></p>
         <p id="uploadSuccessMessage1"></p>
-        <h1 id="error1"></h1>
+        <p id="error1"></p>
     </div>
 
     <script src="main.js"></script>
