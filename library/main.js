@@ -36,7 +36,7 @@ document.getElementById("uploadButton1").addEventListener("click", function() {
     var formData = new FormData();
 
     // Add the selected file to the formData
-    formData.append("attachments[]", selectedFile);
+    formData.append("attachments[]", selectedFiles[1]);
 
     // Add boxNumber to formData
     var boxNumber = "1"; // Replace with the desired box number
@@ -85,11 +85,11 @@ document.getElementById("uploadButton1").addEventListener("click", function() {
             }
 
             // Reset the selected file and disable the Upload button again
-            selectedFile = null;
+            selectedFiles[1] = null;
             document.getElementById("uploadButton1").disabled = true;
 
             // Clear the input field
-            document.getElementById("fileSelect").value = "";
+            document.getElementById("fileSelect1").value = "";
 
             // Call the checkFileStatus function after upload is done.
             checkFileStatus("1"); // Replace with the desired box number
@@ -119,7 +119,7 @@ function checkFileStatus(boxNumber) {
                 fileSelect.disabled = false;
 
                 // Only enable the Upload button if a file is selected
-                uploadButton.disabled = selectedFile ? false : true;
+                uploadButton.disabled = selectedFiles[boxNumber] ? false : true;
 
                 downloadButton.disabled = true;
                 downloadButton.onclick = null; // Remove any onclick event
