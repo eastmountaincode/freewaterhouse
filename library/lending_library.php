@@ -138,12 +138,15 @@
                         downloadButton.disabled = true;
                         downloadButton.onclick = null; // Remove any onclick event
                     } else {
+                        var file = data.file;
+                        var fileInfo = `Filename: ${file.filename}\n File Size: ${formatBytes(file.filesize)}\n File Type: ${file.filetype}`;
+
                         // A file exists, so disable the file selection and upload buttons and show the download button
                         fileSelect.disabled = true;
                         uploadButton.disabled = true;
                         downloadButton.disabled = false;
                         downloadButton.onclick = function() { 
-                            window.location.href = "download_handler.php?filename=" + data.file.filename + "&boxNumber=" + boxNumber;
+                            window.location.href = "download_handler.php?filename=" + file.filename + "&boxNumber=" + boxNumber;
                             // Clear the file information as it is being downloaded
                             document.getElementById("fileInfo").innerText = '';
 
@@ -153,8 +156,6 @@
                             }, 2000);
                         };
 
-                        var file = data.file;
-                        var fileInfo = `Filename: ${file.filename}\n File Size: ${formatBytes(file.filesize)}\n File Type: ${file.filetype}`;
                         document.getElementById("fileInfo").innerText = fileInfo;
 
                     }
