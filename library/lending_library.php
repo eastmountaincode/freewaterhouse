@@ -15,6 +15,7 @@
         <button id="downloadButton" disabled>Download</button>
         <div id="uploadProgress" style="width: 0%; height: 20px; background: green;"></div>
         <p id="progressPercent"></p>
+        <p id="uploadSuccessMessage"></p>
         <h1 id="progress1"></h1>
         <h1 id="error"></h1>
         <h1 id="files"></h1>
@@ -97,7 +98,7 @@
                     // The data object contains the data returned by the server.
                     // If the status is 1, the upload was successful.
                     if (status == 1) {
-                        document.getElementById("files").innerText = 'got one';
+                        console.log('Upload was successful')
                     } else {
                         // If the status is not 1, an error occurred, so display an error message.
                         document.getElementById("error").innerText = `Error: status ${status}, message: ${msg}`;
@@ -178,7 +179,15 @@
 
             var boxNumber = "1"; // Replace with the desired box number
             checkFileStatus(boxNumber);
+            startChecking(boxNumber);
         };
+
+        // Function to start checking file status every 3 seconds
+        function startChecking(boxNumber) {
+            setInterval(function() {
+                checkFileStatus(boxNumber);
+            }, 3000); // 3000 milliseconds = 3 seconds
+        }
 
         // Add a function to format bytes into a readable format
         function formatBytes(bytes, decimals = 2) {
