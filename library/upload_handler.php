@@ -35,8 +35,7 @@
 
     // Check if files have been uploaded using the 'attachments' form field
     if (isset($_FILES['attachments'])) {
-        $boxNumber = $_POST['boxNumber']; // Get the box number from the query parameter
-        $boxNumber = intval($_GET['boxNumber']);
+        $boxNumber = intval($_POST['boxNumber']); // Get the box number from the query parameter
         //echo json_encode($_FILES);
          
         // Initialize an empty message array
