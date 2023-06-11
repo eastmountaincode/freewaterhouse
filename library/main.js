@@ -1,6 +1,7 @@
 
 // Declare an array to store the selected files for each box
-var selectedFiles = [];
+var selectedFiles = Array(7).fill(null); // Create an array of size 7 filled with nulls
+
 
 var numBoxes = 1;
 
@@ -162,10 +163,10 @@ function checkFileStatus(boxNumber) {
 
 // Check the file status when the page loads
 window.onload = function() {
-
-    var boxNumber = "1"; // Replace with the desired box number
-    checkFileStatus(boxNumber);
-    startChecking(boxNumber);
+    for (let i = 1; i <= numBoxes; i++) {
+        checkFileStatus(i.toString());
+        startChecking(i.toString());
+    }
 };
 
 // Function to start checking file status every 3 seconds
