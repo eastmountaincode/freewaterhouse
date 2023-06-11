@@ -123,7 +123,7 @@ function checkFileStatus(boxNumber) {
                 downloadButton.disabled = true;
                 downloadButton.onclick = null; // Remove any onclick event
                 // console.log(boxNumber);
-                document.getElementById(`fileInfo${boxNumber}`).innerText = 'nofileinfo';
+                document.getElementById(`fileInfo${boxNumber}`).innerText = '';
             } else {
                 var file = data.file;
                 var fileInfo = `Filename: ${file.filename}\n File Size: ${formatBytes(file.filesize)}\n File Type: ${file.filetype}`;
