@@ -7,9 +7,9 @@
 <body>
     <h1>Virtual Lending Library</h1>
     <br>
-    <div id = "uploadArea">
+    <div id = "uploadArea1">
         <h1>Box 1</h1>
-        <div id="fileInfo"></div>
+        <div id="fileInfo1"></div>
         <input type="file" id="fileSelect" name="attachments[]">
         <button id="uploadButton" disabled>Upload</button>
         <button id="downloadButton" disabled>Download</button>
