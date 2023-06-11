@@ -18,6 +18,10 @@
             padding: 10px;
         }
 
+        h1 {
+            text-align: center;
+        }
+
         /* Style changes when the viewport is 600px or less */
         @media screen and (max-width: 600px) {
             table, thead, tbody, th, td, tr { 
