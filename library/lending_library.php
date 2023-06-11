@@ -50,7 +50,7 @@
     </style>
 </head>
 <body>
-    <h1>(Virtual) Little Lending Library</h1>
+    <h1>(Virtual) Little Free Library</h1>
     <br>
     <table>
         <tr>
