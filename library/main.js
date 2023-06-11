@@ -1,36 +1,37 @@
 
-// Declare a variable to store the selected file
-var selectedFile;
+// Declare an array to store the selected files for each box
+var selectedFiles = [];
 
-// Listen for a file selection in the file input
-document.getElementById("fileSelect").addEventListener("change", function(e) {
-    // Get the first selected file
-    var file = e.target.files[0];
+for (let i = 1; i <= 6; i++) {
+    document.getElementById(`fileSelect${i}`).addEventListener("change", function(e) {
+        // Get the first selected file
+        var file = e.target.files[0];
 
-    // If there is no file, log a message and return
-    if (!file) {
-        console.log("No file chosen");
-        return;
-    }
+        // If there is no file, log a message and return
+        if (!file) {
+            console.log("No file chosen");
+            return;
+        }
 
-    // Check file size
-    if (file.size > 1610612736) { // 1.5GB in bytes
-        document.getElementById("error").innerText = 'Your file is too big.'
-        return;
-    } else {
-        // If the file size is acceptable, clear any previous error messages
-        document.getElementById("error").innerText = '';
-    }
+        // Check file size
+        if (file.size > 1610612736) { // 1.5GB in bytes
+            document.getElementById(`error${i}`).innerText = 'Your file is too big.'
+            return;
+        } else {
+            // If the file size is acceptable, clear any previous error messages
+            document.getElementById(`error${i}`).innerText = '';
+        }
 
-    // Store the selected file in the selectedFile variable
-    selectedFile = file;
+        // Store the selected file in the selectedFiles array for the corresponding box
+        selectedFiles[i] = file;
 
-    // Enable the Upload button
-    document.getElementById("uploadButton").disabled = false;
-});
+        // Enable the Upload button
+        document.getElementById(`uploadButton${i}`).disabled = false;
+    });
+}
 
 // Listen for a click on the Upload button
-document.getElementById("uploadButton").addEventListener("click", function() {
+document.getElementById("uploadButton1").addEventListener("click", function() {
     // Create new formData instance
     var formData = new FormData();
 
@@ -80,12 +81,12 @@ document.getElementById("uploadButton").addEventListener("click", function() {
                 console.log('Upload was successful')
             } else {
                 // If the status is not 1, an error occurred, so display an error message.
-                document.getElementById("error").innerText = `Error: status ${status}, message: ${msg}`;
+                document.getElementById("error1").innerText = `Error: status ${status}, message: ${msg}`;
             }
 
             // Reset the selected file and disable the Upload button again
             selectedFile = null;
-            document.getElementById("uploadButton").disabled = true;
+            document.getElementById("uploadButton1").disabled = true;
 
             // Clear the input field
             document.getElementById("fileSelect").value = "";
@@ -109,7 +110,7 @@ function checkFileStatus(boxNumber) {
         .then(data => {
             var status = data.status;
 
-            var fileSelect = document.getElementById("fileSelect");
+            var fileSelect = document.getElementById(`fileSelect${boxNumber}`);
             var uploadButton = document.getElementById("uploadButton");
             var downloadButton = document.getElementById("downloadButton");
 

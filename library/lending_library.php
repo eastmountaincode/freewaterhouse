@@ -10,14 +10,14 @@
     <div id = "uploadArea1">
         <h1>Box 1</h1>
         <div id="fileInfo1"></div>
-        <input type="file" id="fileSelect" name="attachments[]">
-        <button id="uploadButton" disabled>Upload</button>
+        <input type="file" id="fileSelect1" name="attachments[]">
+        <button id="uploadButton1" disabled>Upload</button>
         <button id="downloadButton" disabled>Download</button>
         <div id="uploadProgress" style="width: 0%; height: 20px; background: green;"></div>
         <p id="progressPercent"></p>
         <p id="uploadSuccessMessage"></p>
         <h1 id="progress1"></h1>
-        <h1 id="error"></h1>
+        <h1 id="error1"></h1>
         <h1 id="files"></h1>
     </div>
 
