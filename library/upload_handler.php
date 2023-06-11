@@ -14,7 +14,7 @@
             $filepath = $files[0];
             $filename = basename($filepath);
 
-            // Here you return the additional file information along with the status and filename
+            // Here we return the additional file information along with the status and filename
             $fileInfo = [
                 'filename' => $filename,
                 'filesize' => filesize($filepath), // Add file size
