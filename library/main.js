@@ -122,6 +122,7 @@ function checkFileStatus(boxNumber) {
 
                 downloadButton.disabled = true;
                 downloadButton.onclick = null; // Remove any onclick event
+                console.log(boxNumber);
                 document.getElementById(`fileInfo${boxNumber}`).innerText = 'nofileinfo';
             } else {
                 var file = data.file;
