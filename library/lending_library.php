@@ -145,6 +145,8 @@
                         fileSelect.disabled = true;
                         uploadButton.disabled = true;
                         downloadButton.disabled = false;
+                        console.log(file)
+                        console.log(file.filename)
                         downloadButton.onclick = function() { 
                             window.location.href = "download_handler.php?filename=" + file.filename + "&boxNumber=" + boxNumber;
                             // Clear the file information as it is being downloaded
