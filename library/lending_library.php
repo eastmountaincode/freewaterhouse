@@ -29,12 +29,13 @@
         .library::before {
             content: '';
             position: absolute;
-            top: 0;
-            width: 100%;
+            top: -50px; /* move the triangle 50px above the top */
+            width: 0;
             height: 0;
-            border-bottom: 50px solid black; /* Adjust color to match your design */
-            border-left: 50px solid transparent;
-            border-right: 50px solid transparent;
+            border-bottom: 50px solid black;
+            border-left: calc(50% + 25px) solid transparent; /* extend the left side */
+            border-right: calc(50% + 25px) solid transparent; /* extend the right side */
+            z-index: -1; /* move the triangle behind the contents */
         }
 
 
