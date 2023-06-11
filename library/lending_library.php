@@ -21,6 +21,19 @@
         h1 {
             text-align: center;
         }
+        table::before {
+            content: '';
+            position: relative;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 50px solid #f00; /* Adjust color to match your design */
+        }
+
 
         /* Style changes when the viewport is 600px or less */
         @media screen and (max-width: 600px) {
