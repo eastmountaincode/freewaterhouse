@@ -30,6 +30,7 @@
             }
             tr { 
                 /* border: 1px solid #ccc; */
+                padding: 15px;
             }
             
             td { 
