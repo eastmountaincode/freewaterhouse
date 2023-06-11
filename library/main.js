@@ -122,7 +122,7 @@ function checkFileStatus(boxNumber) {
 
                 downloadButton.disabled = true;
                 downloadButton.onclick = null; // Remove any onclick event
-                document.getElementById("fileInfo").innerText = '';
+                document.getElementById(`fileInfo${boxNumber}`).innerText = '';
             } else {
                 var file = data.file;
                 var fileInfo = `Filename: ${file.filename}\n File Size: ${formatBytes(file.filesize)}\n File Type: ${file.filetype}`;
@@ -136,17 +136,17 @@ function checkFileStatus(boxNumber) {
                 downloadButton.onclick = function() { 
                     window.location.href = "download_handler.php?filename=" + file.filename + "&boxNumber=" + boxNumber;
                     // Clear the file information as it is being downloaded
-                    document.getElementById("fileInfo").innerText = '';
+                    //document.getElementById(`fileInfo${boxNumber}`).innerText = '';
 
                     // After initiating the download, wait for 2 seconds before rechecking the file status
                     setTimeout(function() {
                         checkFileStatus(boxNumber);
                     }, 4000);
 
-                    document.getElementById("fileInfo").innerText = '';
+                    //document.getElementById(`fileInfo${boxNumber}`).innerText = '';
                 };
 
-                document.getElementById("fileInfo").innerText = fileInfo;
+                document.getElementById(`fileInfo${boxNumber}`).innerText = fileInfo;
 
             }
         })
