@@ -111,7 +111,7 @@ function checkFileStatus(boxNumber) {
             var status = data.status;
 
             var fileSelect = document.getElementById(`fileSelect${boxNumber}`);
-            var uploadButton = document.getElementById("uploadButton");
+            var uploadButton = document.getElementById(`uploadButton${boxNumber}`);
             var downloadButton = document.getElementById("downloadButton");
 
             if (status == 0) {
