@@ -14,8 +14,8 @@
         <button id="uploadButton1" disabled>Upload</button>
         <button id="downloadButton" disabled>Download</button>
         <div id="uploadProgressBar1" style="width: 0%; height: 20px; background: green;"></div>
-        <p id="progressPercent"></p>
-        <p id="uploadSuccessMessage"></p>
+        <p id="progressPercent1"></p>
+        <p id="uploadSuccessMessage1"></p>
         <h1 id="progress1"></h1>
         <h1 id="error1"></h1>
         <h1 id="files"></h1>
