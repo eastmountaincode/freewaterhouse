@@ -9,6 +9,7 @@
     <br>
     <h1>New one</h1>
     <div id = "uploadArea">
+        <div id="fileInfo"></div>
         <input type="file" id="fileSelect" name="attachments[]">
         <button id="uploadButton" disabled>Upload</button>
         <button id="downloadButton" disabled>Download</button>
@@ -142,11 +143,19 @@
                         uploadButton.disabled = true;
                         downloadButton.disabled = false;
                         downloadButton.onclick = function() { 
-                            window.location.href = "download_handler.php?filename=" + data.filename + "&boxNumber=" + boxNumber; };
+                            window.location.href = "download_handler.php?filename=" + data.filename + "&boxNumber=" + boxNumber;
+                            // Clear the file information as it is being downloaded
+                            document.getElementById("fileInfo").innerText = '';
+
                             // After initiating the download, wait for 2 seconds before rechecking the file status
                             setTimeout(function() {
                                 checkFileStatus(boxNumber);
                             }, 2000);
+                        };
+
+                        var file = data.file;
+                        var fileInfo = `Filename: ${file.filename}, File Size: ${formatBytes(file.filesize)}, File Type: ${file.filetype}`;
+                        document.getElementById("fileInfo").innerText = fileInfo;
 
                     }
                 })
@@ -159,6 +168,20 @@
             var boxNumber = "1"; // Replace with the desired box number
             checkFileStatus(boxNumber);
         };
+
+        // Add a function to format bytes into a readable format
+        function formatBytes(bytes, decimals = 2) {
+            if (bytes === 0) return '0 Bytes';
+
+            const k = 1024;
+            const dm = decimals < 0 ? 0 : decimals;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        }
+
 
     </script>
 </body>

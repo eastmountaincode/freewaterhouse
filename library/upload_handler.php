@@ -11,8 +11,17 @@
         if (empty($files)) {
             return json_encode(array("status" => 0));
         } else {
-            $filename = basename($files[0]);
-            return json_encode(array("status" => 1, "filename" => $filename));
+            $filepath = $files[0];
+            $filename = basename($filepath);
+
+            // Here you return the additional file information along with the status and filename
+            $fileInfo = [
+                'filename' => $filename,
+                'filesize' => filesize($filepath), // Add file size
+                'filetype' => pathinfo($filepath, PATHINFO_EXTENSION) // Add file type
+            ];
+
+            return json_encode(['status' => 1, 'file' => $fileInfo]);
         }
     }
     
