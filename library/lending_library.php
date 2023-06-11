@@ -32,7 +32,7 @@
     </div>
 
     <div id = "uploadArea3">
-        <h1>Box 2</h1>
+        <h1>Box 3</h1>
         <div id="fileInfo3"></div>
         <input type="file" id="fileSelect3" name="attachments[]">
         <button id="uploadButton3" disabled>Upload</button>
@@ -44,7 +44,7 @@
     </div>
 
     <div id = "uploadArea4">
-        <h1>Box 2</h1>
+        <h1>Box 4</h1>
         <div id="fileInfo4"></div>
         <input type="file" id="fileSelect4" name="attachments[]">
         <button id="uploadButton4" disabled>Upload</button>
