@@ -62,7 +62,7 @@ document.getElementById("uploadButton").addEventListener("click", function() {
                     document.getElementById('uploadProgress').style.width = '0%';
                     document.getElementById('progressPercent').textContent = '';
                     document.getElementById('uploadSuccessMessage').textContent = '';
-                }, 3000);
+                }, 2300);
             }
         }
     }, false);
@@ -122,7 +122,7 @@ function checkFileStatus(boxNumber) {
 
                 downloadButton.disabled = true;
                 downloadButton.onclick = null; // Remove any onclick event
-                console.log(boxNumber);
+                // console.log(boxNumber);
                 document.getElementById(`fileInfo${boxNumber}`).innerText = 'nofileinfo';
             } else {
                 var file = data.file;
