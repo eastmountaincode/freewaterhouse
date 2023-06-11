@@ -118,7 +118,7 @@ function checkFileStatus(boxNumber) {
 
             var fileSelect = document.getElementById(`fileSelect${boxNumber}`);
             var uploadButton = document.getElementById(`uploadButton${boxNumber}`);
-            var downloadButton = document.getElementById("downloadButton");
+            var downloadButton = document.getElementById(`downloadButton${boxNumber}`);
 
             if (status == 0) {
                 // No file exists, so enable the file selection and upload buttons and hide the download button
