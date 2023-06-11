@@ -2,7 +2,9 @@
 // Declare an array to store the selected files for each box
 var selectedFiles = [];
 
-for (let i = 1; i <= 1; i++) {
+var numBoxes = 1;
+
+for (let i = 1; i <= numBoxes; i++) {
     document.getElementById(`fileSelect${i}`).addEventListener("change", function(e) {
         // Get the first selected file
         var file = e.target.files[0];
@@ -31,7 +33,7 @@ for (let i = 1; i <= 1; i++) {
 }
 
 // Listen for a click on the Upload button
-for (let i = 1; i <= 1; i++) {
+for (let i = 1; i <= numBoxes; i++) {
     document.getElementById(`uploadButton${i}`).addEventListener("click", function() {
         // Create new formData instance
         var formData = new FormData();
