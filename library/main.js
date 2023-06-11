@@ -2,7 +2,7 @@
 // Declare an array to store the selected files for each box
 var selectedFiles = [];
 
-for (let i = 1; i <= 6; i++) {
+for (let i = 1; i <= 1; i++) {
     document.getElementById(`fileSelect${i}`).addEventListener("change", function(e) {
         // Get the first selected file
         var file = e.target.files[0];
