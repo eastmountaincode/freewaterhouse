@@ -31,77 +31,80 @@ for (let i = 1; i <= 1; i++) {
 }
 
 // Listen for a click on the Upload button
-document.getElementById("uploadButton1").addEventListener("click", function() {
-    // Create new formData instance
-    var formData = new FormData();
+for (let i = 1; i <= 1; i++) {
+    document.getElementById(`uploadButton${i}`).addEventListener("click", function() {
+        // Create new formData instance
+        var formData = new FormData();
 
-    // Add the selected file to the formData
-    formData.append("attachments[]", selectedFiles[1]);
+        // Add the selected file to the formData
+        formData.append("attachments[]", selectedFiles[i]);
 
-    // Add boxNumber to formData
-    var boxNumber = "1"; // Replace with the desired box number
-    formData.append("boxNumber", boxNumber);
+        // Add boxNumber to formData
+        var boxNumber = `${i}`; // The current box number
+        formData.append("boxNumber", boxNumber);
 
-    // Create new XMLHttpRequest
-    var xhr = new XMLHttpRequest();
+        // Create new XMLHttpRequest
+        var xhr = new XMLHttpRequest();
 
-    // Open the connection
-    xhr.open('POST', 'upload_handler.php', true);
+        // Open the connection
+        xhr.open('POST', 'upload_handler.php', true);
 
-    // Set the upload progress event
-    xhr.upload.addEventListener("progress", function(e) {
-        if (e.lengthComputable) {
-            // Calculate the percentage of upload completed
-            var percentComplete = e.loaded / e.total * 100;
-            document.getElementById('uploadProgress').style.width = percentComplete + '%';
-            document.getElementById('progressPercent').textContent = percentComplete.toFixed(2) + '%';
+        // Set the upload progress event
+        xhr.upload.addEventListener("progress", function(e) {
+            if (e.lengthComputable) {
+                // Calculate the percentage of upload completed
+                var percentComplete = e.loaded / e.total * 100;
+                document.getElementById(`uploadProgressBar${i}`).style.width = percentComplete + '%';
+                document.getElementById(`progressPercent${i}`).textContent = percentComplete.toFixed(2) + '%';
 
-            // After reaching 100%, display the success message, wait for 3 seconds and then reset the progress bar, percentage text and the success message
-            if (percentComplete === 100) {
-                document.getElementById('uploadSuccessMessage').textContent = 'Upload Successful';
-                setTimeout(function() {
-                    document.getElementById('uploadProgress').style.width = '0%';
-                    document.getElementById('progressPercent').textContent = '';
-                    document.getElementById('uploadSuccessMessage').textContent = '';
-                }, 2300);
+                // After reaching 100%, display the success message, wait for 3 seconds and then reset the progress bar, percentage text and the success message
+                if (percentComplete === 100) {
+                    document.getElementById(`uploadSuccessMessage${i}`).textContent = 'Upload Successful';
+                    setTimeout(function() {
+                        document.getElementById(`uploadProgressBar${i}`).style.width = '0%';
+                        document.getElementById(`progressPercent${i}`).textContent = '';
+                        document.getElementById(`uploadSuccessMessage${i}`).textContent = '';
+                    }, 2300);
+                }
             }
-        }
-    }, false);
+        }, false);
 
-    // Set the callback for when the request completes
-    xhr.onload = function() {
-        if (this.status == 200) {
-            var data = JSON.parse(this.response);
-            var status = data.status;
-            var msg = data.msg;
+        // Set the callback for when the request completes
+        xhr.onload = function() {
+            if (this.status == 200) {
+                var data = JSON.parse(this.response);
+                var status = data.status;
+                var msg = data.msg;
 
-            // The data object contains the data returned by the server.
-            // If the status is 1, the upload was successful.
-            if (status == 1) {
-                console.log('Upload was successful')
+                // The data object contains the data returned by the server.
+                // If the status is 1, the upload was successful.
+                if (status == 1) {
+                    console.log('Upload was successful')
+                } else {
+                    // If the status is not 1, an error occurred, so display an error message.
+                    document.getElementById(`error${i}`).innerText = `Error: status ${status}, message: ${msg}`;
+                }
+
+                // Reset the selected file and disable the Upload button again
+                selectedFiles[i] = null;
+                document.getElementById(`uploadButton${i}`).disabled = true;
+
+                // Clear the input field
+                document.getElementById(`fileSelect${i}`).value = "";
+
+                // Call the checkFileStatus function after upload is done.
+                checkFileStatus(`${i}`); // Replace with the desired box number
             } else {
-                // If the status is not 1, an error occurred, so display an error message.
-                document.getElementById("error1").innerText = `Error: status ${status}, message: ${msg}`;
+                console.log('File upload failed');
+                console.log(error);
             }
+        };
 
-            // Reset the selected file and disable the Upload button again
-            selectedFiles[1] = null;
-            document.getElementById("uploadButton1").disabled = true;
+        // Send the request with the formData
+        xhr.send(formData);
+    });
+}
 
-            // Clear the input field
-            document.getElementById("fileSelect1").value = "";
-
-            // Call the checkFileStatus function after upload is done.
-            checkFileStatus("1"); // Replace with the desired box number
-        } else {
-            console.log('File upload failed');
-            console.log(error);
-        }
-    };
-
-    // Send the request with the formData
-    xhr.send(formData);
-});
 
 // Function to check file status and adjust visibility of the upload and download buttons
 function checkFileStatus(boxNumber) {
