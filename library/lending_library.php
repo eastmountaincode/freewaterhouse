@@ -55,8 +55,13 @@
         document.getElementById("uploadButton").addEventListener("click", function() {
             // Create new formData instance
             var formData = new FormData();
+            
             // Add the selected file to the formData
             formData.append("attachments[]", selectedFile);
+
+            // Add boxNumber to formData
+            var boxNumber = "1"; // Replace with the desired box number
+            formData.append("boxNumber", boxNumber);
 
             // Create new XMLHttpRequest
             var xhr = new XMLHttpRequest();
