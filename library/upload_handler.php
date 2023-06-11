@@ -27,6 +27,7 @@
     
     if (isset($_GET['checkFile'])) {
         $boxNumber = $_GET['boxNumber']; // Get the box number from the query parameter
+        $boxNumber = intval($_GET['boxNumber']);
         echo getFileStatus($boxNumber);
         exit(); // This prevents the rest of the script from executing when checkFile is set
     }
@@ -42,7 +43,7 @@
         $msg = "";
 
         // Define the directory where files will be uploaded
-        $upload_directory = "/var/www/html/freewaterhouse/library/uploaded_files/box{$boxNumber}/";
+        $upload_directory = '/var/www/html/freewaterhouse/library/uploaded_files/box' . $boxNumber . '/';
 
         // Get the base name of the uploaded file (removes any directory paths from the filename)
         $filename = basename($_FILES['attachments']['name'][0]);
