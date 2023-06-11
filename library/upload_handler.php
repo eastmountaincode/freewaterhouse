@@ -58,7 +58,7 @@
             // No existing file found, so attempt to upload the file
 
             // Read the content of the uploaded temporary file
-            $tmp_file_contents = file_get_contents($_FILES['attachments']['tmp_name'][0]);
+            //$tmp_file_contents = file_get_contents($_FILES['attachments']['tmp_name'][0]);
 
             // Try to move the uploaded temporary file to the target path
             if (move_uploaded_file($_FILES['attachments']['tmp_name'][0], $targetFile)) {
