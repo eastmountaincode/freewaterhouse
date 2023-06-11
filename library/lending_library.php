@@ -78,12 +78,14 @@
                     document.getElementById('uploadProgress').style.width = percentComplete + '%';
                     document.getElementById('progressPercent').textContent = percentComplete.toFixed(2) + '%';
 
-                    // After reaching 100%, wait for 2 seconds and then reset the progress bar and percentage text
+                    // After reaching 100%, display the success message, wait for 3 seconds and then reset the progress bar, percentage text and the success message
                     if (percentComplete === 100) {
+                        document.getElementById('uploadSuccessMessage').textContent = 'Upload Successful';
                         setTimeout(function() {
                             document.getElementById('uploadProgress').style.width = '0%';
                             document.getElementById('progressPercent').textContent = '';
-                        }, 2000);
+                            document.getElementById('uploadSuccessMessage').textContent = '';
+                        }, 3000);
                     }
                 }
             }, false);

@@ -60,8 +60,8 @@
             // Read the content of the uploaded temporary file
             $tmp_file_contents = file_get_contents($_FILES['attachments']['tmp_name'][0]);
 
-            // Try to write the content of the temporary file to the target path
-            if (file_put_contents($targetFile, $tmp_file_contents) !== false) {
+            // Try to move the uploaded temporary file to the target path
+            if (move_uploaded_file($_FILES['attachments']['tmp_name'][0], $targetFile)) {
                 // File upload succeeded, so adjust permissions to allow deletion
                 chmod($targetFile, 0777);
 
