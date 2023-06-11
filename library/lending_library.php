@@ -21,17 +21,20 @@
         h1 {
             text-align: center;
         }
-        table::before {
-            content: '';
+        .library {
             position: relative;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
+            width: 100%;
+        }
+
+        .library::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            width: 100%;
             height: 0;
+            border-bottom: 50px solid #f00; /* Adjust color to match your design */
             border-left: 50px solid transparent;
             border-right: 50px solid transparent;
-            border-bottom: 50px solid #f00; /* Adjust color to match your design */
         }
 
 
@@ -65,65 +68,67 @@
 <body>
     <h1>(Virtual) Little Free Library</h1>
     <br>
-    <table>
-        <tr>
-            <td>
-                <div id = "uploadArea1">
-                    <h1>Box 1</h1>
-                    <div id="fileInfo1"></div>
-                    <input type="file" id="fileSelect1" name="attachments[]">
-                    <button id="uploadButton1" disabled>Upload</button>
-                    <button id="downloadButton1" disabled>Download</button>
-                    <div id="uploadProgressBar1" style="width: 0%; height: 20px; background: green;"></div>
-                    <p id="progressPercent1"></p>
-                    <p id="uploadSuccessMessage1"></p>
-                    <p id="error1"></p>
-                </div>
-            </td>
-            <td>
-                <div id = "uploadArea2">
-                    <h1>Box 2</h1>
-                    <div id="fileInfo2"></div>
-                    <input type="file" id="fileSelect2" name="attachments[]">
-                    <button id="uploadButton2" disabled>Upload</button>
-                    <button id="downloadButton2" disabled>Download</button>
-                    <div id="uploadProgressBar2" style="width: 0%; height: 20px; background: green;"></div>
-                    <p id="progressPercent2"></p>
-                    <p id="uploadSuccessMessage2"></p>
-                    <p id="error2"></p>
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div id = "uploadArea3">
-                    <h1>Box 3</h1>
-                    <div id="fileInfo3"></div>
-                    <input type="file" id="fileSelect3" name="attachments[]">
-                    <button id="uploadButton3" disabled>Upload</button>
-                    <button id="downloadButton3" disabled>Download</button>
-                    <div id="uploadProgressBar3" style="width: 0%; height: 20px; background: green;"></div>
-                    <p id="progressPercent3"></p>
-                    <p id="uploadSuccessMessage3"></p>
-                    <p id="error3"></p>
-                </div>
-            </td>
-            <td>
-                <div id = "uploadArea4">
-                    <h1>Box 4</h1>
-                    <div id="fileInfo4"></div>
-                    <input type="file" id="fileSelect4" name="attachments[]">
-                    <button id="uploadButton4" disabled>Upload</button>
-                    <button id="downloadButton4" disabled>Download</button>
-                    <div id="uploadProgressBar4" style="width: 0%; height: 20px; background: green;"></div>
-                    <p id="progressPercent4"></p>
-                    <p id="uploadSuccessMessage4"></p>
-                    <p id="error4"></p>
-                </div>
-            </td>
+    <div class="library">
+        <table>
+            <tr>
+                <td>
+                    <div id = "uploadArea1">
+                        <h1>Box 1</h1>
+                        <div id="fileInfo1"></div>
+                        <input type="file" id="fileSelect1" name="attachments[]">
+                        <button id="uploadButton1" disabled>Upload</button>
+                        <button id="downloadButton1" disabled>Download</button>
+                        <div id="uploadProgressBar1" style="width: 0%; height: 20px; background: green;"></div>
+                        <p id="progressPercent1"></p>
+                        <p id="uploadSuccessMessage1"></p>
+                        <p id="error1"></p>
+                    </div>
+                </td>
+                <td>
+                    <div id = "uploadArea2">
+                        <h1>Box 2</h1>
+                        <div id="fileInfo2"></div>
+                        <input type="file" id="fileSelect2" name="attachments[]">
+                        <button id="uploadButton2" disabled>Upload</button>
+                        <button id="downloadButton2" disabled>Download</button>
+                        <div id="uploadProgressBar2" style="width: 0%; height: 20px; background: green;"></div>
+                        <p id="progressPercent2"></p>
+                        <p id="uploadSuccessMessage2"></p>
+                        <p id="error2"></p>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div id = "uploadArea3">
+                        <h1>Box 3</h1>
+                        <div id="fileInfo3"></div>
+                        <input type="file" id="fileSelect3" name="attachments[]">
+                        <button id="uploadButton3" disabled>Upload</button>
+                        <button id="downloadButton3" disabled>Download</button>
+                        <div id="uploadProgressBar3" style="width: 0%; height: 20px; background: green;"></div>
+                        <p id="progressPercent3"></p>
+                        <p id="uploadSuccessMessage3"></p>
+                        <p id="error3"></p>
+                    </div>
+                </td>
+                <td>
+                    <div id = "uploadArea4">
+                        <h1>Box 4</h1>
+                        <div id="fileInfo4"></div>
+                        <input type="file" id="fileSelect4" name="attachments[]">
+                        <button id="uploadButton4" disabled>Upload</button>
+                        <button id="downloadButton4" disabled>Download</button>
+                        <div id="uploadProgressBar4" style="width: 0%; height: 20px; background: green;"></div>
+                        <p id="progressPercent4"></p>
+                        <p id="uploadSuccessMessage4"></p>
+                        <p id="error4"></p>
+                    </div>
+                </td>
 
-        </tr>
-    </table>
+            </tr>
+        </table>
+    </div>
 
     <script src="main.js"></script>
 
