@@ -101,6 +101,9 @@
                     selectedFile = null;
                     document.getElementById("uploadButton").disabled = true;
 
+                    // Clear the input field
+                    document.getElementById("fileSelect").value = "";
+
                     // Call the checkFileStatus function after upload is done.
                     checkFileStatus("1"); // Replace with the desired box number
                 } else {
@@ -152,6 +155,7 @@
 
         // Check the file status when the page loads
         window.onload = function() {
+
             var boxNumber = "1"; // Replace with the desired box number
             checkFileStatus(boxNumber);
         };
