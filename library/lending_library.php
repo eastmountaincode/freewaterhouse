@@ -143,7 +143,7 @@
                         uploadButton.disabled = true;
                         downloadButton.disabled = false;
                         downloadButton.onclick = function() { 
-                            window.location.href = "download_handler.php?filename=" + data.filename + "&boxNumber=" + boxNumber;
+                            window.location.href = "download_handler.php?filename=" + data.file.filename + "&boxNumber=" + boxNumber;
                             // Clear the file information as it is being downloaded
                             document.getElementById("fileInfo").innerText = '';
 
