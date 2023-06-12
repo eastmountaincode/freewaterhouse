@@ -21,15 +21,17 @@
         h1 {
             text-align: center;
         }
+
         .library {
             position: relative;
             width: 100%;
+            padding-top: 50px; /* provide space for the triangle */
         }
 
         .library::before {
             content: '';
             position: absolute;
-            top: -50px; /* move the triangle 50px above the top */
+            top: 0; /* now this will position the triangle at the top of the padding */
             width: 0;
             height: 0;
             border-bottom: 50px solid black;
@@ -37,6 +39,7 @@
             border-right: calc(50% + 25px) solid transparent; /* extend the right side */
             z-index: -1; /* move the triangle behind the contents */
         }
+
 
 
         /* Style changes when the viewport is 600px or less */
