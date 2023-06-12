@@ -21,18 +21,17 @@
         h1 {
             text-align: center;
         }
-
+        
         .library {
-        position: relative;
-        width: 100%;
-        padding-top: 50px; /* provide space for the triangle */
+            position: relative;
+            width: 100%;
+            padding-top: 50px; /* provide space for the triangle */
         }
 
         .library::before, .library::after {
             content: "";
             position: absolute;
             top: 0;
-            left: 0;
             width: 0;
             height: 0;
             border-left: 50vw solid transparent;
@@ -46,9 +45,13 @@
         }
 
         .library::after {
+            border-left: 45vw solid transparent;
+            border-right: 45vw solid transparent;
             border-bottom: 40px solid white; /* This will be the inner edge, change the color to match your background */
-            top: 5px; /* Offset to create the outline effect */
+            left: 5vw; /* Adjust this to match the change in border-left and border-right */
+            top: 10px; /* Offset to create the outline effect */
         }
+
 
 
 
