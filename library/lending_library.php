@@ -42,14 +42,14 @@
         }
 
         .library::before {
-            border-bottom: 50px solid black; /* This will be the outer edge of the triangle */
+            border-bottom: 70px solid black; /* This will be the outer edge of the triangle */
             z-index: -1;
         }
 
         .library::after {
             border-left: 45vw solid transparent;
             border-right: 45vw solid transparent;
-            border-bottom: 40px solid white; /* Increase the height to 60px or any desired value */
+            border-bottom: 60px solid white; /* Increase the height to 60px or any desired value */
             left: 5vw; /* Adjust this to match the change in border-left and border-right */
             top: 10px; /* Offset to create the outline effect */
         }
