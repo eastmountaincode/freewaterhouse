@@ -55,8 +55,8 @@
 
         .book_shelf {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 20px;
+            left: 20px;
             width: 40%; /* Adjust this value to control the width of the image */
             max-width: 100vw;
             height: auto;
