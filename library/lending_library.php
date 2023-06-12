@@ -51,13 +51,11 @@
         }
 
         .trunk {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
+            position: relative;
             width: 320px;
             height: 500px;
             background-color: gray;
+            margin: auto;
         }
 
         .library_wrapper {
