@@ -50,6 +50,15 @@
             border-bottom: 50px solid gray;
         }
 
+        .trunk {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-color: gray;
+        }
+
         .library_wrapper {
             
         }
@@ -158,6 +167,7 @@
 
                 </tr>
             </table>
+            <div class="trunk"></div>
         </div>
     </div>
 
