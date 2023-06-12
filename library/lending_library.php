@@ -46,8 +46,8 @@
         }
 
         .library::after {
-            border-bottom: 48px solid white; /* This will be the inner edge, change the color to match your background */
-            top: 10px; /* Offset to create the outline effect */
+            border-bottom: 40px solid white; /* This will be the inner edge, change the color to match your background */
+            top: 5px; /* Offset to create the outline effect */
         }
 
 
