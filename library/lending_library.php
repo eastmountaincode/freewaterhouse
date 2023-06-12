@@ -48,8 +48,7 @@
             border-left: 45vw solid transparent;
             border-right: 45vw solid transparent;
             border-bottom: 40px solid white; /* This will be the inner edge, change the color to match your background */
-            left: 9vw; /* Adjust this to match the change in border-left and border-right */
-            right: 9vw;
+            left: 1vw; /* Adjust this to match the change in border-left and border-right */
             top: 10px; /* Offset to create the outline effect */
         }
 
