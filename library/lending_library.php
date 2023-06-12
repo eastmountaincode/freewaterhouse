@@ -25,9 +25,8 @@
         .library {
             position: relative;
             width: 100%;
-            margin-top: 100px; /* Adjust this value to move the table down */
-            margin-bottom: 100px; /* Adjust this value to provide space at the bottom */
-            text-align: center;
+            padding-top: 50px; /* provide space for the triangle */
+            padding-bottom: 50px; /* provide space for the trunk */
         }
 
         .library::before, .library::after {
@@ -55,11 +54,12 @@
         }
 
         .book_shelf {
-            position: relative;
+            position: absolute;
+            top: 50px; /* Adjust this value to move the image down */
+            left: 30px;
             width: 40%; /* Adjust this value to control the width of the image */
             max-width: 100vw;
             height: auto;
-            margin: 0 auto; /* Center the image horizontally */
             z-index: -1;
         }
 
