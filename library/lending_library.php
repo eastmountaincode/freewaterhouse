@@ -55,8 +55,8 @@
 
         .book_shelf {
             position: absolute;
-            top: 60px;
-            left: 60px;
+            top: 50px; /* Adjust this value to move the image down */
+            left: 30px;
             width: 40%; /* Adjust this value to control the width of the image */
             max-width: 100vw;
             height: auto;
