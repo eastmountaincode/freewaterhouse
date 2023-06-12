@@ -53,7 +53,7 @@
             top: 10px; /* Offset to create the outline effect */
         }
 
-        .bookshelf {
+        .book_shelf {
             position: absolute;
             top: 0;
             left: 0;
