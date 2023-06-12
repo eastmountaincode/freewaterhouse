@@ -82,6 +82,7 @@
 </head>
 <body>
     <h1>(Virtual) Little Free Library</h1>
+    <img class="book_shelf" src="../images/book_shelf.png" alt="some books">
     <br>
     <div class="library">
         <table>
