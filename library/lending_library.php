@@ -57,7 +57,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 80%; /* Adjust this value to control the width of the image */
+            width: 40%; /* Adjust this value to control the width of the image */
             max-width: 100vw;
             height: auto;
             z-index: -1;
