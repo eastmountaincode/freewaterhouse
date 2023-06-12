@@ -23,22 +23,33 @@
         }
 
         .library {
-            position: relative;
-            width: 100%;
-            padding-top: 50px; /* provide space for the triangle */
+        position: relative;
+        width: 100%;
+        padding-top: 50px; /* provide space for the triangle */
+        }
+
+        .library::before, .library::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 50vw solid transparent;
+            border-right: 50vw solid transparent;
+            z-index: 1;
         }
 
         .library::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 0;
-            height: 0;
-            border-bottom: 50px solid black;
-            border-left: 50vw solid transparent; /* use viewport width units */
-            border-right: 50vw solid transparent; /* use viewport width units */
+            border-bottom: 50px solid black; /* This will be the outer edge of the triangle */
             z-index: -1;
         }
+
+        .library::after {
+            border-bottom: 40px solid white; /* This will be the inner edge, change the color to match your background */
+            top: 10px; /* Offset to create the outline effect */
+        }
+
 
 
 
