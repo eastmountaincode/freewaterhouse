@@ -31,33 +31,9 @@
         }
 
         .library_wrapper {
-            max-width: 1200px; /* adjust this to the desired width */
-            margin: auto;
+            
         }
 
-        .library::before, .library::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            width: 0;
-            height: 0;
-            border-left: 50vw solid transparent;
-            border-right: 50vw solid transparent;
-            z-index: 1;
-        }
-
-        .library::before {
-            border-bottom: 50px solid black; /* This will be the outer edge of the triangle */
-            z-index: -1;
-        }
-
-        .library::after {
-            border-left: 45vw solid transparent;
-            border-right: 45vw solid transparent;
-            border-bottom: 40px solid white; /* Increase the height to 60px or any desired value */
-            left: 5vw; /* Adjust this to match the change in border-left and border-right */
-            top: 10px; /* Offset to create the outline effect */
-        }
 
         .book_shelf {
             position: absolute;
