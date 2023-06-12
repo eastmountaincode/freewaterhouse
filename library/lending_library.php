@@ -53,16 +53,6 @@
             top: 10px; /* Offset to create the outline effect */
         }
 
-        .library::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px; /* Adjust the width of the trunk */
-            height: 100px; /* Adjust the height of the trunk */
-            background-color: black; /* Adjust the color of the trunk */
-        }
         /* Style changes when the viewport is 600px or less */
         @media screen and (max-width: 600px) {
             table, thead, tbody, th, td, tr { 
