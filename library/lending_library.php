@@ -55,8 +55,8 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 120px;
-            height: 100px;
+            width: 320px;
+            height: 500px;
             background-color: gray;
         }
 
