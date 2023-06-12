@@ -53,6 +53,16 @@
             top: 10px; /* Offset to create the outline effect */
         }
 
+        .bookshelf {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            max-width: 100vw;
+            height: auto;
+            z-index: -1;
+        }
+
         /* Style changes when the viewport is 600px or less */
         @media screen and (max-width: 600px) {
             table, thead, tbody, th, td, tr { 
