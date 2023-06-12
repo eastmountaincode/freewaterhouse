@@ -26,6 +26,7 @@
             position: relative;
             width: 100%;
             padding-top: 50px; /* provide space for the triangle */
+            padding-bottom: 50px; /* provide space for the trunk */
         }
 
         .library::before, .library::after {
@@ -52,9 +53,17 @@
             top: 10px; /* Offset to create the outline effect */
         }
 
-
-
-
+        .library::after {
+            content: "";
+            position: absolute;
+            bottom: -50px; /* Adjust this to control the position of the trunk */
+            left: 50%; /* Position the trunk in the center */
+            transform: translateX(-50%);
+            width: 100px; /* Adjust the width of the trunk */
+            height: 100px; /* Adjust the height of the trunk */
+            background-color: black; /* Adjust the color of the trunk */
+            border-radius: 50%; /* Make the trunk circular */
+        }
 
         /* Style changes when the viewport is 600px or less */
         @media screen and (max-width: 600px) {
