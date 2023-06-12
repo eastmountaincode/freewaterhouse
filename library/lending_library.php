@@ -52,7 +52,7 @@
 
         .trunk {
             position: absolute;
-            bottom: 0;
+            top: 100%;
             left: 50%;
             transform: translateX(-50%);
             width: 320px;
