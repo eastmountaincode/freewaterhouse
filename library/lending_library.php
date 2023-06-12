@@ -30,6 +30,16 @@
             padding-bottom: 50px; /* provide space for the trunk */
         }
 
+        .roof {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-color: gray;
+            z-index: 1;
+        }
+
         .library_wrapper {
             
         }
@@ -78,6 +88,7 @@
     <br>
     <div class="library_wrapper">
         <div class="library">
+            <div class="roof"></div>
             <table>
                 <tr>
                     <td>
