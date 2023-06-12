@@ -31,13 +31,13 @@
         .library::before {
             content: '';
             position: absolute;
-            top: 0; /* now this will position the triangle at the top of the padding */
+            top: 0;
             width: 0;
             height: 0;
             border-bottom: 50px solid black;
-            border-left: calc(50% + 25px) solid transparent; /* extend the left side */
-            border-right: calc(50% + 25px) solid transparent; /* extend the right side */
-            z-index: -1; /* move the triangle behind the contents */
+            border-left: 50vw solid transparent; /* use viewport width units */
+            border-right: 50vw solid transparent; /* use viewport width units */
+            z-index: -1;
         }
 
 
