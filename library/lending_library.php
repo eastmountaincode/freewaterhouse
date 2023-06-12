@@ -35,9 +35,19 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 50px;
-            background-color: gray;
+            height: 0;
             z-index: 1;
+        }
+
+        .roof::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-left: 50vw solid transparent;
+            border-right: 50vw solid transparent;
+            border-bottom: 50px solid gray;
         }
 
         .library_wrapper {
