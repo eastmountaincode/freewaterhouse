@@ -6,6 +6,7 @@
         table {
             border-collapse: collapse;
             width: 100%;
+            margin: auto
         }
 
         th, td {
