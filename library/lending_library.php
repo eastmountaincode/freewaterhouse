@@ -56,15 +56,13 @@
         .library::after {
             content: "";
             position: absolute;
-            bottom: -50px; /* Adjust this to control the position of the trunk */
-            left: 50%; /* Position the trunk in the center */
+            bottom: 0;
+            left: 50%;
             transform: translateX(-50%);
             width: 100px; /* Adjust the width of the trunk */
             height: 100px; /* Adjust the height of the trunk */
             background-color: black; /* Adjust the color of the trunk */
-            border-radius: 50%; /* Make the trunk circular */
         }
-
         /* Style changes when the viewport is 600px or less */
         @media screen and (max-width: 600px) {
             table, thead, tbody, th, td, tr { 
