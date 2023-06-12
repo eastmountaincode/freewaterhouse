@@ -27,7 +27,7 @@
             position: relative;
             width: 100%;
             padding-top: 50px; /* provide space for the triangle */
-            padding-bottom: 50px; /* provide space for the trunk */
+            padding-bottom: 0px; /* provide space for the trunk */
         }
 
         .roof {
