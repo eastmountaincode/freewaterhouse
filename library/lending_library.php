@@ -96,7 +96,8 @@
         @media screen and (max-width: 777px) {
             table, thead, tbody, th, td, tr { 
                 display: block; 
-                width: 85%;
+                width: 93%;
+                text-align: center;
             }
             /* Hide table headers (but not display: none;, for accessibility) */
             thead tr { 
