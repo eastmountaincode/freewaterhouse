@@ -96,6 +96,7 @@
         @media screen and (max-width: 777px) {
             table, thead, tbody, th, td, tr { 
                 display: block; 
+                width: 85%;
             }
             /* Hide table headers (but not display: none;, for accessibility) */
             thead tr { 
@@ -111,7 +112,7 @@
                 /* Behave like a "row" */
                 border: 16px solid #7FFF00;
                 text-align: left;
-                padding: 30px;
+                padding: 15px;
                 /* border-bottom: 1px solid #eee; */
                 position: relative;
                 /* padding-left: 50%; */
