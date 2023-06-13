@@ -109,7 +109,7 @@
             
             td { 
                 /* Behave like a "row" */
-                border: 1px solid #38f3ff;
+                border: 1px solid #563400;
                 text-align: left;
                 padding: 15px;
                 /* border-bottom: 1px solid #eee; */
