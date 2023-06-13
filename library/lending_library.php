@@ -109,6 +109,7 @@
             }
             tr { 
                 /* border: 1px solid #ccc; */
+                border: 0px;
             }
             
             td { 
