@@ -109,7 +109,6 @@
             }
             tr { 
                 /* border: 1px solid #ccc; */
-                border: 0px;
             }
             
             td { 
@@ -130,7 +129,7 @@
             }
 
             h3 {
-                font-size: 16px;
+                font-size: 12px;
             }
         }
 
