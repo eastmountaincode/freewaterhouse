@@ -11,7 +11,7 @@
         }
 
         th, td {
-            border: 1px solid black;
+            border: 1px solid #7FFF00;
             padding: 15px;
             text-align: left;
         }
@@ -60,7 +60,7 @@
             position: relative;
             width: 260px;
             height: 500px;
-            background-color: gray;
+            background-color: #7FFF00;
             margin: auto;
         }
 
