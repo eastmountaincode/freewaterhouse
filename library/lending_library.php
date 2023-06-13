@@ -114,9 +114,9 @@
             
             td { 
                 /* Behave like a "row" */
-                border-top: 32px solid #7FFF00;
-                border-left: 32px solid #7FFF00;
-                border-right: 32px solid #7FFF00;
+                border-top: 16px solid #7FFF00;
+                border-left: 16px solid #7FFF00;
+                border-right: 16px solid #7FFF00;
                 border-bottom: 0px;
                 text-align: center;
                 padding: 15px;
