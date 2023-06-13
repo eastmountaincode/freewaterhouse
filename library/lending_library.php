@@ -132,8 +132,13 @@
                 border-right: 32px solid #7FFF00;
             }
 
-            /* Add bottom border for the last cell of each row */
-            tr td:last-child { 
+            /* Remove bottom border for the last cell of the first row */
+            tr:first-child td:last-child { 
+                border-bottom: 0;
+            }
+
+            /* Add bottom border for the last cell of the last row */
+            tr:last-child td:last-child { 
                 border-bottom: 32px solid #7FFF00;
             }
 
