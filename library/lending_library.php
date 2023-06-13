@@ -84,7 +84,7 @@
             z-index: -1;
         }
 
-        /* Style changes for screens larger than 600px */
+        /* Style changes for screens larger than 777px */
         @media screen and (min-width: 778px) {
             table {
                 /* padding: 0 20px; /* Add padding to the left and right sides */
@@ -92,12 +92,14 @@
             }
         }
 
-        /* Style changes when the viewport is 600px or less */
+        /* Style changes when the viewport is 777px or less */
         @media screen and (max-width: 777px) {
             table, thead, tbody, th, td, tr { 
                 display: block; 
                 width: 93%;
                 text-align: center;
+                margin: auto;
+                box-sizing: border-box;
             }
             /* Hide table headers (but not display: none;, for accessibility) */
             thead tr { 
