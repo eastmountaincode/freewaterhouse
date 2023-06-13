@@ -111,6 +111,13 @@
                 /* padding-left: 50%; */
             }
         }
+
+        /* Style changes when the viewport is 935px or less */
+        @media screen and (max-width: 935px) {
+            h3 {
+                width: 50%;
+            }
+        }
     </style>
 </head>
 <body>
