@@ -146,8 +146,8 @@
                         <div id = "uploadArea1">
                             <h3>
                             <pre>                     
-█▄▄ █▀█ ▀▄▀   ▄█
-█▄█ █▄█ █░█   ░█
+█▄▄ █▀█ ▀▄▀   █▀█ █▄░█ █▀▀
+█▄█ █▄█ █░█   █▄█ █░▀█ ██▄
                             </pre>
                             </h3>
                             <div id="fileInfo1"></div>
@@ -164,8 +164,8 @@
                         <div id = "uploadArea2">
                             <h3>
                             <pre>
-█▄▄ █▀█ ▀▄▀   ▀█
-█▄█ █▄█ █░█   █▄
+█▄▄ █▀█ ▀▄▀   ▀█▀ █░█░█ █▀█
+█▄█ █▄█ █░█   ░█░ ▀▄▀▄▀ █▄█
                             </pre>
                             </h3>
                             <div id="fileInfo2"></div>
@@ -200,7 +200,12 @@
                     </td>
                     <td>
                         <div id = "uploadArea4">
-                            <h1>Box 4</h1>
+                            <h3>
+                            <pre>
+█▄▄ █▀█ ▀▄▀   █▀▀ █▀█ █░█ █▀█
+█▄█ █▄█ █░█   █▀░ █▄█ █▄█ █▀▄
+                            </pre>
+                            </h3>
                             <div id="fileInfo4"></div>
                             <input type="file" id="fileSelect4" name="attachments[]">
                             <button id="uploadButton4" disabled>Upload</button>
