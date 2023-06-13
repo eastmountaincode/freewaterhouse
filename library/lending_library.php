@@ -20,6 +20,14 @@
             padding: 10px;
         }
 
+        /* Add these styles to change the layout of the buttons and the input field */
+        #fileSelect1, #fileSelect2, #fileSelect3, #fileSelect4,
+        #uploadButton1, #uploadButton2, #uploadButton3, #uploadButton4,
+        #downloadButton1, #downloadButton2, #downloadButton3, #downloadButton4 {
+            display: block; /* Make them take up their own line */
+            margin-bottom: 10px; /* Add some space below each item */
+        }
+
         h1 {
             text-align: center;
             /*font-family: courier; */
