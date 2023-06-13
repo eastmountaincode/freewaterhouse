@@ -96,7 +96,7 @@
         @media screen and (max-width: 777px) {
             table, thead, tbody, th, td, tr { 
                 display: block; 
-                width: 93%;
+                width: 100%;
                 text-align: center;
                 margin: auto;
                 box-sizing: border-box;
@@ -115,7 +115,7 @@
                 /* Behave like a "row" */
                 border: 32px solid #7FFF00;
                 text-align: center;
-                padding: 5px;
+                padding: 15px;
                 /* border-bottom: 1px solid #eee; */
                 position: relative;
                 /* padding-left: 50%; */
