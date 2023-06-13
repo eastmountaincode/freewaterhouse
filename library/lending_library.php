@@ -50,8 +50,8 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            border-left: 50vw solid transparent;
-            border-right: 50vw solid transparent;
+            border-left: 70vw solid transparent;
+            border-right: 70vw solid transparent;
             border-bottom: 70px solid gray;
         }
 
