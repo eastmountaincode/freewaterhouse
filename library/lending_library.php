@@ -7,11 +7,11 @@
             border-collapse: collapse;
             width: 100%;
             margin: auto;
-            color: #65CC00;
+            color: #38f3ff;
         }
 
         th, td {
-            border: 1px solid #65CC00;
+            border: 1px solid #38f3ff;
             padding: 15px;
             text-align: left;
         }
@@ -109,7 +109,7 @@
             
             td { 
                 /* Behave like a "row" */
-                border: 1px solid #65CC00;
+                border: 1px solid #38f3ff;
                 text-align: left;
                 padding: 15px;
                 /* border-bottom: 1px solid #eee; */
