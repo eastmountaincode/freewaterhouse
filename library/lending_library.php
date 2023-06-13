@@ -96,7 +96,7 @@
         @media screen and (max-width: 777px) {
             table, thead, tbody, th, td, tr { 
                 display: block; 
-                width: 100%;
+                width: 96%;
                 text-align: center;
                 margin: auto;
                 box-sizing: border-box;
