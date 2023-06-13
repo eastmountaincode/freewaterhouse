@@ -144,7 +144,12 @@
                 <tr>
                     <td>
                         <div id = "uploadArea1">
-                            <h1>Box 1</h1>
+                            <h3>
+                            <pre>                     
+█▄▄ █▀█ ▀▄▀   ▄█
+█▄█ █▄█ █░█   ░█
+                            </pre>
+                            </h3>
                             <div id="fileInfo1"></div>
                             <input type="file" id="fileSelect1" name="attachments[]">
                             <button id="uploadButton1" disabled>Upload</button>
@@ -157,7 +162,12 @@
                     </td>
                     <td>
                         <div id = "uploadArea2">
-                            <h1>Box 2</h1>
+                        <h3>
+                            <pre>
+█▄▄ █▀█ ▀▄▀   ▀█
+█▄█ █▄█ █░█   █▄
+                            </pre>
+                            </h3>
                             <div id="fileInfo2"></div>
                             <input type="file" id="fileSelect2" name="attachments[]">
                             <button id="uploadButton2" disabled>Upload</button>
