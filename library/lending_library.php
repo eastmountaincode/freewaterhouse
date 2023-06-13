@@ -7,11 +7,11 @@
             border-collapse: collapse;
             width: 100%;
             margin: auto;
-            color: #7FFF00;
+            color: #65CC00;
         }
 
         th, td {
-            border: 1px solid #7FFF00;
+            border: 1px solid #65CC00;
             padding: 15px;
             text-align: left;
         }
@@ -54,14 +54,14 @@
             transform: translateX(-50%);
             border-left: 50vw solid transparent;
             border-right: 50vw solid transparent;
-            border-bottom: 50px solid #7FFF00;
+            border-bottom: 50px solid #65CC00;
         }
 
         .trunk {
             position: relative;
             width: 260px;
             height: 500px;
-            background-color: #7FFF00;
+            background-color: #65CC00;
             margin: auto;
         }
 
@@ -109,7 +109,7 @@
             
             td { 
                 /* Behave like a "row" */
-                border: 1px solid #7FFF00;
+                border: 1px solid #65CC00;
                 text-align: left;
                 padding: 15px;
                 /* border-bottom: 1px solid #eee; */
