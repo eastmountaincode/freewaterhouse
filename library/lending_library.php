@@ -54,14 +54,14 @@
             transform: translateX(-50%);
             border-left: 50vw solid transparent;
             border-right: 50vw solid transparent;
-            border-bottom: 50px solid #65CC00;
+            border-bottom: 50px solid #38f3ff;
         }
 
         .trunk {
             position: relative;
             width: 260px;
             height: 500px;
-            background-color: #65CC00;
+            background-color: #38f3ff;
             margin: auto;
         }
 
