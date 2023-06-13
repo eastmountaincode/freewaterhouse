@@ -7,11 +7,11 @@
             border-collapse: collapse;
             width: 100%;
             margin: auto;
-            color: #563400;
+            color: black;
         }
 
         th, td {
-            border: 1px solid #563400
+            border: 1px solid black
             padding: 15px;
             text-align: left;
         }
@@ -54,14 +54,14 @@
             transform: translateX(-50%);
             border-left: 50vw solid transparent;
             border-right: 50vw solid transparent;
-            border-bottom: 50px solid #563400;
+            border-bottom: 50px solid black;
         }
 
         .trunk {
             position: relative;
             width: 260px;
             height: 500px;
-            background-color: #563400;
+            background-color: black;
             margin: auto;
         }
 
@@ -109,7 +109,7 @@
             
             td { 
                 /* Behave like a "row" */
-                border: 1px solid #563400;
+                border: 1px solid black;
                 text-align: left;
                 padding: 15px;
                 /* border-bottom: 1px solid #eee; */
