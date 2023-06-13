@@ -129,7 +129,7 @@
             }
 
             h3 {
-                font-size: 12px;
+                font-size: 11px;
             }
         }
 
