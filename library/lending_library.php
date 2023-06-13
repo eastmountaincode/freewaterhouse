@@ -54,7 +54,7 @@
             transform: translateX(-50%);
             border-left: 48vw solid transparent;
             border-right: 48vw solid transparent;
-            border-bottom: 80px solid #7FFF00;
+            border-bottom: 40px solid #7FFF00;
         }
 
         .trunk {
