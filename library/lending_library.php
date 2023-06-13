@@ -116,6 +116,7 @@
                 border-top: 32px solid #7FFF00;
                 border-left: 32px solid #7FFF00;
                 border-right: 32px solid #7FFF00;
+                border-bottom: 0px;
                 text-align: center;
                 padding: 15px;
                 /* border-bottom: 1px solid #eee; */
