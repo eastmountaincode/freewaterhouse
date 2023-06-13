@@ -13,7 +13,7 @@
         th, td {
             border: 32px solid #7FFF00;
             padding: 15px;
-            text-align: left;
+            text-align: center;
         }
 
         #uploadArea1, #uploadArea2, #uploadArea3, #uploadArea4 {
