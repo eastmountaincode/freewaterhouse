@@ -122,18 +122,20 @@
                 position: relative;
             }
 
-            /* Add bottom border for the first cell of each row */
-            tr:nth-of-type(1) td:nth-of-type(1),
-            tr:nth-of-type(2) td:nth-of-type(1) { 
-                border-bottom: 32px solid #7FFF00;
+            /* Add left border for the first cell of each row */
+            tr td:first-child { 
+                border-left: 32px solid #7FFF00;
             }
 
-            /* Add bottom border for the last cell of the last row */
-            tr:last-of-type td:last-of-type {
-                border-bottom: 32px solid #7FFF00;
+            /* Add right border for the last cell of each row */
+            tr td:last-child { 
+                border-right: 32px solid #7FFF00;
             }
 
-
+            /* Add bottom border for the last cell of each row */
+            tr td:last-child { 
+                border-bottom: 32px solid #7FFF00;
+            }
 
             h3 {
                 font-size: 10px;
