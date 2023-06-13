@@ -119,14 +119,21 @@
                 border-bottom: 0px;
                 text-align: center;
                 padding: 15px;
-                /* border-bottom: 1px solid #eee; */
                 position: relative;
-                /* padding-left: 50%; */
             }
 
-            td:last-of-type { 
+            /* Add bottom border for the first cell of each row */
+            tr:nth-of-type(1) td:nth-of-type(1),
+            tr:nth-of-type(2) td:nth-of-type(1) { 
                 border-bottom: 32px solid #7FFF00;
             }
+
+            /* Add bottom border for the last cell of the last row */
+            tr:last-of-type td:last-of-type {
+                border-bottom: 32px solid #7FFF00;
+            }
+
+
 
             h3 {
                 font-size: 10px;
