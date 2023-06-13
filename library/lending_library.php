@@ -115,7 +115,7 @@
                 /* Behave like a "row" */
                 border: 32px solid #7FFF00;
                 text-align: center;
-                padding: 15px;
+                padding: 5px;
                 /* border-bottom: 1px solid #eee; */
                 position: relative;
                 /* padding-left: 50%; */
