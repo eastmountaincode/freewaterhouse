@@ -113,9 +113,9 @@
             
             td { 
                 /* Behave like a "row" */
-                border-top: 32px solid #7FFF00;
-                border-left: 32px solid #7FFF00;
-                border-right: 32px solid #7FFF00;
+                border-top: 27px solid #7FFF00;
+                border-left: 27px solid #7FFF00;
+                border-right: 27px solid #7FFF00;
                 border-bottom: 0px;
                 text-align: center;
                 padding: 15px;
@@ -124,12 +124,12 @@
 
             /* Add left border for the first cell of each row */
             tr td:first-child { 
-                border-left: 32px solid #7FFF00;
+                border-left: 27px solid #7FFF00;
             }
 
             /* Add right border for the last cell of each row */
             tr td:last-child { 
-                border-right: 32px solid #7FFF00;
+                border-right: 27px solid #7FFF00;
             }
 
             /* Remove bottom border for the last cell of the first row */
@@ -139,7 +139,7 @@
 
             /* Add bottom border for the last cell of the last row */
             tr:last-child td:last-child { 
-                border-bottom: 32px solid #7FFF00;
+                border-bottom: 27px solid #7FFF00;
             }
 
             h3 {
