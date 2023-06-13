@@ -52,7 +52,7 @@
 
         .trunk {
             position: relative;
-            width: 320px;
+            width: 260px;
             height: 500px;
             background-color: gray;
             margin: auto;
