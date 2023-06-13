@@ -27,7 +27,7 @@
 
         h3 {
             text-align: center;
-            color: red;
+            color: #7FFF00;
         }
 
         .library {
