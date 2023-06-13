@@ -4,14 +4,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
         table {
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0 32px;
             width: 100%;
             margin: auto;
             color: #7FFF00;
         }
 
         th, td {
-            border: 32px solid #7FFF00;
+            border: 16px solid #7FFF00;
             padding: 15px;
             text-align: center;
         }
@@ -113,12 +114,16 @@
             
             td { 
                 /* Behave like a "row" */
-                border: 32px solid #7FFF00;
+                border: 16px solid #7FFF00; 
                 text-align: center;
                 padding: 15px;
                 /* border-bottom: 1px solid #eee; */
                 position: relative;
                 /* padding-left: 50%; */
+            }
+
+            td:last-of-type { 
+                border-bottom: 32px solid #7FFF00;
             }
         }
 
