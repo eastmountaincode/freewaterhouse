@@ -7,7 +7,6 @@
             border-collapse: collapse;
             width: 100%;
             margin: auto
-            padding-top: 70px; /* added padding to prevent overlap with the roof */
         }
 
         th, td {
