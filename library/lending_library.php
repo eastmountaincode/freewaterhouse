@@ -6,7 +6,8 @@
         table {
             border-collapse: collapse;
             width: 100%;
-            margin: auto
+            margin: auto;
+            color: #7FFF00;
         }
 
         th, td {
