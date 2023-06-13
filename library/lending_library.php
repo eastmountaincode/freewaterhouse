@@ -5,7 +5,7 @@
     <style type="text/css">
         table {
             border-collapse: collapse;
-            width: 100%;
+            width: 80%;
             margin: auto
         }
 
