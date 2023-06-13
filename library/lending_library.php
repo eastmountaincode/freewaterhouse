@@ -21,6 +21,7 @@
 
         h1 {
             text-align: center;
+            font-family: courier;
         }
 
         .library {
@@ -109,12 +110,7 @@
     </style>
 </head>
 <body>
-    <h1>
-        __  ___                          ___ ___       ___     ___  __   ___  ___            __   __        __      
-\  / | |__)  |  |  |  /\  |       |    |  |   |  |    |__     |__  |__) |__  |__     |    | |__) |__)  /\  |__) \ / 
- \/  | |  \  |  \__/ /~~\ |___    |___ |  |   |  |___ |___    |    |  \ |___ |___    |___ | |__) |  \ /~~\ |  \  |  
-                                                                                                                    
-</h1>
+    <h1>(Virtual) Little Free Library</h1>
     <!-- <img class="book_shelf" src="../images/book_shelf.png" alt="some books"> -->
     <br>
     <div class="library_wrapper">
