@@ -69,6 +69,10 @@
             
         }
 
+        #fileSelect1, #fileSelect2, #fileSelect3, #fileSelect4 {
+            color: black;
+        }
+
 
         .book_shelf {
             position: absolute;
