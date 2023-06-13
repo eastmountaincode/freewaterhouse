@@ -102,7 +102,7 @@
             #fileSelect1, #fileSelect2, #fileSelect3, #fileSelect4,
             #uploadButton1, #uploadButton2, #uploadButton3, #uploadButton4,
             #downloadButton1, #downloadButton2, #downloadButton3, #downloadButton4 {
-                margin-left: 20px;
+                margin-left: 80px;
             }
         }
 
