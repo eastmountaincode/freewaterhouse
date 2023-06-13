@@ -4,15 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
         table {
-            border-collapse: separate;
-            border-spacing: 0 32px;
+            border-collapse: collapse;
             width: 100%;
             margin: auto;
             color: #7FFF00;
         }
 
         th, td {
-            border: 16px solid #7FFF00;
+            border: 32px solid #7FFF00;
             padding: 15px;
             text-align: center;
         }
@@ -114,7 +113,9 @@
             
             td { 
                 /* Behave like a "row" */
-                border: 16px solid #7FFF00; 
+                border-top: 32px solid #7FFF00;
+                border-left: 32px solid #7FFF00;
+                border-right: 32px solid #7FFF00;
                 text-align: center;
                 padding: 15px;
                 /* border-bottom: 1px solid #eee; */
