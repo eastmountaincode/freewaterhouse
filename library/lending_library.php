@@ -131,6 +131,14 @@
             h3 {
                 font-size: 10px;
             }
+
+            .trunk {
+            position: relative;
+            width: 200px;
+            height: 500px;
+            background-color: #7FFF00;
+            margin: auto;
+            }
         }
 
     
