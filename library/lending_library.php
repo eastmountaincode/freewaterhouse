@@ -82,7 +82,7 @@
         @media screen and (min-width: 601px) {
             table {
                 /* padding: 0 20px; /* Add padding to the left and right sides */
-                width: 90%;
+                width: 85%;
             }
         }
 
