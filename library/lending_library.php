@@ -112,7 +112,7 @@
             td { 
                 /* Behave like a "row" */
                 border: 16px solid #7FFF00;
-                text-align: left;
+                text-align: center;
                 padding: 15px;
                 /* border-bottom: 1px solid #eee; */
                 position: relative;
