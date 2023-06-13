@@ -85,7 +85,7 @@
         }
 
         /* Style changes for screens larger than 600px */
-        @media screen and (min-width: 601px) {
+        @media screen and (min-width: 778px) {
             table {
                 /* padding: 0 20px; /* Add padding to the left and right sides */
                 width: 85%;
@@ -93,7 +93,7 @@
         }
 
         /* Style changes when the viewport is 600px or less */
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 777px) {
             table, thead, tbody, th, td, tr { 
                 display: block; 
             }
