@@ -162,7 +162,7 @@
                     </td>
                     <td>
                         <div id = "uploadArea2">
-                        <h3>
+                            <h3>
                             <pre>
 █▄▄ █▀█ ▀▄▀   ▀█
 █▄█ █▄█ █░█   █▄
@@ -182,7 +182,12 @@
                 <tr>
                     <td>
                         <div id = "uploadArea3">
-                            <h1>Box 3</h1>
+                            <h3>
+                            <pre>
+█▄▄ █▀█ ▀▄▀   ▀█▀ █░█ █▀█ █▀▀ █▀▀
+█▄█ █▄█ █░█   ░█░ █▀█ █▀▄ ██▄ ██▄
+                            </pre>
+                            </h3>
                             <div id="fileInfo3"></div>
                             <input type="file" id="fileSelect3" name="attachments[]">
                             <button id="uploadButton3" disabled>Upload</button>
