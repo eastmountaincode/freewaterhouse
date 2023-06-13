@@ -93,8 +93,8 @@
             z-index: -1;
         }
 
-        /* Style changes for screens larger than 777px */
-        @media screen and (min-width: 778px) {
+        /* Style changes for screens larger than 903px */
+        @media screen and (min-width: 903px) {
             table {
                 /* padding: 0 20px; /* Add padding to the left and right sides */
                 width: 85%;
@@ -106,8 +106,8 @@
             }
         }
 
-        /* Style changes when the viewport is 777px or less */
-        @media screen and (max-width: 777px) {
+        /* Style changes when the viewport is 902px or less */
+        @media screen and (max-width: 902px) {
             table, thead, tbody, th, td, tr { 
                 display: block; 
                 width: 96%;
