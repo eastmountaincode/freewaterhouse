@@ -11,7 +11,7 @@
         }
 
         th, td {
-            border: 16px solid #7FFF00;
+            border: 32px solid #7FFF00;
             padding: 15px;
             text-align: left;
         }
