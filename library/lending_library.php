@@ -7,11 +7,11 @@
             border-collapse: collapse;
             width: 100%;
             margin: auto;
-            color: #38f3ff;
+            color: #563400;
         }
 
         th, td {
-            border: 1px solid #38f3ff;
+            border: 1px solid #563400
             padding: 15px;
             text-align: left;
         }
@@ -54,14 +54,14 @@
             transform: translateX(-50%);
             border-left: 50vw solid transparent;
             border-right: 50vw solid transparent;
-            border-bottom: 50px solid #38f3ff;
+            border-bottom: 50px solid #563400;
         }
 
         .trunk {
             position: relative;
             width: 260px;
             height: 500px;
-            background-color: #38f3ff;
+            background-color: #563400;
             margin: auto;
         }
 
