@@ -5,7 +5,7 @@
     <style type="text/css">
         table {
             border-collapse: collapse;
-            width: 80%;
+            width: 100%;
             margin: auto
         }
 
@@ -76,7 +76,8 @@
         /* Style changes for screens larger than 600px */
         @media screen and (min-width: 601px) {
             table {
-                padding: 0 20px; /* Add padding to the left and right sides */
+                /* padding: 0 20px; /* Add padding to the left and right sides */
+                width: 90%;
             }
         }
 
