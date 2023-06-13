@@ -128,6 +128,10 @@
             td:last-of-type { 
                 border-bottom: 32px solid #7FFF00;
             }
+
+            h3 {
+                font-size: 10px;
+            }
         }
 
     
