@@ -27,6 +27,7 @@
 
         h3 {
             text-align: center;
+            color: black;
         }
 
         .library {
