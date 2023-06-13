@@ -73,6 +73,13 @@
             z-index: -1;
         }
 
+        /* Style changes for screens larger than 600px */
+        @media screen and (min-width: 601px) {
+            table {
+                padding: 0 20px; /* Add padding to the left and right sides */
+            }
+        }
+
         /* Style changes when the viewport is 600px or less */
         @media screen and (max-width: 600px) {
             table, thead, tbody, th, td, tr { 
