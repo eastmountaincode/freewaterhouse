@@ -52,8 +52,8 @@
             top: 0;
             left: 50%;
             transform: translateX(-50%);
-            border-left: 40vw solid transparent;
-            border-right: 40vw solid transparent;
+            border-left: 48vw solid transparent;
+            border-right: 48vw solid transparent;
             border-bottom: 80px solid #7FFF00;
         }
 
