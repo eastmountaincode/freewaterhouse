@@ -26,6 +26,7 @@
         #downloadButton1, #downloadButton2, #downloadButton3, #downloadButton4 {
             display: block; /* Make them take up their own line */
             margin-bottom: 10px; /* Add some space below each item */
+            text-align: center;
         }
 
         h1 {
