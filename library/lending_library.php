@@ -111,7 +111,7 @@
                 /* Behave like a "row" */
                 border: 16px solid #7FFF00;
                 text-align: left;
-                padding: 15px;
+                padding: 30px;
                 /* border-bottom: 1px solid #eee; */
                 position: relative;
                 /* padding-left: 50%; */
