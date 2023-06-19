@@ -3,7 +3,6 @@ table {
     width: 100%;
     margin: auto;
     color: #7FFF00;
-    border: 1px solid black;
 }
 
 th, td {
@@ -28,7 +27,6 @@ th, td {
 
 h1 {
     text-align: center;
-    /*font-family: courier; */
 }
 
 h3 {
