@@ -40,6 +40,7 @@
                             </pre>
                             </h3>
                             <div id="fileInfo1"></div>
+                            <br>
                             <input type="file" id="fileSelect1" name="attachments[]">
                             <button id="uploadButton1" disabled>Upload</button>
                             <button id="downloadButton1" disabled>Download</button>
@@ -58,6 +59,7 @@
                             </pre>
                             </h3>
                             <div id="fileInfo2"></div>
+                            <br>
                             <input type="file" id="fileSelect2" name="attachments[]">
                             <button id="uploadButton2" disabled>Upload</button>
                             <button id="downloadButton2" disabled>Download</button>
@@ -78,6 +80,7 @@
                             </pre>
                             </h3>
                             <div id="fileInfo3"></div>
+                            <br>
                             <input type="file" id="fileSelect3" name="attachments[]">
                             <button id="uploadButton3" disabled>Upload</button>
                             <button id="downloadButton3" disabled>Download</button>
@@ -96,6 +99,7 @@
                             </pre>
                             </h3>
                             <div id="fileInfo4"></div>
+                            <br>
                             <input type="file" id="fileSelect4" name="attachments[]">
                             <button id="uploadButton4" disabled>Upload</button>
                             <button id="downloadButton4" disabled>Download</button>
