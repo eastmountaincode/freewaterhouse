@@ -41,9 +41,11 @@
                             </h3>
                             <div id="fileInfo1"></div>
                             <br>
-                            <input type="file" id="fileSelect1" name="attachments[]">
-                            <button id="uploadButton1" disabled>Upload</button>
-                            <button id="downloadButton1" disabled>Download</button>
+                            <div id="buttonDiv">
+                                <input type="file" id="fileSelect1" name="attachments[]">
+                                <button id="uploadButton1" disabled>Upload</button>
+                                <button id="downloadButton1" disabled>Download</button>
+                            </div>
                             <div id="uploadProgressBar1" style="width: 0%; height: 20px; background: green;"></div>
                             <p id="progressPercent1"></p>
                             <p id="uploadSuccessMessage1"></p>
@@ -60,9 +62,11 @@
                             </h3>
                             <div id="fileInfo2"></div>
                             <br>
-                            <input type="file" id="fileSelect2" name="attachments[]">
-                            <button id="uploadButton2" disabled>Upload</button>
-                            <button id="downloadButton2" disabled>Download</button>
+                            <div id="buttonDiv">
+                                <input type="file" id="fileSelect2" name="attachments[]">
+                                <button id="uploadButton2" disabled>Upload</button>
+                                <button id="downloadButton2" disabled>Download</button>
+                            </div>
                             <div id="uploadProgressBar2" style="width: 0%; height: 20px; background: green;"></div>
                             <p id="progressPercent2"></p>
                             <p id="uploadSuccessMessage2"></p>
@@ -81,9 +85,11 @@
                             </h3>
                             <div id="fileInfo3"></div>
                             <br>
-                            <input type="file" id="fileSelect3" name="attachments[]">
-                            <button id="uploadButton3" disabled>Upload</button>
-                            <button id="downloadButton3" disabled>Download</button>
+                            <div id="buttonDiv">
+                                <input type="file" id="fileSelect3" name="attachments[]">
+                                <button id="uploadButton3" disabled>Upload</button>
+                                <button id="downloadButton3" disabled>Download</button>
+                            </div>
                             <div id="uploadProgressBar3" style="width: 0%; height: 20px; background: green;"></div>
                             <p id="progressPercent3"></p>
                             <p id="uploadSuccessMessage3"></p>
@@ -100,9 +106,11 @@
                             </h3>
                             <div id="fileInfo4"></div>
                             <br>
-                            <input type="file" id="fileSelect4" name="attachments[]">
-                            <button id="uploadButton4" disabled>Upload</button>
-                            <button id="downloadButton4" disabled>Download</button>
+                            <div id="buttonDiv">
+                                <input type="file" id="fileSelect4" name="attachments[]">
+                                <button id="uploadButton4" disabled>Upload</button>
+                                <button id="downloadButton4" disabled>Download</button>
+                            </div>
                             <div id="uploadProgressBar4" style="width: 0%; height: 20px; background: green;"></div>
                             <p id="progressPercent4"></p>
                             <p id="uploadSuccessMessage4"></p>
