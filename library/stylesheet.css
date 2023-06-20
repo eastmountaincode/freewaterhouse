@@ -8,7 +8,7 @@ table {
 th, td {
     border: 32px solid #7FFF00;
     color: black;
-    padding: 15px;
+    padding: 30px;
     text-align: center;
 }
 
@@ -22,14 +22,14 @@ th, td {
 #downloadButton1, #downloadButton2, #downloadButton3, #downloadButton4 {
     display: block; /* Make them take up their own line */
     margin: 10px auto;
-    width: 70%;
+    width: 50%;
     margin-bottom: 10px; /* Add some space below each item */
     text-align: center;
 }
 
 .buttonDiv {
     text-align: center;
-    border: 10px solid #7FFF00;
+    border: 1px solid #7FFF00;
 }
 
 h1 {
