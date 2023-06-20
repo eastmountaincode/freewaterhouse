@@ -112,7 +112,7 @@ h3 {
 @media screen and (max-width: 902px) {
     table, thead, tbody, th, td, tr { 
         display: block; 
-        width: 96%;
+        width: 98%;
         text-align: center;
         margin: auto;
         box-sizing: border-box;
