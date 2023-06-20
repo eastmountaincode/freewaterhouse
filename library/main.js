@@ -192,7 +192,8 @@ function formatBytes(bytes, decimals = 2) {
 document.getElementById("toggleButton").addEventListener("click", function(e) {
     e.preventDefault(); 
     var moreText = document.getElementById("more");
-    if (moreText.style.display === "none") {
+    var computedStyle = window.getComputedStyle(moreText);
+    if (computedStyle.display === "none") {
         moreText.style.display = "block";
     } else {
         moreText.style.display = "none";
