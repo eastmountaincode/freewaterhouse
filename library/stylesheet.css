@@ -168,6 +168,7 @@ h3 {
     margin-top: 10px;
     border-top: 1px solid #eee;
     font: black;
+    width: 80%; 
 }
 
 #toggleButton {
