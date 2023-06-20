@@ -29,7 +29,7 @@ th, td {
 
 .buttonDiv {
     text-align: center;
-    border: 2px inset #7FFF00;
+    border: 2px dashed #7FFF00;
 }
 
 h1 {
