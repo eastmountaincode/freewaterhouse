@@ -125,7 +125,7 @@
     </div>
     <br>
     <br>
-    <a href="#" id="toggleButton">About↓↓↓</a>
+    <a href="#" id="toggleButton">About</a>
     <div id="more">
         Like a <a href="https://littlefreelibrary.org/">Little Free Library</a>, but on the internet! 
         Leave a song, poem, pdf, movie, zip file, whatever! Check out what other people have left, 

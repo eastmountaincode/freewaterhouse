@@ -192,11 +192,14 @@ function formatBytes(bytes, decimals = 2) {
 document.getElementById("toggleButton").addEventListener("click", function(e) {
     e.preventDefault(); 
     var moreText = document.getElementById("more");
+    var button = document.getElementById("toggleButton");
     var computedStyle = window.getComputedStyle(moreText);
     if (computedStyle.display === "none") {
         moreText.style.display = "block";
+        button.innerText = "About↑↑↑";
     } else {
         moreText.style.display = "none";
+        button.innerText = "About↓↓↓";
     }
 });
 
