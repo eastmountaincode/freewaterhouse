@@ -170,6 +170,14 @@ h3 {
     font: black;
 }
 
+@media screen and (min-width: 1005px) {
+    #more {
+      padding: 10px 120px;
+      width: 90%;
+    }
+  }
+
+
 
 #toggleButton {
     display: block;
