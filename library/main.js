@@ -190,10 +190,12 @@ function formatBytes(bytes, decimals = 2) {
 }
 
 document.getElementById("toggleButton").addEventListener("click", function(e) {
-    e.preventDefault(); // To prevent the link from actually redirecting to the "#" href
+    e.preventDefault(); 
     var moreText = document.getElementById("more");
     if (moreText.style.display === "none") {
         moreText.style.display = "block";
+        // Add smooth scrolling to the "more" div when it is displayed
+        moreText.scrollIntoView({behavior: "smooth"});
     } else {
         moreText.style.display = "none";
     }

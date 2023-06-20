@@ -169,3 +169,12 @@ h3 {
     border-top: 1px solid #eee;
     font: black;
 }
+
+#toggleButton {
+    display: block;
+    font-family: 'Helvetica';
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    margin: 20px 0;
+}
