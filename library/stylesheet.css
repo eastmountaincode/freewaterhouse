@@ -173,7 +173,7 @@ h3 {
 #toggleButton {
     display: block;
     font-family: 'Helvetica';
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 20px;
     text-align: center;
     margin: 20px 0;

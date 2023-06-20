@@ -194,12 +194,21 @@ document.getElementById("toggleButton").addEventListener("click", function(e) {
     var moreText = document.getElementById("more");
     if (moreText.style.display === "none") {
         moreText.style.display = "block";
-        // Add smooth scrolling to the "more" div when it is displayed
-        moreText.scrollIntoView({behavior: "smooth"});
     } else {
         moreText.style.display = "none";
     }
 });
+
+var moreText = document.getElementById("more");
+var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        if (mutation.target.style.display === 'block') {
+            mutation.target.scrollIntoView({behavior: "smooth"});
+        }
+    });
+});
+observer.observe(moreText, { attributes: true });
+
   
   
   
