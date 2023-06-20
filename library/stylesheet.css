@@ -22,7 +22,7 @@ th, td {
 #downloadButton1, #downloadButton2, #downloadButton3, #downloadButton4 {
     display: block; /* Make them take up their own line */
     margin: 10px auto;
-    width: 70%;
+    width: 60%;
     margin-bottom: 10px; /* Add some space below each item */
     text-align: center;
 }
