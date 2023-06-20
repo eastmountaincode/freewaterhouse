@@ -8,7 +8,7 @@ table {
 th, td {
     border: 32px solid hsl(90, 100%, 50%);
     color: black;
-    padding: 30px 0px 0px 0px; /* only need a bit of vertical padding */
+    padding: 15px 0px 0px 0px; /* only need a bit of vertical padding */
     text-align: center;
 }
 
