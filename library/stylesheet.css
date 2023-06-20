@@ -29,7 +29,7 @@ th, td {
 
 .buttonDiv {
     text-align: center;
-    border: 1px solid #7FFF00;
+    border: 2px solid blue;
 }
 
 h1 {
@@ -123,9 +123,9 @@ h3 {
         top: -9999px;
         left: -9999px;
     }
-    /* tr { 
-        /* border: 1px solid #ccc; */
-    /* } */
+    tr { 
+        padding: 60px;
+    }
     
     td { 
         /* Behave like a "row" */
@@ -134,7 +134,7 @@ h3 {
         border-right: 27px solid #7FFF00;
         border-bottom: 0px;
         text-align: center;
-        padding: 15px;
+        padding: 60px;
         position: relative;
     }
 
