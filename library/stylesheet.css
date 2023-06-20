@@ -21,6 +21,8 @@ th, td {
 #uploadButton1, #uploadButton2, #uploadButton3, #uploadButton4,
 #downloadButton1, #downloadButton2, #downloadButton3, #downloadButton4 {
     display: block; /* Make them take up their own line */
+    margin: 10px auto;
+    width: 70%;
     margin-bottom: 10px; /* Add some space below each item */
     text-align: center;
 }
