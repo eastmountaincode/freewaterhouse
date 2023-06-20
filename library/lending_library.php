@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Virtual Lending Library</title>
+    <title>Virtual Free Little Library</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
@@ -8,14 +8,14 @@
     <br>
     <h3>
         <pre>
-█░█ █ █▀█ ▀█▀ █░█ ▄▀█ █░░  
-▀▄▀ █ █▀▄ ░█░ █▄█ █▀█ █▄▄  
+█░█ █ █▀█ ▀█▀ █░█ ▄▀█ █░░
+▀▄▀ █ █▀▄ ░█░ █▄█ █▀█ █▄▄
+
+█░░ █ ▀█▀ ▀█▀ █░░ █▀▀
+█▄▄ █ ░█░ ░█░ █▄▄ ██▄
 
 █▀▀ █▀█ █▀▀ █▀▀  
 █▀░ █▀▄ ██▄ ██▄  
-
-█░░ █ ▀█▀ ▀█▀ █░░ █▀▀  
-█▄▄ █ ░█░ ░█░ █▄▄ ██▄  
 
 █░░ █ █▄▄ █▀█ ▄▀█ █▀█ █▄█
 █▄▄ █ █▄█ █▀▄ █▀█ █▀▄ ░█░
@@ -123,6 +123,9 @@
             <div class="trunk"></div>
         </div>
     </div>
+    <br>
+    <br>
+    <br>
 
     <script src="main.js"></script>
 

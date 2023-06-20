@@ -189,3 +189,19 @@ function formatBytes(bytes, decimals = 2) {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
 }
 
+document.getElementById("toggleButton").addEventListener("click", function(e) {
+    e.preventDefault(); // To prevent the link from actually redirecting to the "#" href
+    var moreText = document.getElementById("more");
+    if (moreText.style.display === "none") {
+        moreText.style.display = "block";
+    } else {
+        moreText.style.display = "none";
+    }
+});
+  
+  
+  
+  
+  
+  
+
