@@ -123,9 +123,9 @@ h3 {
         top: -9999px;
         left: -9999px;
     }
-    tr { 
+    /* tr { 
         padding: 60px;
-    }
+    } */
     
     td { 
         /* Behave like a "row" */
@@ -134,7 +134,8 @@ h3 {
         border-right: 27px solid #7FFF00;
         border-bottom: 0px;
         text-align: center;
-        padding: 60px;
+        padding-left: 60px;
+        padding-right: 60px;
         position: relative;
     }
 
