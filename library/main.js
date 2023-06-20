@@ -196,10 +196,10 @@ document.getElementById("toggleButton").addEventListener("click", function(e) {
     var computedStyle = window.getComputedStyle(moreText);
     if (computedStyle.display === "none") {
         moreText.style.display = "block";
-        button.innerText = "About↑↑↑";
+        button.innerText = "About⬆";
     } else {
         moreText.style.display = "none";
-        button.innerText = "About↓↓↓";
+        button.innerText = "About⬇";
     }
 });
 
