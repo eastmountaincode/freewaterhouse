@@ -6,9 +6,9 @@ table {
 }
 
 th, td {
-    border: 32px solid #7FFF00;
+    border: 32px solid hsl(90, 100%, 50%);
     color: black;
-    padding: 30px;
+    padding: 60px;
     text-align: center;
 }
 
@@ -29,7 +29,7 @@ th, td {
 
 .buttonDiv {
     text-align: center;
-    border: 1px solid #7FFF00;
+    border: 3px solid #7FFF00;
 }
 
 h1 {
