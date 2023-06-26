@@ -67,6 +67,7 @@ function loginForm(){
         <br>
         If you want to chat about community-activated public art, please email me at <span id="email"></span>.
         <br>
+        <br>
         <a href="https://ko-fi.com/goodbyeoblivion">Buy me a coffee</a>
         <br>
         <a href="https://www.instagram.com/ndrewboylan/">Instagram</a>
