@@ -231,6 +231,7 @@ function loginForm(){
                         if (response.error) {
                             alert(response.message);
                         } else {
+                            window.scrollTo(0,document.body.scrollHeight);
                             location.reload();
                         }
                     }
