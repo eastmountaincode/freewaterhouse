@@ -20,7 +20,7 @@
             readfile($filepath);
 
             // Log the download
-            logToFile('File downloaded: ' . $filename . ', type: ' . $fileType . ', size: ' . filesize($filepath));
+            logToFile('File downloaded: ' . $filename . ', size: ' . filesize($filepath) . ', type: ' . $fileType);
 
             // Remove the file after downloading
             unlink($filepath);
