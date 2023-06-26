@@ -19,9 +19,9 @@ if(isset($_POST['enter'])){
 }
 function loginForm(){
     echo 
-    '<div id="loginform"> 
+    '<div id="chat_loginform"> 
 <p>Please enter your name to continue!</p> 
-<form action="index.php" method="post"> 
+<form action="lending_library.php" method="post"> 
 <label for="name">Name &mdash;</label> 
 <input type="text" name="name" id="name" /> 
 <input type="submit" name="enter" id="enter" value="Enter" /> 
@@ -164,6 +164,17 @@ function loginForm(){
     </div>
     <br>
     <br>
+    <div id="chat_wrapper">
+        <div id="chat_menu">
+            <p class="chat_welcome">Welcome, <b></b></p>
+            <p class="chat_logout"><a id="chat_exit" href="#">Exit Chat</a></p>
+        </div>
+        <div id="chatbox"></div>
+        <form name="chat_message" action="">
+            <input name="chat_usermsg" type="text" id="chat_usermsg" />
+            <input name="chat_submitmsg" type="submit" id="chat_submitmsg" value="Send" />
+        </form>
+    </div>
 
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
