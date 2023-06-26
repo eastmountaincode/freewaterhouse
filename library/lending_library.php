@@ -62,8 +62,9 @@ function loginForm(){
     <div id="more">
         Like a <a href="https://littlefreelibrary.org/">Little Free Library</a>, but on the internet! 
         Leave a song, poem, drawing, pdf, movie, zip file, whatever! Check out what other people have left, 
-        but remember, if you download the file, it will be removed from the box, just like in real life. If 
-        you want to chat about community-activated public art, please email me at <span id="email"></span>.
+        but remember, if you download the file, it will be removed from the box, just like in real life.
+        <br>
+        If you want to chat about community-activated public art, please email me at <span id="email"></span>.
     </div>
     <br>
     <div class="library_wrapper">
