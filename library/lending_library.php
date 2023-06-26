@@ -4,10 +4,10 @@ if(isset($_GET['logout'])){
     
     //Simple exit message 
     $logout_message = "<div class='msgln'><span class='left-info'>User <b class='user-name-left'>". $_SESSION['name'] ."</b> has left the chat session.</span><br></div>";
-    file_put_contents("log.html", $logout_message, FILE_APPEND | LOCK_EX);
+    file_put_contents("chat_log.html", $logout_message, FILE_APPEND | LOCK_EX);
     
     session_destroy();
-    header("Location: index.php"); //Redirect the user 
+    header("Location: lending_library.php"); //Redirect the user 
 }
 if(isset($_POST['enter'])){
     if($_POST['name'] != ""){
@@ -164,28 +164,37 @@ function loginForm(){
     </div>
     <br>
     <br>
+
     <div id="chat_wrapper">
         <div id="chat_menu">
-            <p class="chat_welcome">Welcome, <b></b></p>
+            <p class="chat_welcome">Welcome, <b><?php echo $_SESSION['name']; ?></b></p>
             <p class="chat_logout"><a id="chat_exit" href="#">Exit Chat</a></p>
         </div>
-        <div id="chatbox"></div>
+        <div id="chatbox">
+        <?php
+        if(file_exists("chat_log.html") && filesize("chat_log.html") > 0){
+            
+            $contents = file_get_contents("chat_log.html");
+            echo $contents;
+        }
+        ?>
+        </div>
         <form name="chat_message" action="">
             <input name="chat_usermsg" type="text" id="chat_usermsg" />
             <input name="chat_submitmsg" type="submit" id="chat_submitmsg" value="Send" />
         </form>
     </div>
 
+    <script src="main.js"></script>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="main.js"></script>
     <script type="text/javascript">
         // jQuery Document 
         $(document).ready(function () {
-            $("#submitmsg").click(function () {
-                var clientmsg = $("#usermsg").val();
+            $("#chat_submitmsg").click(function () {
+                var clientmsg = $("#chat_usermsg").val();
                 $.post("chat_post.php", { text: clientmsg });
-                $("#usermsg").val("");
+                $("#chat_usermsg").val("");
                 return false;
             });
             function loadLog() {
@@ -204,7 +213,7 @@ function loginForm(){
                 });
             }
             setInterval (loadLog, 2500);
-            $("#exit").click(function () {
+            $("#chat_exit").click(function () {
                 var exit = confirm("Are you sure you want to end the session?");
                 if (exit == true) {
                     window.location = "lending_library.php?logout=true";
