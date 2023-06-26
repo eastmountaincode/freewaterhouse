@@ -215,6 +215,10 @@ function loginForm(){
     <script type="text/javascript">
         // jQuery Document 
         $(document).ready(function () {
+            if ($("#chatbox")[0]) {
+                var chatboxScrollHeight = $("#chatbox")[0].scrollHeight;
+                $("#chatbox").animate({ scrollTop: chatboxScrollHeight }, 'normal');
+            }
             $("#loginForm").on('submit', function(e) {
                 e.preventDefault();
                 var name = $('#name').val();
