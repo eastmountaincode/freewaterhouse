@@ -15,7 +15,7 @@ form label {
 #chat_wrapper,
 #chat_loginform {
     margin: 0 auto;
-    padding-bottom: 0px;
+    padding-bottom: 25px;
     background: #eee;
     width: 600px;
     max-width: 100%;
