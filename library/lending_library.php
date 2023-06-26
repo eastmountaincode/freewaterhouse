@@ -172,6 +172,12 @@ function loginForm(){
     </div>
     <br>
     <br>
+    <h3>
+        <pre>
+█▀▀ █░█ ▄▀█ ▀█▀
+█▄▄ █▀█ █▀█ ░█░
+        </pre>
+    </h3>
 
     <div id="chat_wrapper">
         <?php
