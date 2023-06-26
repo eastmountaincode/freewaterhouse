@@ -20,7 +20,7 @@ if(isset($_POST['enter'])){
 function loginForm(){
     echo 
     '<div id="chat_loginform"> 
-<p>Please enter your name to continue!</p> 
+<p>Enter a name to enter the chat...</p> 
 <form action="lending_library.php" method="post"> 
 <label for="name">Name &mdash;</label> 
 <input type="text" name="name" id="name" /> 
