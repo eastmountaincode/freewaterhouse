@@ -116,3 +116,7 @@ a#chat_exit {
 .msgln b.user-name-left {
     background: orangered;
 }
+
+input[type="text"] {
+    font-size: 16px;
+}
