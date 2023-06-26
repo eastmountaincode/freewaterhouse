@@ -12,21 +12,22 @@ if(isset($_GET['logout'])){
 if(isset($_POST['enter'])){
     if($_POST['name'] != ""){
         $_SESSION['name'] = stripslashes(htmlspecialchars($_POST['name']));
+        echo json_encode(array('error' => false));
+    } else {
+        echo json_encode(array('error' => true, 'message' => 'Please type in a name'));
     }
-    else{
-        echo '<span class="error">Please type in a name</span>';
-    }
+    exit(); // Ensure no further output
 }
 function loginForm(){
     echo 
     '<div id="chat_loginform"> 
-<p>Enter a name to enter the chat...</p> 
-<form action="lending_library.php" method="post"> 
-<label for="name">Name &mdash;</label> 
-<input type="text" name="name" id="name" /> 
-<input type="submit" name="enter" id="enter" value="Enter" /> 
-</form> 
-</div>';
+        <p>Enter a name to enter the chat...</p> 
+        <form id="loginForm" action="lending_library.php" method="post"> 
+        <label for="name">Name &mdash;</label> 
+        <input type="text" name="name" id="name" /> 
+        <input type="submit" name="enter" id="enter" value="Enter" /> 
+        </form> 
+    </div>';
 }
 ?>
 
@@ -214,6 +215,24 @@ function loginForm(){
     <script type="text/javascript">
         // jQuery Document 
         $(document).ready(function () {
+            $("#loginForm").on('submit', function(e) {
+                e.preventDefault();
+                var name = $('#name').val();
+                $.ajax({
+                    type: "POST",
+                    url: "lending_library.php",
+                    data: { enter: true, name: name },
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.error) {
+                            alert(response.message);
+                        } else {
+                            location.reload();
+                        }
+                    }
+                });
+            });
+
             $("#chat_submitmsg").click(function () {
                 var clientmsg = $("#chat_usermsg").val();
                 $.post("chat_post.php", { text: clientmsg });
