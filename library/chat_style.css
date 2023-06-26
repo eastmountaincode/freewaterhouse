@@ -60,7 +60,7 @@ form label {
     padding: 2px 8px;
 }
 
-#submitmsg,
+#chat_submitmsg,
 #enter{
     background: #ff9800;
     border: 2px solid #e65100;
@@ -79,7 +79,7 @@ form label {
     display: flex;
 }
 
-#chat_menu p.welcome {
+#chat_menu p.chat_welcome {
     flex: 1;
 }
 
