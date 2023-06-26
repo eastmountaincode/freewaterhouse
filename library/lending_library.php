@@ -25,6 +25,12 @@
 
     
     <!-- <img class="book_shelf" src="../images/book_shelf.png" alt="some books"> -->
+    <a href="#" id="toggleButton">About⬇</a>
+    <div id="more">
+        Like a <a href="https://littlefreelibrary.org/">Little Free Library</a>, but on the internet! 
+        Leave a song, poem, pdf, movie, zip file, whatever! Check out what other people have left, 
+        but remember, if you download the file it will be removed from the box, just like in real life.
+    </div>
     <br>
     <div class="library_wrapper">
         <div class="library">
