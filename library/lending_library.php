@@ -171,14 +171,15 @@ function loginForm(){
             <p class="chat_logout"><a id="chat_exit" href="#">Exit Chat</a></p>
         </div>
         <div id="chatbox">
-        <?php
-        if(file_exists("chat_log.html") && filesize("chat_log.html") > 0){
-            
-            $contents = file_get_contents("chat_log.html");
-            echo $contents;
-        }
-        ?>
+            <?php
+            if(file_exists("chat_log.html") && filesize("chat_log.html") > 0){
+                
+                $contents = file_get_contents("chat_log.html");
+                echo $contents;
+            }
+            ?>
         </div>
+
         <form name="chat_message" action="">
             <input name="chat_usermsg" type="text" id="chat_usermsg" />
             <input name="chat_submitmsg" type="submit" id="chat_submitmsg" value="Send" />
