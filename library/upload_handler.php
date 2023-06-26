@@ -81,4 +81,15 @@
         $msg = array("status" => -1, "msg" => "No file received.");
         echo json_encode($msg);
     }
+
+    function logToFile($message) {
+        // Define the name of the file
+        $file = 'log.txt';
+    
+        // Define the date format
+        $date = date('Y-m-d H:i:s');
+    
+        // Write the date, IP address and message to the log file
+        file_put_contents($file, $date . ' - ' . $_SERVER['REMOTE_ADDR'] . ' - ' . $message . "\n", FILE_APPEND);
+    }
 ?>
