@@ -207,17 +207,24 @@ function loginForm(){
                 return false;
             });
             function loadLog() {
-                var oldscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height before the request 
+                var oldscrollHeight;
+                if ($("#chatbox")[0]) {
+                    oldscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height before the request 
+                }
+
                 $.ajax({
                     url: "chat_log.html",
                     cache: false,
                     success: function (html) {
                         $("#chatbox").html(html); //Insert chat log into the #chatbox div 
                         //Auto-scroll 
-                        var newscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height after the request 
-                        if(newscrollHeight > oldscrollHeight){
-                            $("#chatbox").animate({ scrollTop: newscrollHeight }, 'normal'); //Autoscroll to bottom of div 
-                        }	
+                        var newscrollHeight;
+                        if ($("#chatbox")[0]) {
+                            newscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height after the request 
+                            if(newscrollHeight > oldscrollHeight){
+                                $("#chatbox").animate({ scrollTop: newscrollHeight }, 'normal'); //Autoscroll to bottom of div 
+                            }
+                        }
                     }
                 });
             }
