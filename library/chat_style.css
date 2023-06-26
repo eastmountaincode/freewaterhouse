@@ -12,15 +12,6 @@ form label {
     font-weight: bold;
 }
 
-input {
-    font-family: "Lato";
-}
-
-a {
-    color: #0000ff;
-    text-decoration: none;
-}
-
 a:hover {
     text-decoration: underline;
 }
