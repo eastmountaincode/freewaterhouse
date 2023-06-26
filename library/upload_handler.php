@@ -67,6 +67,10 @@
 
                 // File upload succeeded, so return a JSON response with a status code of 1, a success message, and the file path
                 $msg = array("status" => 1, "msg" => "File Has Been Uploaded", "path" => $targetFile);
+
+                // Log the upload
+                logToFile('File uploaded: ' . $filename . ', size: ' . $_FILES['attachments']['size'][0] . ', type: ' . $_FILES['attachments']['type'][0]);
+                
             } else {
                 // File upload failed, so return a JSON response with a status code of -2, an error message, and the PHP error
                 $msg = array("status" => -2, "msg" => "File upload failed", "error" => error_get_last());

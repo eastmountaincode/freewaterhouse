@@ -5,6 +5,8 @@
         $filepath = '/var/www/html/freewaterhouse/library/uploaded_files/box' . $boxNumber . '/' . $filename;
 
         if (file_exists($filepath)) {
+            $fileSize = filesize($filepath);  // Save filesize before file download
+
             header('Content-Description: File Transfer');
             header('Content-Type: application/octet-stream');
             header('Content-Disposition: attachment; filename="' . basename($filepath) . '"');
@@ -14,6 +16,9 @@
             header('Content-Length: ' . filesize($filepath));
 
             readfile($filepath);
+
+            // Log the download
+            logToFile('File downloaded: ' . $filename . ', size: ' . filesize($filepath));
 
             // Remove the file after downloading
             unlink($filepath);
@@ -32,5 +37,5 @@
         // Write the date, IP address and message to the log file
         file_put_contents($file, $date . ' - ' . $_SERVER['REMOTE_ADDR'] . ' - ' . $message . "\n", FILE_APPEND);
     }
-    
+
 ?>
