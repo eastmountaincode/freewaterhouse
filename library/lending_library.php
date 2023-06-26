@@ -59,10 +59,18 @@ function loginForm(){
     
     <!-- <img class="book_shelf" src="../images/book_shelf.png" alt="some books"> -->
     <a href="#" id="toggleButton">About⬇</a>
+    <script type="text/javascript">
+        var user = 'andreweboylan';
+        var domain = 'gmail.com';
+        var element = document.getElementById('email');
+        element.innerHTML = '<a href="mailto:' + user + '@' + domain + '">' + user + '@' + domain + '</a>';
+
+    </script>
     <div id="more">
         Like a <a href="https://littlefreelibrary.org/">Little Free Library</a>, but on the internet! 
-        Leave a song, poem, pdf, movie, zip file, whatever! Check out what other people have left, 
-        but remember, if you download the file it will be removed from the box, just like in real life.
+        Leave a song, poem, drawing, pdf, movie, zip file, whatever! Check out what other people have left, 
+        but remember, if you download the file, it will be removed from the box, just like in real life. If 
+        you want to chat about community-activated public art, please email me at <span id="email"></span>.
     </div>
     <br>
     <div class="library_wrapper">
