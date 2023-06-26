@@ -13,7 +13,7 @@ form label {
 }
 
 #chat_wrapper,
-#loginform {
+#chat_loginform {
     margin: 0 auto;
     padding-bottom: 25px;
     background: #eee;
@@ -74,16 +74,16 @@ form label {
     color: #ff0000;
 }
 
-#menu {
+#chat_menu {
     padding: 15px 25px;
     display: flex;
 }
 
-#menu p.welcome {
+#chat_menu p.welcome {
     flex: 1;
 }
 
-a#exit {
+a#chat_exit {
     color: white;
     background: #c62828;
     padding: 4px 8px;
