@@ -166,6 +166,11 @@ function loginForm(){
     <br>
 
     <div id="chat_wrapper">
+        <?php
+        if(!isset($_SESSION['name'])){
+            loginForm();
+        } else {
+        ?>
         <div id="chat_menu">
             <p class="chat_welcome">Welcome, <b><?php echo $_SESSION['name']; ?></b></p>
             <p class="chat_logout"><a id="chat_exit" href="#">Exit Chat</a></p>
@@ -184,6 +189,9 @@ function loginForm(){
             <input name="chat_usermsg" type="text" id="chat_usermsg" />
             <input name="chat_submitmsg" type="submit" id="chat_submitmsg" value="Send" />
         </form>
+        <?php
+        }
+        ?>
     </div>
 
     <script src="main.js"></script>
