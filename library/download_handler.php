@@ -6,6 +6,8 @@
 
         if (file_exists($filepath)) {
             $fileSize = filesize($filepath);  // Save filesize before file download
+            $fileType = mime_content_type($filepath);  // Get MIME type
+
 
             header('Content-Description: File Transfer');
             header('Content-Type: application/octet-stream');
@@ -18,7 +20,7 @@
             readfile($filepath);
 
             // Log the download
-            logToFile('File downloaded: ' . $filename . ', size: ' . filesize($filepath));
+            logToFile('File downloaded: ' . $filename . ', type: ' . $fileType . ', size: ' . filesize($filepath));
 
             // Remove the file after downloading
             unlink($filepath);
