@@ -172,14 +172,14 @@ function loginForm(){
         $(document).ready(function () {
             $("#submitmsg").click(function () {
                 var clientmsg = $("#usermsg").val();
-                $.post("post.php", { text: clientmsg });
+                $.post("chat_post.php", { text: clientmsg });
                 $("#usermsg").val("");
                 return false;
             });
             function loadLog() {
                 var oldscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height before the request 
                 $.ajax({
-                    url: "log.html",
+                    url: "chat_log.html",
                     cache: false,
                     success: function (html) {
                         $("#chatbox").html(html); //Insert chat log into the #chatbox div 
@@ -195,7 +195,7 @@ function loginForm(){
             $("#exit").click(function () {
                 var exit = confirm("Are you sure you want to end the session?");
                 if (exit == true) {
-                window.location = "index.php?logout=true";
+                    window.location = "lending_library.php?logout=true";
                 }
             });
         });
