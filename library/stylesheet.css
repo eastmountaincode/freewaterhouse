@@ -12,6 +12,21 @@ th, td {
     text-align: center;
 }
 
+.table {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.cell {
+    flex: 1;
+    padding: 20px; /* adjust as needed */
+}
+
 #uploadArea1, #uploadArea2, #uploadArea3, #uploadArea4 {
     padding: 10px;
     text-overflow: ellipsis; /* Adds an ellipsis when the content is too large */

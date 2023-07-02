@@ -80,96 +80,90 @@ function loginForm(){
 
 
             <!-- BEGINNING OF TABLE UPLOAD/DOWNLOAD AREA -->
-            <table>
-                <tr>
-                    <td>
-                        <div id = "uploadArea1">
-                            <h3>
-                            <pre>                     
+            <div class="table">
+                <div class="row">
+                    <div class="cell" id = "uploadArea1">
+                        <h3>
+                        <pre>                     
 █▄▄ █▀█ ▀▄▀   █▀█ █▄░█ █▀▀
 █▄█ █▄█ █░█   █▄█ █░▀█ ██▄
-                            </pre>
-                            </h3>
-                            <div id="fileInfo1"></div>
-                            <br>
-                            <div class="buttonDiv">
-                                <input type="file" id="fileSelect1" name="attachments[]">
-                                <button id="uploadButton1" disabled>Upload</button>
-                                <button id="downloadButton1" disabled>Download</button>
-                            </div>
-                            <div id="uploadProgressBar1" style="width: 0%; height: 20px; background: green;"></div>
-                            <p id="progressPercent1"></p>
-                            <p id="uploadSuccessMessage1"></p>
-                            <p id="error1"></p>
+                        </pre>
+                        </h3>
+                        <div id="fileInfo1"></div>
+                        <br>
+                        <div class="buttonDiv">
+                            <input type="file" id="fileSelect1" name="attachments[]">
+                            <button id="uploadButton1" disabled>Upload</button>
+                            <button id="downloadButton1" disabled>Download</button>
                         </div>
-                    </td>
-                    <td>
-                        <div id = "uploadArea2">
-                            <h3>
-                            <pre>
+                        <div id="uploadProgressBar1" style="width: 0%; height: 20px; background: green;"></div>
+                        <p id="progressPercent1"></p>
+                        <p id="uploadSuccessMessage1"></p>
+                        <p id="error1"></p>
+                    </div>
+                
+                
+                    <div class="cell" id="uploadArea2">
+                        <h3>
+                        <pre>
 █▄▄ █▀█ ▀▄▀   ▀█▀ █░█░█ █▀█
 █▄█ █▄█ █░█   ░█░ ▀▄▀▄▀ █▄█
-                            </pre>
-                            </h3>
-                            <div id="fileInfo2"></div>
-                            <br>
-                            <div class="buttonDiv">
-                                <input type="file" id="fileSelect2" name="attachments[]">
-                                <button id="uploadButton2" disabled>Upload</button>
-                                <button id="downloadButton2" disabled>Download</button>
-                            </div>
-                            <div id="uploadProgressBar2" style="width: 0%; height: 20px; background: green;"></div>
-                            <p id="progressPercent2"></p>
-                            <p id="uploadSuccessMessage2"></p>
-                            <p id="error2"></p>
+                        </pre>
+                        </h3>
+                        <div id="fileInfo2"></div>
+                        <br>
+                        <div class="buttonDiv">
+                            <input type="file" id="fileSelect2" name="attachments[]">
+                            <button id="uploadButton2" disabled>Upload</button>
+                            <button id="downloadButton2" disabled>Download</button>
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <div id = "uploadArea3">
-                            <h3>
-                            <pre>
+                        <div id="uploadProgressBar2" style="width: 0%; height: 20px; background: green;"></div>
+                        <p id="progressPercent2"></p>
+                        <p id="uploadSuccessMessage2"></p>
+                        <p id="error2"></p>
+                    </div>
+                    
+                </div>
+                <div class="row"> 
+                    <div class="cell" id = "uploadArea3">
+                        <h3>
+                        <pre>
 █▄▄ █▀█ ▀▄▀   ▀█▀ █░█ █▀█ █▀▀ █▀▀
 █▄█ █▄█ █░█   ░█░ █▀█ █▀▄ ██▄ ██▄
-                            </pre>
-                            </h3>
-                            <div id="fileInfo3"></div>
-                            <br>
-                            <div class="buttonDiv">
-                                <input type="file" id="fileSelect3" name="attachments[]">
-                                <button id="uploadButton3" disabled>Upload</button>
-                                <button id="downloadButton3" disabled>Download</button>
-                            </div>
-                            <div id="uploadProgressBar3" style="width: 0%; height: 20px; background: green;"></div>
-                            <p id="progressPercent3"></p>
-                            <p id="uploadSuccessMessage3"></p>
-                            <p id="error3"></p>
+                        </pre>
+                        </h3>
+                        <div id="fileInfo3"></div>
+                        <br>
+                        <div class="buttonDiv">
+                            <input type="file" id="fileSelect3" name="attachments[]">
+                            <button id="uploadButton3" disabled>Upload</button>
+                            <button id="downloadButton3" disabled>Download</button>
                         </div>
-                    </td>
-                    <td>
-                        <div id = "uploadArea4">
-                            <h3>
-                            <pre>
+                        <div id="uploadProgressBar3" style="width: 0%; height: 20px; background: green;"></div>
+                        <p id="progressPercent3"></p>
+                        <p id="uploadSuccessMessage3"></p>
+                        <p id="error3"></p>
+                    </div>
+                    <div class="cell" id="uploadArea4">
+                        <h3>
+                        <pre>
 █▄▄ █▀█ ▀▄▀   █▀▀ █▀█ █░█ █▀█
 █▄█ █▄█ █░█   █▀░ █▄█ █▄█ █▀▄
-                            </pre>
-                            </h3>
-                            <div id="fileInfo4"></div>
-                            <br>
-                            <div class="buttonDiv">
-                                <input type="file" id="fileSelect4" name="attachments[]">
-                                <button id="uploadButton4" disabled>Upload</button>
-                                <button id="downloadButton4" disabled>Download</button>
-                            </div>
-                            <div id="uploadProgressBar4" style="width: 0%; height: 20px; background: green;"></div>
-                            <p id="progressPercent4"></p>
-                            <p id="uploadSuccessMessage4"></p>
-                            <p id="error4"></p>
+                        </pre>
+                        </h3>
+                        <div id="fileInfo4"></div>
+                        <br>
+                        <div class="buttonDiv">
+                            <input type="file" id="fileSelect4" name="attachments[]">
+                            <button id="uploadButton4" disabled>Upload</button>
+                            <button id="downloadButton4" disabled>Download</button>
                         </div>
-                    </td>
-
-                </tr>
+                        <div id="uploadProgressBar4" style="width: 0%; height: 20px; background: green;"></div>
+                        <p id="progressPercent4"></p>
+                        <p id="uploadSuccessMessage4"></p>
+                        <p id="error4"></p>
+                    </div>
+                </div>
             </table>
             <div class="trunk"></div>
         </div>
