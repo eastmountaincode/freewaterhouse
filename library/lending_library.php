@@ -86,6 +86,7 @@ function loginForm(){
                         <div class="cell box1" id = "uploadArea1">
                             <h3>
                             <pre>
+
 █▄▄ █▀█ ▀▄▀   █▀█ █▄░█ █▀▀
 █▄█ █▄█ █░█   █▄█ █░▀█ ██▄
                             </pre>
@@ -107,6 +108,7 @@ function loginForm(){
                         <div class="cell box2" id="uploadArea2">
                             <h3>
                             <pre>
+
 █▄▄ █▀█ ▀▄▀   ▀█▀ █░█░█ █▀█
 █▄█ █▄█ █░█   ░█░ ▀▄▀▄▀ █▄█
                             </pre>
@@ -129,6 +131,7 @@ function loginForm(){
                         <div class="cell box3" id = "uploadArea3">
                             <h3>
                             <pre>
+
 █▄▄ █▀█ ▀▄▀   ▀█▀ █░█ █▀█ █▀▀ █▀▀
 █▄█ █▄█ █░█   ░█░ █▀█ █▀▄ ██▄ ██▄
                             </pre>
@@ -148,6 +151,7 @@ function loginForm(){
                         <div class="cell box4" id="uploadArea4">
                             <h3>
                             <pre>
+                                
 █▄▄ █▀█ ▀▄▀   █▀▀ █▀█ █░█ █▀█
 █▄█ █▄█ █░█   █▀░ █▄█ █▄█ █▀▄
                             </pre>
