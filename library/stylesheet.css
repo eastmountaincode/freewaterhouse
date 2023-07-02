@@ -114,18 +114,14 @@ h3 {
     }
 
     .cell {
-        border-left: 0;
-        border-right: 0;
+        border-left: 32px solid hsl(90, 100%, 50%); /* Add left border */
+        border-right: 32px solid hsl(90, 100%, 50%); /* Add right border */
         border-bottom: 32px solid hsl(90, 100%, 50%);
+        border-top: 0; /* Remove top border */
     }
 
-    .cell + .cell {
-        border-left: 0;
-    }
-    
-    /* Add bottom border for the last cell of each row */
-    .row .cell:last-child { 
-        border-bottom: 32px solid hsl(90, 100%, 50%);
+    .cell:first-child {
+        border-top: 32px solid hsl(90, 100%, 50%); /* Add top border to first cell */
     }
 
     h3 {
