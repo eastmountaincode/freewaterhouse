@@ -77,6 +77,9 @@ function loginForm(){
     <div class="library_wrapper">
         <div class="library">
             <div class="roof"></div>
+
+
+            <!-- BEGINNING OF TABLE UPLOAD/DOWNLOAD AREA -->
             <table>
                 <tr>
                     <td>
