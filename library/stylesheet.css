@@ -135,6 +135,7 @@ h3 {
         border-top: 32px solid hsl(90, 100%, 50%);
         border-left: 32px solid hsl(90, 100%, 50%);
         border-right: 32px solid hsl(90, 100%, 50%);
+        border-bottom: none; /* Remove the bottom border from all cells */
     }
 
     /* The bottom box should also have a bottom border */
