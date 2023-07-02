@@ -130,27 +130,11 @@ h3 {
         flex-direction: column;
     }
 
-    /* When stacked, all boxes should have top, left, and right borders */
-    .cell.box1, .cell.box2 {
+    .cell {
         border-top: 14px solid hsl(90, 100%, 50%);
         border-left: 14px solid hsl(90, 100%, 50%);
         border-right: 14px solid hsl(90, 100%, 50%);
         border-bottom: none; /* Remove the bottom border from all cells */
-    }
-
-    .cell.box3 {
-        border-top: 14px solid hsl(90, 100%, 50%);
-        border-left: 14px solid hsl(90, 100%, 50%);
-        border-right: 14px solid hsl(90, 100%, 50%);
-        border-bottom: none; /* Specifically remove the bottom border for box3 on mobile */
-    }
-
-    /* The bottom box should also have a bottom border */
-    .cell.box4 {
-        border-bottom: 14px solid hsl(90, 100%, 50%);
-        border-left: 14px solid hsl(90, 100%, 50%);
-        border-right: 14px solid hsl(90, 100%, 50%);
-        border-top: none;
     }
 
     h3 {
