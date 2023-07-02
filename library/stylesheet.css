@@ -14,7 +14,7 @@ th, td {
 
 #uploadArea1, #uploadArea2, #uploadArea3, #uploadArea4 {
     padding: 10px;
-    max-width: 100%; /* Enforce a maximum width */
+    max-width: 50%; /* Enforce a maximum width */
     white-space: nowrap; /* Prevents the content from wrapping to a new line */
     overflow: hidden; /* Hides content that exceeds the box */
     text-overflow: ellipsis; /* Adds an ellipsis when the content is too large */
