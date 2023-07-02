@@ -95,6 +95,7 @@ h3 {
     color: black;
 }
 
+/* SMALL SCREENS */
 @media screen and (max-width: 888px) {
     .table {
         max-width: 88%;
@@ -126,17 +127,13 @@ h3 {
     background-color: #7FFF00;
     margin: auto;
     }
+
+    .buttonDiv {
+        border: 1px blue;
+    }
 }
 
-
-#more {
-    display: none;
-    padding: 10px 60px;  /* The first value is for top/bottom, the second for left/right. */
-    margin-top: 10px;
-    /* border-top: 1px solid #eee; */
-    font: black;
-}
-
+/* LARGE SCREENS */
 @media screen and (min-width: 889px) {
     #more {
       padding: 10px 240px;
@@ -178,4 +175,12 @@ h3 {
     font-size: 20px;
     text-align: center;
     margin: 20px 0;
+}
+
+#more {
+    display: none;
+    padding: 10px 60px;  /* The first value is for top/bottom, the second for left/right. */
+    margin-top: 10px;
+    /* border-top: 1px solid #eee; */
+    font: black;
 }
