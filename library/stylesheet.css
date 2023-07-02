@@ -15,16 +15,33 @@ th, td {
 .table {
     display: flex;
     flex-direction: column;
+
+    width: 100%;
+    margin: auto;
+    color: #7FFF00;
 }
 
 .row {
     display: flex;
     flex-direction: row;
+
+    border: 32px solid hsl(90, 100%, 50%);
+    color: black;
+    padding: 15px 0;
+    text-align: center;
+    box-sizing: border-box;
 }
 
 .cell {
     flex: 1;
     padding: 20px; /* adjust as needed */
+
+    text-align: center;
+    border-top: 26px solid #7FFF00;
+    border-left: 26px solid #7FFF00;
+    border-right: 26px solid #7FFF00;
+    border-bottom: 0;
+    
 }
 
 #uploadArea1, #uploadArea2, #uploadArea3, #uploadArea4 {
