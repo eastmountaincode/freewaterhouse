@@ -85,8 +85,7 @@ function loginForm(){
                     <div class="row">
                         <div class="cell box1" id = "uploadArea1">
                             <h3>
-                            <pre>                     
-█▄▄ █▀█ ▀▄▀   █▀█ █▄░█ █▀▀
+                            <pre>█▄▄ █▀█ ▀▄▀   █▀█ █▄░█ █▀▀
 █▄█ █▄█ █░█   █▄█ █░▀█ ██▄
                             </pre>
                             </h3>
