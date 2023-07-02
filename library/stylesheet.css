@@ -105,15 +105,15 @@ h3 {
     }
 
     .cell {
-        border-top: 27px solid hsl(90, 100%, 50%);
-        border-left: 27px solid hsl(90, 100%, 50%);
-        border-right: 27px solid hsl(90, 100%, 50%);
+        border-top: 24px solid hsl(90, 100%, 50%);
+        border-left: 24px solid hsl(90, 100%, 50%);
+        border-right: 24px solid hsl(90, 100%, 50%);
         border-bottom: none; /* Remove the bottom border from all cells */
-        padding: 15px;
+        padding: 10px;
     }
 
     .row:last-child {
-        border-bottom: 27px solid hsl(90, 100%, 50%);
+        border-bottom: 24px solid hsl(90, 100%, 50%);
         border-top: none;
     }
 
