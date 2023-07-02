@@ -80,6 +80,7 @@ function loginForm(){
 
 
             <!-- BEGINNING OF TABLE UPLOAD/DOWNLOAD AREA -->
+            <div class="table-container">
             <div class="table">
                 <div class="row">
                     <div class="cell" id = "uploadArea1">
@@ -164,7 +165,8 @@ function loginForm(){
                         <p id="error4"></p>
                     </div>
                 </div>
-            </table>
+            </div>
+            </div>
             <div class="trunk"></div>
         </div>
     </div>
