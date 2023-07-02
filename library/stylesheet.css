@@ -141,6 +141,7 @@ h3 {
     /* The bottom box should also have a bottom border */
     .cell.box4 {
         border-bottom: 32px solid hsl(90, 100%, 50%);
+        border-top: none;
     }
 
     h3 {
