@@ -48,8 +48,7 @@
 }
 
 .cell.box4 {
-    /* border-top: 32px solid hsl(90, 100%, 50%); */
-    border-top: none;
+    border-top: 32px solid hsl(90, 100%, 50%);
     border-left: 32px solid hsl(90, 100%, 50%);
     border-right: 32px solid hsl(90, 100%, 50%);
 }
