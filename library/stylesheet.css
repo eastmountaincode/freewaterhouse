@@ -112,6 +112,7 @@ h3 {
 
     .row:last-child .cell {
         border-bottom: 14px solid hsl(90, 100%, 50%);
+        border-top: none;
     }
 
     h3 {
