@@ -131,7 +131,7 @@ h3 {
     }
 
     /* When stacked, all boxes should have top, left, and right borders */
-    .cell.box1 .cell.box2 .cell.box3 {
+    .cell.box1, .cell.box2, .cell.box3 {
         border-top: 14px solid hsl(90, 100%, 50%);
         border-left: 14px solid hsl(90, 100%, 50%);
         border-right: 14px solid hsl(90, 100%, 50%);
