@@ -154,7 +154,7 @@ function checkFileStatus(boxNumber) {
                     // document.getElementById(`fileInfo${boxNumber}`).innerText = '';
                 };
 
-                document.getElementById(`fileInfo${boxNumber}`).innerText = fileInfo;
+                document.getElementById(`fileInfo${boxNumber}`).innerHTML = fileInfo;
 
             }
         })
