@@ -16,13 +16,18 @@
     box-sizing: border-box;
 }
 
+.row:last-child .cell:last-child {
+    border-bottom: 32px solid hsl(90, 100%, 50%);
+}
+
 .cell {
     flex: 1;
-    padding: 20px; 
-
+    padding: 20px;
     text-align: center;
-    border: 32px solid hsl(90, 100%, 50%);
-    box-sizing: border-box; 
+    border-top: 32px solid hsl(90, 100%, 50%);
+    border-left: 32px solid hsl(90, 100%, 50%);
+    border-right: 32px solid hsl(90, 100%, 50%);
+    box-sizing: border-box;
 }
 
 .cell + .cell {
