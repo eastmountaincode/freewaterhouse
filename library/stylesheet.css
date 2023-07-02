@@ -39,7 +39,6 @@
     padding: 10px;
 }
 
-/* Add these styles to change the layout of the buttons and the input field */
 #fileSelect1, #fileSelect2, #fileSelect3, #fileSelect4,
 #uploadButton1, #uploadButton2, #uploadButton3, #uploadButton4,
 #downloadButton1, #downloadButton2, #downloadButton3, #downloadButton4 {
@@ -104,68 +103,27 @@ h3 {
     color: black;
 }
 
-/* Style changes for screens larger than 1006px */
-@media screen and (min-width: 1006px) {
-    table {
-        /* padding: 0 20px; /* Add padding to the left and right sides */
+@media screen and (max-width: 600px) {
+    .table {
         width: 85%;
     }
-    /* #fileSelect1, #fileSelect2, #fileSelect3, #fileSelect4,
-    #uploadButton1, #uploadButton2, #uploadButton3, #uploadButton4,
-    #downloadButton1, #downloadButton2, #downloadButton3, #downloadButton4 {
-        margin-left: 80px;
-    } */
-}
+    .table, .row {
+        flex-direction: column;
+    }
 
-/* Style changes when the viewport is 1005px or less */
-@media screen and (max-width: 1005px) {
-    table, thead, tbody, th, td, tr { 
-        display: block; 
-        width: 97%;
-        text-align: center;
-        margin: auto;
-        box-sizing: border-box;
+    .cell {
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 32px solid hsl(90, 100%, 50%);
     }
-    /* Hide table headers (but not display: none;, for accessibility) */
-    thead tr { 
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
+
+    .cell + .cell {
+        border-left: 0;
     }
-    /* tr { 
-        padding: 60px;
-    } */
     
-    td { 
-        /* Behave like a "row" */
-        border-top: 26px solid #7FFF00;
-        border-left: 26px solid #7FFF00;
-        border-right: 26px solid #7FFF00;
-        border-bottom: 0px;
-        text-align: center;
-        padding-left: 0px;
-        padding-right: 0px;
-        position: relative;
-    }
-
-    /* Add left border for the first cell of each row */
-    tr td:first-child { 
-        border-left: 26px solid #7FFF00;
-    }
-
-    /* Add right border for the last cell of each row */
-    tr td:last-child { 
-        border-right: 26px solid #7FFF00;
-    }
-
-    /* Remove bottom border for the last cell of the first row */
-    tr:first-child td:last-child { 
-        border-bottom: 0;
-    }
-
-    /* Add bottom border for the last cell of the last row */
-    tr:last-child td:last-child { 
-        border-bottom: 26px solid #7FFF00;
+    /* Add bottom border for the last cell of each row */
+    .row .cell:last-child { 
+        border-bottom: 32px solid hsl(90, 100%, 50%);
     }
 
     h3 {
@@ -181,6 +139,7 @@ h3 {
     }
 }
 
+
 #more {
     display: none;
     padding: 10px 60px;  /* The first value is for top/bottom, the second for left/right. */
@@ -189,13 +148,11 @@ h3 {
     font: black;
 }
 
-@media screen and (min-width: 1005px) {
+@media screen and (min-width: 601px) {
     #more {
       padding: 10px 240px;
     }
   }
-
-
 
 #toggleButton {
     display: block;
