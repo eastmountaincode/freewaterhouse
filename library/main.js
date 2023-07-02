@@ -133,7 +133,7 @@ function checkFileStatus(boxNumber) {
                 document.getElementById(`fileInfo${boxNumber}`).innerText = '';
             } else {
                 var file = data.file;
-                var fileInfo = `<b>File Name:</b> ${file.filename}\n <b>File Size:</b> ${formatBytes(file.filesize)}\n <b>File Type:</b> ${file.filetype}`;
+                var fileInfo = `<b>File Name:</b> ${file.filename}<br><b>File Size:</b> ${formatBytes(file.filesize)}<br><b>File Type:</b> ${file.filetype}`;
 
                 // A file exists, so disable the file selection and upload buttons and show the download button
                 fileSelect.disabled = true;
