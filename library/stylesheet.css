@@ -17,10 +17,6 @@
     box-sizing: border-box;
 }
 
-.row:last-child .cell {
-    border-bottom: 32px solid hsl(90, 100%, 50%);
-}
-
 /* Generic styles for all cells */
 .cell {
     flex: 1;
@@ -163,7 +159,11 @@ h3 {
         border-left: 32px solid hsl(90, 100%, 50%);
         border-right: 32px solid hsl(90, 100%, 50%);
     }
-    
+
+    .row:last-child .cell {
+        border-bottom: 32px solid hsl(90, 100%, 50%);
+    }
+
   }
 
 #toggleButton {
