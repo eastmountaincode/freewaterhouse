@@ -97,6 +97,10 @@ h3 {
 
 /* SMALL SCREENS */
 @media screen and (max-width: 888px) {
+    #fileInfo1, #fileInfo2, #fileInfo3, #fileInfo4 {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
     .table {
         max-width: 88%;
     }
