@@ -132,15 +132,15 @@ h3 {
 
     /* When stacked, all boxes should have top, left, and right borders */
     .cell {
-        border-top: 28px solid hsl(90, 100%, 50%);
-        border-left: 28px solid hsl(90, 100%, 50%);
-        border-right: 28px solid hsl(90, 100%, 50%);
+        border-top: 14px solid hsl(90, 100%, 50%);
+        border-left: 14px solid hsl(90, 100%, 50%);
+        border-right: 14px solid hsl(90, 100%, 50%);
         border-bottom: none; /* Remove the bottom border from all cells */
     }
 
     /* The bottom box should also have a bottom border */
     .cell.box4 {
-        border-bottom: 28px solid hsl(90, 100%, 50%);
+        border-bottom: 14px solid hsl(90, 100%, 50%);
         border-top: none;
     }
 
