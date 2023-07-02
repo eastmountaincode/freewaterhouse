@@ -86,8 +86,8 @@ function loginForm(){
                         <div class="cell" id = "uploadArea1">
                             <h3>
                             <pre>                     
-    █▄▄ █▀█ ▀▄▀   █▀█ █▄░█ █▀▀
-    █▄█ █▄█ █░█   █▄█ █░▀█ ██▄
+█▄▄ █▀█ ▀▄▀   █▀█ █▄░█ █▀▀
+█▄█ █▄█ █░█   █▄█ █░▀█ ██▄
                             </pre>
                             </h3>
                             <div id="fileInfo1"></div>
@@ -107,8 +107,8 @@ function loginForm(){
                         <div class="cell" id="uploadArea2">
                             <h3>
                             <pre>
-    █▄▄ █▀█ ▀▄▀   ▀█▀ █░█░█ █▀█
-    █▄█ █▄█ █░█   ░█░ ▀▄▀▄▀ █▄█
+█▄▄ █▀█ ▀▄▀   ▀█▀ █░█░█ █▀█
+█▄█ █▄█ █░█   ░█░ ▀▄▀▄▀ █▄█
                             </pre>
                             </h3>
                             <div id="fileInfo2"></div>
@@ -129,8 +129,8 @@ function loginForm(){
                         <div class="cell" id = "uploadArea3">
                             <h3>
                             <pre>
-    █▄▄ █▀█ ▀▄▀   ▀█▀ █░█ █▀█ █▀▀ █▀▀
-    █▄█ █▄█ █░█   ░█░ █▀█ █▀▄ ██▄ ██▄
+█▄▄ █▀█ ▀▄▀   ▀█▀ █░█ █▀█ █▀▀ █▀▀
+█▄█ █▄█ █░█   ░█░ █▀█ █▀▄ ██▄ ██▄
                             </pre>
                             </h3>
                             <div id="fileInfo3"></div>
@@ -148,8 +148,8 @@ function loginForm(){
                         <div class="cell" id="uploadArea4">
                             <h3>
                             <pre>
-    █▄▄ █▀█ ▀▄▀   █▀▀ █▀█ █░█ █▀█
-    █▄█ █▄█ █░█   █▀░ █▄█ █▄█ █▀▄
+█▄▄ █▀█ ▀▄▀   █▀▀ █▀█ █░█ █▀█
+█▄█ █▄█ █░█   █▀░ █▄█ █▄█ █▀▄
                             </pre>
                             </h3>
                             <div id="fileInfo4"></div>
