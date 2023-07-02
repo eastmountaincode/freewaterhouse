@@ -21,16 +21,36 @@
     border-bottom: 32px solid hsl(90, 100%, 50%);
 }
 
+/* Generic styles for all cells */
 .cell {
     flex: 1;
     padding: 20px;
     text-align: center;
+    box-sizing: border-box;
+    min-width: 0; /* New! This ensures that all cells will have the same width */
+}
+
+/* Specific styles for each box */
+.cell.box1 {
     border-top: 32px solid hsl(90, 100%, 50%);
     border-left: 32px solid hsl(90, 100%, 50%);
     border-right: 32px solid hsl(90, 100%, 50%);
-    box-sizing: border-box;
-    min-width: 0; /* New! This ensures that all cells will have the same width */
+}
 
+.cell.box2 {
+    border-top: 32px solid hsl(90, 100%, 50%);
+    border-right: 32px solid hsl(90, 100%, 50%);
+}
+
+.cell.box3 {
+    border-top: 32px solid hsl(90, 100%, 50%);
+    border-left: 32px solid hsl(90, 100%, 50%);
+}
+
+.cell.box4 {
+    border-top: 32px solid hsl(90, 100%, 50%);
+    border-left: 32px solid hsl(90, 100%, 50%);
+    border-right: 32px solid hsl(90, 100%, 50%);
 }
 
 .cell + .cell {
@@ -113,15 +133,16 @@ h3 {
         flex-direction: column;
     }
 
+    /* When stacked, all boxes should have top, left, and right borders */
     .cell {
-        border-left: 32px solid hsl(90, 100%, 50%); /* Add left border */
-        border-right: 32px solid hsl(90, 100%, 50%); /* Add right border */
-        border-bottom: 32px solid hsl(90, 100%, 50%);
-        border-top: 0; /* Remove top border */
+        border-top: 32px solid hsl(90, 100%, 50%);
+        border-left: 32px solid hsl(90, 100%, 50%);
+        border-right: 32px solid hsl(90, 100%, 50%);
     }
 
-    .cell:first-child {
-        border-top: 32px solid hsl(90, 100%, 50%); /* Add top border to first cell */
+    /* The bottom box should also have a bottom border */
+    .cell.box4 {
+        border-bottom: 32px solid hsl(90, 100%, 50%);
     }
 
     h3 {

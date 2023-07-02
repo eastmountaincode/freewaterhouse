@@ -83,7 +83,7 @@ function loginForm(){
             <div class="table-container">
                 <div class="table">
                     <div class="row">
-                        <div class="cell" id = "uploadArea1">
+                        <div class="cell box1" id = "uploadArea1">
                             <h3>
                             <pre>                     
 █▄▄ █▀█ ▀▄▀   █▀█ █▄░█ █▀▀
@@ -104,7 +104,7 @@ function loginForm(){
                         </div>
                     
                     
-                        <div class="cell" id="uploadArea2">
+                        <div class="cell box2" id="uploadArea2">
                             <h3>
                             <pre>
 █▄▄ █▀█ ▀▄▀   ▀█▀ █░█░█ █▀█
@@ -126,7 +126,7 @@ function loginForm(){
                         
                     </div>
                     <div class="row"> 
-                        <div class="cell" id = "uploadArea3">
+                        <div class="cell box3" id = "uploadArea3">
                             <h3>
                             <pre>
 █▄▄ █▀█ ▀▄▀   ▀█▀ █░█ █▀█ █▀▀ █▀▀
@@ -145,7 +145,7 @@ function loginForm(){
                             <p id="uploadSuccessMessage3"></p>
                             <p id="error3"></p>
                         </div>
-                        <div class="cell" id="uploadArea4">
+                        <div class="cell box4" id="uploadArea4">
                             <h3>
                             <pre>
 █▄▄ █▀█ ▀▄▀   █▀▀ █▀█ █░█ █▀█
