@@ -104,14 +104,14 @@ h3 {
     }
 
     .cell {
-        border-top: 14px solid hsl(90, 100%, 50%);
-        border-left: 14px solid hsl(90, 100%, 50%);
-        border-right: 14px solid hsl(90, 100%, 50%);
+        border-top: 29px solid hsl(90, 100%, 50%);
+        border-left: 29px solid hsl(90, 100%, 50%);
+        border-right: 29px solid hsl(90, 100%, 50%);
         border-bottom: none; /* Remove the bottom border from all cells */
     }
 
     .row:last-child {
-        border-bottom: 14px solid hsl(90, 100%, 50%);
+        border-bottom: 29px solid hsl(90, 100%, 50%);
         border-top: none;
     }
 
