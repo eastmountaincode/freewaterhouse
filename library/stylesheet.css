@@ -110,6 +110,10 @@ h3 {
         border-bottom: none; /* Remove the bottom border from all cells */
     }
 
+    .row:last-child .cell {
+        border-bottom: 14px solid hsl(90, 100%, 50%);
+    }
+
     h3 {
         font-size: 9px;
     }
