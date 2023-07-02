@@ -109,6 +109,7 @@ h3 {
         border-left: 29px solid hsl(90, 100%, 50%);
         border-right: 29px solid hsl(90, 100%, 50%);
         border-bottom: none; /* Remove the bottom border from all cells */
+        padding: 15px;
     }
 
     .row:last-child {
@@ -129,7 +130,8 @@ h3 {
     }
 
     .buttonDiv {
-        border: 10px solid blue;
+        border: 2px solid blue;
+
     }
 }
 
