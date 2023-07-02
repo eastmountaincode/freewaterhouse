@@ -16,7 +16,7 @@
     box-sizing: border-box;
 }
 
-.row:last-child .cell:last-child {
+.row:last-child .cell {
     border-bottom: 32px solid hsl(90, 100%, 50%);
 }
 
