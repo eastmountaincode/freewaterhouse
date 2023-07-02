@@ -13,9 +13,16 @@
 
     color: black;
     text-align: center;
-    border-top: 32px solid hsl(90, 100%, 50%);
     border-bottom: 32px solid hsl(90, 100%, 50%);
     box-sizing: border-box;
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+.row:first-child {
+    border-top: 32px solid hsl(90, 100%, 50%);
 }
 
 .cell {
@@ -23,16 +30,17 @@
     padding: 20px; 
 
     text-align: center;
+    border-right: 32px solid hsl(90, 100%, 50%);
     box-sizing: border-box;
     
 }
 
-.cell:first-child {
-    border-left: 32px solid hsl(90, 100%, 50%);
+.cell:last-child {
+    border-right: none;
 }
 
-.cell:last-child {
-    border-right: 32px solid hsl(90, 100%, 50%);
+.cell:first-child {
+    border-left: 32px solid hsl(90, 100%, 50%);
 }
 
 #uploadArea1, #uploadArea2, #uploadArea3, #uploadArea4 {
