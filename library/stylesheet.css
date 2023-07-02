@@ -53,9 +53,6 @@
     border-right: 32px solid hsl(90, 100%, 50%);
 }
 
-.cell + .cell {
-    border-left: none;
-}
 
 #uploadArea1, #uploadArea2, #uploadArea3, #uploadArea4 {
     padding: 10px;
