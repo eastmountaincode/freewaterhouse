@@ -30,29 +30,6 @@
     min-width: 0; /* New! This ensures that all cells will have the same width */
 }
 
-/* Specific styles for each box */
-.cell.box1 {
-    border-top: 32px solid hsl(90, 100%, 50%);
-    border-left: 32px solid hsl(90, 100%, 50%);
-    border-right: 32px solid hsl(90, 100%, 50%);
-}
-
-.cell.box2 {
-    border-top: 32px solid hsl(90, 100%, 50%);
-    border-right: 32px solid hsl(90, 100%, 50%);
-}
-
-.cell.box3 {
-    border-top: 32px solid hsl(90, 100%, 50%);
-    border-left: 32px solid hsl(90, 100%, 50%);
-}
-
-.cell.box4 {
-    border-top: 32px solid hsl(90, 100%, 50%);
-    border-left: 32px solid hsl(90, 100%, 50%);
-    border-right: 32px solid hsl(90, 100%, 50%);
-}
-
 
 #uploadArea1, #uploadArea2, #uploadArea3, #uploadArea4 {
     padding: 10px;
@@ -163,6 +140,30 @@ h3 {
     #more {
       padding: 10px 240px;
     }
+
+    /* Specific styles for each box */
+    .cell.box1 {
+        border-top: 32px solid hsl(90, 100%, 50%);
+        border-left: 32px solid hsl(90, 100%, 50%);
+        border-right: 32px solid hsl(90, 100%, 50%);
+    }
+
+    .cell.box2 {
+        border-top: 32px solid hsl(90, 100%, 50%);
+        border-right: 32px solid hsl(90, 100%, 50%);
+    }
+
+    .cell.box3 {
+        border-top: 32px solid hsl(90, 100%, 50%);
+        border-left: 32px solid hsl(90, 100%, 50%);
+    }
+
+    .cell.box4 {
+        border-top: 32px solid hsl(90, 100%, 50%);
+        border-left: 32px solid hsl(90, 100%, 50%);
+        border-right: 32px solid hsl(90, 100%, 50%);
+    }
+    
   }
 
 #toggleButton {
