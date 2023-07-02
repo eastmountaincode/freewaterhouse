@@ -10,7 +10,7 @@ th, td {
     color: black;
     padding: 15px 0px 0px 0px; /* only need a bit of vertical padding */
     text-align: center;
-    max-width: 100%;
+    max-width: 50%;
 }
 
 #uploadArea1, #uploadArea2, #uploadArea3, #uploadArea4 {
