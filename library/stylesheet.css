@@ -124,7 +124,7 @@ h3 {
 
 @media screen and (max-width: 888px) {
     .table {
-        max-width: 85%;
+        max-width: 88%;
     }
     .table, .row {
         flex-direction: column;
