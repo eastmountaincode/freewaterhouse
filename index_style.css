@@ -25,3 +25,17 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 }
+
+#links_area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#links_area a {
+    display: block;
+    margin-bottom: 10px;
+}
