@@ -39,3 +39,8 @@ justify-content: center;
     display: block;
     margin-bottom: 10px;
 }
+
+#padding1 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
