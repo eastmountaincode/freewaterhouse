@@ -1,28 +1,28 @@
 .logo {
-width: 150px;
-height: 150px;
-margin: 10px;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
 }
 
 .bottom_image {
-width: 250px;
-height: 250px;
-margin: 5px;
+    width: 250px;
+    height: 250px;
+    margin: 5px;
 }
 
 .bottom_image_wrapper {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
 }
 
 .logo_wrapper {
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 #links_area {
@@ -42,4 +42,10 @@ justify-content: center;
 #padding1 {
     padding-top: 20px;
     padding-bottom: 20px;
-  }
+}
+
+.footer {
+background-color: #f0f0f0;
+padding: 20px;
+text-align: center;
+}
