@@ -1,11 +1,11 @@
 .logo {
-    width: 20vw;
+    width: 15vw;
     height: auto;
     margin: 1vw;
 }
 
 #bottom_image {
-    width: 20vw;
+    width: 15vw;
     height: auto;
     margin: 1vw;
 }
@@ -43,6 +43,9 @@
 }
 
 #bottom {
+    position: fixed;
+    left: 0;
+    bottom: 0;
     width: 100%;
 }
 
@@ -59,7 +62,7 @@
     }
     
     #links_area a {
-        font-size: 6vw;
+        font-size: 8vw;
     }
     
     #padding1 {
