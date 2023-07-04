@@ -32,7 +32,6 @@
     justify-content: center;
     margin-bottom: 30px;
     text-align: center;
-    flex-grow: 1; /* Add this */
 }
 
 #links_area a {
@@ -45,25 +44,6 @@
     padding-bottom: 20px;
 }
 
-.footer {
-background-color: #f0f0f0;
-padding: 20px;
-text-align: center;
-}
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Make sure this is here */
-}
 
-.main-content {
-    flex: 1;
-}
 
-.footer {
-    background-color: #f0f0f0;
-    padding-top: 2px;
-    padding-bottom: 2px;
-    text-align: center;
-}
