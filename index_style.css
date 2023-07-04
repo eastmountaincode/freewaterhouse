@@ -58,7 +58,7 @@
 @media screen and (max-width: 600px) {
     .logo,
     #bottom_image {
-        width: 50vw;
+        width: 35vw;
     }
     
     #links_area a {
