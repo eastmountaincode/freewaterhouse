@@ -36,7 +36,7 @@
 #links_area a {
     display: block;
     margin-bottom: 10px;
-    font-size: 24px;     /* adjust this value to your preference */
+    font-size: 50px;     /* adjust this value to your preference */
     font-weight: bold;   /* 'bold' for standard bold, or you could use 700-900 for extra bold */
 }
 
