@@ -38,6 +38,7 @@
     margin-bottom: 10px;
     font-size: 50px;     /* adjust this value to your preference */
     font-weight: 900;   /* 'bold' for standard bold, or you could use 700-900 for extra bold */
+    font-family: Arial, Helvetica, sans-serif;
     text-decoration: none;  /* remove the underline */
 }
 
