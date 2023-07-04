@@ -1,23 +1,18 @@
 .logo {
-    width: 150px;
-    height: 150px;
-    margin: 10px;
+    width: 20vw;
+    height: auto;
+    margin: 1vw;
 }
 
 #bottom_image {
-    width: 150px;
-    height: 150px;
-    margin: 5px;
+    width: 20vw;
+    height: auto;
+    margin: 1vw;
 }
 
-#bottom_image_wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo_wrapper {
+#bottom_image_wrapper,
+.logo_wrapper,
+#links_area {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -25,30 +20,26 @@
 }
 
 #links_area {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 3vw;
     text-align: center;
 }
 
 #links_area a {
     display: block;
-    margin-bottom: 10px;
-    font-size: 50px;     /* adjust this value to your preference */
-    font-weight: 900;   /* 'bold' for standard bold, or you could use 700-900 for extra bold */
+    margin-bottom: 1vw;
+    font-size: 4vw;
+    font-weight: 900;
     font-family: Arial, Helvetica, sans-serif;
-    text-decoration: none;  /* remove the underline */
+    text-decoration: none;
 }
 
 #links_area a:hover {
-    text-decoration: underline;  /* add the underline when hovering */
+    text-decoration: underline;
 }
 
 #padding1 {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
 }
 
 #bottom {
@@ -59,10 +50,31 @@
 }
 
 .footer {
-    padding: 3px;
+    padding: 0.5vw;
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+@media screen and (max-width: 600px) {
+    .logo,
+    #bottom_image {
+        width: 50vw;
+    }
+    
+    #links_area a {
+        font-size: 6vw;
+    }
+    
+    #padding1 {
+        padding-top: 4vw;
+        padding-bottom: 4vw;
+    }
+    
+    .footer {
+        padding: 2vw;
+    }
+}
+
 
 
 
