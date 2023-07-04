@@ -37,7 +37,12 @@
     display: block;
     margin-bottom: 10px;
     font-size: 50px;     /* adjust this value to your preference */
-    font-weight: bold;   /* 'bold' for standard bold, or you could use 700-900 for extra bold */
+    font-weight: 900;   /* 'bold' for standard bold, or you could use 700-900 for extra bold */
+    text-decoration: none;  /* remove the underline */
+}
+
+#links_area a:hover {
+    text-decoration: underline;  /* add the underline when hovering */
 }
 
 #padding1 {
