@@ -53,25 +53,6 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-@media screen and (max-width: 600px) {
-    .logo,
-    #bottom_image {
-        width: 35vw;
-    }
-    
-    #links_area a {
-        font-size: 8vw;
-    }
-    
-    #padding1 {
-        padding-top: 4vw;
-        padding-bottom: 4vw;
-    }
-    
-    .footer {
-        padding: 2vw;
-    }
-}
 
 
 
