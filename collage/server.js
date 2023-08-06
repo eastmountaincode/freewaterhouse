@@ -4,6 +4,7 @@ const port = 3000;
 const server = require('http').createServer(app);
 const WebSocket = require('ws');
 const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
 
 // Define the route for '/collage'
 app.get('/collage', function(req, res) {
@@ -40,7 +41,7 @@ const webSocketPromise = new Promise((resolve, reject) => {
 });
 
 Promise.all([dbPromise, webSocketPromise])
-    .then(([mongoResult, wss]) => {
+    .then(([db, wss]) => {
         console.log('Both MongoDB and WebSocket connections have been established');
         wss.on('connection', function connection(ws) {
             console.log('A new client connected!');
