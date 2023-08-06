@@ -1,7 +1,14 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const server = require('http').createServer(app);
+const fs = require('fs');
+const https = require('https');
+
+const server = https.createServer({
+    key: fs.readFileSync('/etc/privkey.pem'),
+    cert: fs.readFileSync('/etc/fullchain.pem')
+  }, app);
+  
 const WebSocket = require('ws');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
