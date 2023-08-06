@@ -37,7 +37,7 @@ const webSocketPromise = new Promise((resolve, reject) => {
     });
 
     server.listen(port, () => {
-        console.log(`server is running on http://localhost:${port}`);
+        console.log(`server is running, listing on port:${port}`);
         resolve(wss);  // Resolve the promise here
     });
 });
