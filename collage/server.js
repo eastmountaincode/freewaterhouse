@@ -5,10 +5,10 @@ const server = require('http').createServer(app);
 const WebSocket = require('ws');
 const sqlite3 = require('sqlite3').verbose();
 
-// // Define the route for '/collage'
-// app.get('/collage', function(req, res) {
-//     res.sendFile(path.join(__dirname, 'public/index.html')); // send the index.html file
-// });
+// Define the route for '/collage'
+app.get('/collage', function(req, res) {
+    res.sendFile(path.join(__dirname, 'public/index.html')); // send the index.html file
+});
 
 app.use(express.static('public'));  // Serving static files from "public" directory
 
