@@ -1,0 +1,34 @@
+body {
+    display: grid;
+    place-items: center;
+    height: 50vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    gap: 1em;
+}
+h1 {
+    text-align: center;
+    width: 100%;
+}
+#imageArea {
+    width: 900px;
+    height: 700px;
+    border: 3px solid black;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#basketball {
+    position: absolute;
+    max-width: 80%; /* Scale the image if it's too big for the container */
+    max-height: 80%;
+    cursor: grab;
+}
+#beer {
+    position: absolute;
+    max-width: 50%; /* Scale the image if it's too big for the container */
+    max-height: 50%;
+    cursor: grab;
+}
