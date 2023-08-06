@@ -19,13 +19,13 @@ socket.addEventListener("message", (event) => {
     if (data.type === 'updateInitialPosition') {
         console.log("updating initial position for", data.id);
         let image = document.getElementById(data.id);
-        image.style.left = data.position.x + 'px';
-        image.style.top = data.position.y + 'px';
+        image.style.left = data.x + 'px';
+        image.style.top = data.y + 'px';
     } else if (data.type === 'updatePositionOnServerDragging') {
         let image = document.getElementById(data.id);
         //console.log("Moving image to position: ", data.position);
-        image.style.left = data.position.x + 'px';
-        image.style.top = data.position.y + 'px';
+        image.style.left = data.x + 'px';
+        image.style.top = data.y + 'px';
     } else {
         console.error('Received unknown message type: ', data.type);
     }
@@ -58,10 +58,8 @@ document.addEventListener("mouseup", () => {
         socket.send(JSON.stringify({
                 type: 'updatePositionInDatabase',
                 id: draggedImage.id, 
-                position: {
-                    x: confirmedNewX,
-                    y: confirmedNewY  
-                }
+                x: confirmedNewX,
+                y: confirmedNewY     
             }));
         isDragging = false;
         draggedImage = null;  // Clear the dragged image
@@ -110,10 +108,9 @@ document.addEventListener("mousemove", (event) => {
         socket.send(JSON.stringify({
             type: 'updatePositionOnSocketDragging',
             id: draggedImage.id,  // include the ID in the message
-            position: {
-                x: confirmedNewX,
-                y: confirmedNewY  
-            }
+            x: confirmedNewX,
+            y: confirmedNewY  
+            
         }));
     }
 });

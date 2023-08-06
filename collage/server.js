@@ -3,28 +3,27 @@ const app = express();
 const port = 3000;
 const server = require('http').createServer(app);
 const WebSocket = require('ws');
-const MongoClient = require('mongodb').MongoClient;
+const sqlite3 = require('sqlite3').verbose();
 
-// Define the route for '/collage'
-app.get('/collage', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/index.html')); // send the index.html file
-});
+// // Define the route for '/collage'
+// app.get('/collage', function(req, res) {
+//     res.sendFile(path.join(__dirname, 'public/index.html')); // send the index.html file
+// });
 
 app.use(express.static('public'));  // Serving static files from "public" directory
 
-let url = "mongodb://localhost:27017/";
-let db, collection;
+let db;
 
-const mongoPromise = MongoClient.connect(url, { useUnifiedTopology: true })
-    .then(client => {
-        console.log('Connected to MongoDB');
-        db = client.db("test");
-        collection = db.collection("images");
-    })
-    .catch(err => {
-        console.error('Failed to connect to MongoDB', err);
-        throw err;
+const dbPromise = new Promise((resolve, reject) => {
+    db = new sqlite3.Database('./images.db', (err) => {
+        if (err) {
+            console.error('Failed to connect to SQLite', err);
+            reject(err);
+        }
+        console.log('Connected to the SQLite database.');
+        resolve(db);
     });
+});
 
 const webSocketPromise = new Promise((resolve, reject) => {
     const wss = new WebSocket.Server({ server });
@@ -40,7 +39,7 @@ const webSocketPromise = new Promise((resolve, reject) => {
     });
 });
 
-Promise.all([mongoPromise, webSocketPromise])
+Promise.all([dbPromise, webSocketPromise])
     .then(([mongoResult, wss]) => {
         console.log('Both MongoDB and WebSocket connections have been established');
         wss.on('connection', function connection(ws) {
@@ -52,23 +51,18 @@ Promise.all([mongoPromise, webSocketPromise])
                 const data = JSON.parse(message);
                 
                 if (data.type === "getInitialPosition") {
-                    //console.log("--entering the getInitialPosition block");
-                    // Fetch all documents from the MongoDB collection
-                    //console.log("before find block")
-                    collection.find().toArray()
-                        .then(docs => {
-                            //console.log("within find block")
-                            docs.forEach(doc => {
-                                ws.send(JSON.stringify({
-                                    type: 'updateInitialPosition',
-                                    id: doc.id,  // include the ID in the message
-                                    position: doc.position
-                                }));
-                            });
-                        })
-                        .catch(err => {
-                            console.error('Failed to get documents from MongoDB', err);
-                });
+                    db.each('SELECT id, x, y FROM images', (err, row) => {
+                        if (err) {
+                            throw err;
+                        }
+
+                        ws.send(JSON.stringify({
+                            type: 'updateInitialPosition',
+                            id: row.id,
+                            x: row.x,
+                            y: row.y
+                        }));
+                    });
                 } else if (data.type === "updatePositionOnSocketDragging") {
                     //console.log('--entering the updatePositionOnSocket block');
 
@@ -78,19 +72,19 @@ Promise.all([mongoPromise, webSocketPromise])
                             client.send(JSON.stringify({
                                 type: 'updatePositionOnServerDragging',
                                 id: data.id,
-                                position: data.position
+                                x: data.x,
+                                y: data.y
                             }));
                         }
                     });
                 } else if (data.type === "updatePositionInDatabase") {
-                    //console.log('--entering the updatePositionInDatabase block');
-                    collection.updateOne({ id: data.id }, { $set: {position: data.position}})
-                        .then(() => {
-                            console.log('position updated in database');
-                        })
-                        .catch(err => {
-                            console.err('Failed to update document in MongoDB', err);
-                        })
+                    let sql = `UPDATE images SET x = ?, y = ? WHERE id = ?`;
+                    db.run(sql, [data.x, data.y, data.id], function(err) {
+                        if (err) {
+                            return console.error(err.message);
+                        }
+                        console.log(`Position updated for id: ${data.id}`);
+                    });
                 }
             });
             
