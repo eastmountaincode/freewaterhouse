@@ -6,10 +6,12 @@ const WebSocket = require('ws');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
+console.log(__dirname);
+
 // Define the route for '/collage'
-app.get('/collage', function(req, res) {
+app.get('https://freewaterhouse.com/collage/', function(req, res) {
     console.log(__dirname);
-    res.sendFile(path.join(__dirname, 'public/index.html')); // send the index.html file
+    res.sendFile('public/index.html'); // send the index.html file
 });
 
 app.use(express.static('public'));  // Serving static files from "public" directory
