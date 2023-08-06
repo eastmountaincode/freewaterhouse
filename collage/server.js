@@ -9,9 +9,8 @@ const path = require('path');
 console.log(__dirname);
 
 // Define the route for '/collage'
-app.get('https://freewaterhouse.com/collage/', function(req, res) {
-    console.log(__dirname);
-    res.sendFile('public/index.html'); // send the index.html file
+app.get('/collage', function(req, res) {
+    res.sendFile(path.join(__dirname, 'public', 'index.html')); 
 });
 
 app.use(express.static('public'));  // Serving static files from "public" directory
