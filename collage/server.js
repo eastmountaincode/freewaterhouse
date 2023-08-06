@@ -7,7 +7,7 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
 // Define the route for '/collage'
-app.get('/collage/', function(req, res) {
+app.get('/collage', function(req, res) {
     console.log(__dirname);
     res.sendFile(path.join(__dirname, 'public/index.html')); // send the index.html file
 });
