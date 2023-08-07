@@ -17,6 +17,7 @@ console.log(__dirname);
 
 // Define the route for '/collage'
 app.get('/collage', function(req, res) {
+    console.log('inside app get block');
     res.sendFile(path.join(__dirname, 'public', 'index.html')); 
 });
 
