@@ -58,6 +58,8 @@ document.addEventListener("mouseup", () => {
         socket.send(JSON.stringify({
                 type: 'updatePositionInDatabase',
                 id: draggedImage.id, 
+
+                // should probably fix this
                 x: confirmedNewX,
                 y: confirmedNewY     
             }));
