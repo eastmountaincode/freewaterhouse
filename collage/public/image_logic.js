@@ -55,6 +55,7 @@ document.addEventListener("mousemove", drag);
 document.addEventListener("touchmove", drag);
 
 function startDrag(event) {
+    event.preventDefault();
     if (event.type === 'touchstart') {
         event = event.touches[0];  // get the first touch event
     }
