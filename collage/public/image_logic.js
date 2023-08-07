@@ -1,5 +1,5 @@
 // Create WebSocket connection.
-const socket = new WebSocket("wss://freewaterhouse.com/ws");
+const socket = new WebSocket("wss://localhost:3000");
     
 // Connection opened
 socket.addEventListener("open", (event) => {
