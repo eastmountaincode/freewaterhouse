@@ -44,32 +44,45 @@ let isDragging = false;
 let draggedImage = null;
 
 images.forEach(image => {
-    image.addEventListener("mousedown", (event) => {
-        isDragging = true;
-        draggedImage = event.target;  // Store the dragged image
-        imgOffsetX = draggedImage.offsetLeft - event.clientX;
-        imgOffsetY = draggedImage.offsetTop - event.clientY;
-    });
+    image.addEventListener("mousedown", startDrag);
+    image.addEventListener("touchstart", startDrag);
 });
 
-document.addEventListener("mouseup", () => {
-    //console.log('mouseup occur!');
+document.addEventListener("mouseup", endDrag);
+document.addEventListener("touchend", endDrag);
+
+document.addEventListener("mousemove", drag);
+document.addEventListener("touchmove", drag);
+
+function startDrag(event) {
+    if (event.type === 'touchstart') {
+        event = event.touches[0];  // get the first touch event
+    }
+
+    isDragging = true;
+    draggedImage = event.target;  // Store the dragged image
+    imgOffsetX = draggedImage.offsetLeft - event.clientX;
+    imgOffsetY = draggedImage.offsetTop - event.clientY;
+}
+
+function endDrag() {
     if (draggedImage) {
         socket.send(JSON.stringify({
-                type: 'updatePositionInDatabase',
-                id: draggedImage.id, 
-
-                // should probably fix this
-                x: confirmedNewX,
-                y: confirmedNewY     
-            }));
+            type: 'updatePositionInDatabase',
+            id: draggedImage.id,
+            x: confirmedNewX,
+            y: confirmedNewY
+        }));
         isDragging = false;
         draggedImage = null;  // Clear the dragged image
     }
-});
+}
 
-document.addEventListener("mousemove", (event) => {
-    event.preventDefault();
+function drag(event) {
+    if (event.type === 'touchmove') {
+        event = event.touches[0];  // get the first touch event
+    }
+
     if (isDragging && draggedImage) {
         // Position of the mouse pointer within the browser's viewport
         mouseX = event.clientX;
@@ -115,4 +128,4 @@ document.addEventListener("mousemove", (event) => {
             
         }));
     }
-});
+}
