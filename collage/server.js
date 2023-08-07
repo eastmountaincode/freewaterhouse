@@ -2,12 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const fs = require('fs');
-const https = require('https');
-
-const server = https.createServer({
-    key: fs.readFileSync('/etc/privkey.pem'),
-    cert: fs.readFileSync('/etc/fullchain.pem')
-  }, app);
+const http = require('http');
   
 const WebSocket = require('ws');
 const sqlite3 = require('sqlite3').verbose();
@@ -17,13 +12,14 @@ console.log(__dirname);
 
 // Define the route for '/collage'
 app.get('/collage', function(req, res) {
-    console.log('inside app get block');
     res.sendFile(path.join(__dirname, 'public', 'index.html')); 
 });
 
 app.use(express.static('public'));  // Serving static files from "public" directory
 
 let db;
+let server;
+let wss;
 
 const dbPromise = new Promise((resolve, reject) => {
     db = new sqlite3.Database('./images.db', (err) => {
@@ -37,6 +33,7 @@ const dbPromise = new Promise((resolve, reject) => {
 });
 
 const webSocketPromise = new Promise((resolve, reject) => {
+    const server = http.createServer(app);
     const wss = new WebSocket.Server({ server });
 
     wss.on('error', function error(err) {
