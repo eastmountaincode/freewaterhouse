@@ -1,5 +1,3 @@
-const interact = require('interactjs');
-
 // Create WebSocket connection.
 const socket = new WebSocket('wss://freewaterhouse.com/ws');
  
