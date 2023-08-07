@@ -11,6 +11,7 @@ socket.addEventListener("open", (event) => {
 });
 
 // Listen for messages
+// This is if we get a message from the server...
 socket.addEventListener("message", (event) => {
     console.log("Received from server: ", event.data); 
     const data = JSON.parse(event.data);
@@ -22,6 +23,7 @@ socket.addEventListener("message", (event) => {
         image.style.top = data.y + 'px';
     } else if (data.type === 'updatePositionOnServerDragging') {
         let image = document.getElementById(data.id);
+        //console.log("Moving image to position: ", data.position);
         image.style.left = data.x + 'px';
         image.style.top = data.y + 'px';
     } else {
@@ -29,57 +31,102 @@ socket.addEventListener("message", (event) => {
     }
 });
 
-interact("img")
-  .draggable({
-    inertia: true,
-    modifiers: [
-      interact.modifiers.restrictRect({
-        restriction: 'parent',
-        endOnly: true
-      })
-    ],
-    listeners: {
-      move(event) {
-        let x = (parseFloat(event.target.getAttribute('data-x')) || 0) + event.dx;
-        let y = (parseFloat(event.target.getAttribute('data-y')) || 0) + event.dy;
-        event.target.style.transform = `translate(${x}px, ${y}px)`;
+// Make the image draggable
+const images = document.querySelectorAll("img");
+const imageArea = document.querySelector("#imageArea");
+const imageAreaRect = imageArea.getBoundingClientRect();
 
-        // send updates to server when dragging
-        socket.send(JSON.stringify({
-            type: 'updatePositionOnSocketDragging',
-            id: event.target.id,
-            x: x,
-            y: y  
-        }));
-      },
-      end(event) {
-        let x = parseFloat(event.target.getAttribute('data-x')) || 0;
-        let y = parseFloat(event.target.getAttribute('data-y')) || 0;
+let mouseX = 0;
+let mouseY = 0;
+let imgOffsetX = 0;
+let imgOffsetY = 0;
+let isDragging = false;
+let draggedImage = null;
 
-        // send updates to server when dragging ends
+images.forEach(image => {
+    image.addEventListener("mousedown", startDrag);
+    image.addEventListener("touchstart", startDrag);
+});
+
+document.addEventListener("mouseup", endDrag);
+document.addEventListener("touchend", endDrag);
+
+document.addEventListener("mousemove", drag);
+document.addEventListener("touchmove", drag);
+
+function startDrag(event) {
+    event.preventDefault();
+    if (event.type === 'touchstart') {
+        event = event.touches[0];  // get the first touch event
+    }
+
+    isDragging = true;
+    draggedImage = event.target;  // Store the dragged image
+    imgOffsetX = draggedImage.offsetLeft - event.clientX;
+    imgOffsetY = draggedImage.offsetTop - event.clientY;
+}
+
+function endDrag() {
+    if (draggedImage) {
         socket.send(JSON.stringify({
             type: 'updatePositionInDatabase',
-            id: event.target.id,
-            x: x,
-            y: y
+            id: draggedImage.id,
+            x: confirmedNewX,
+            y: confirmedNewY
         }));
-      }
+        isDragging = false;
+        draggedImage = null;  // Clear the dragged image
     }
-  })
-  .resizable({
-    edges: { left: true, right: true, bottom: true, top: true },
-    listeners: {
-      move(event) {
-        let target = event.target;
-        target.style.width = event.rect.width + 'px';
-        target.style.height = event.rect.height + 'px';
-      },
-    },
-    modifiers: [
-      interact.modifiers.restrictSize({
-        min: { width: 100, height: 50 }
-      })
-    ],
-    inertia: true
-  });
+}
 
+function drag(event) {
+    if (event.type === 'touchmove') {
+        event = event.touches[0];  // get the first touch event
+    }
+
+    if (isDragging && draggedImage) {
+        // Position of the mouse pointer within the browser's viewport
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+
+        let prospectiveNewX = mouseX + imgOffsetX;
+        let prospectiveNewY = mouseY + imgOffsetY;
+
+        //let imageAreaRect = imageArea.getBoundingClientRect();
+        let draggedImageRect = draggedImage.getBoundingClientRect();
+
+        let maxPosX = imageAreaRect.width - draggedImageRect.width;
+        let maxPosY = imageAreaRect.height - draggedImageRect.height;
+
+        // LEFT WALL
+        if (prospectiveNewX < 0) {
+            prospectiveNewX = 0;
+        }
+        // TOP WALL
+        if (prospectiveNewY < 0) {
+            prospectiveNewY = 0;
+        }
+        // RIGHT WALL
+        if (prospectiveNewX > maxPosX) {
+            prospectiveNewX = maxPosX;
+        }
+        // BOTTOM WALL
+        if (prospectiveNewY > maxPosY) {
+            prospectiveNewY = maxPosY;
+        }
+
+        confirmedNewX = prospectiveNewX;
+        confirmedNewY = prospectiveNewY;
+
+        draggedImage.style.left = confirmedNewX + 'px';
+        draggedImage.style.top = confirmedNewY + 'px';
+
+        socket.send(JSON.stringify({
+            type: 'updatePositionOnSocketDragging',
+            id: draggedImage.id,  // include the ID in the message
+            x: confirmedNewX,
+            y: confirmedNewY  
+            
+        }));
+    }
+}
