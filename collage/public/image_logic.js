@@ -1,6 +1,6 @@
 // Create WebSocket connection.
-const socket = new WebSocket((window.location.protocol === "https:" ? "wss://" : "ws://") + window.location.host + "/ws");
-    
+const socket = new WebSocket('wss://freewaterhouse.com');
+ 
 // Connection opened
 socket.addEventListener("open", (event) => {
     console.log("Connected to websocket server");
