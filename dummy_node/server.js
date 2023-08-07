@@ -6,7 +6,6 @@ var path = require('path');
 
 app.get('/dummy_node', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dummy.html'));
-  res.send('Hello World!');
 });
 
 app.listen(port, () => {
