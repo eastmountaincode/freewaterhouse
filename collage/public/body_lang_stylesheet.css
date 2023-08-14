@@ -20,15 +20,13 @@ h1 {
     justify-content: center;
     align-items: center;
 }
-#basketball {
-    position: absolute;
-    max-width: 80%; /* Scale the image if it's too big for the container */
-    max-height: 80%;
-    cursor: grab;
-}
-#beer {
-    position: absolute;
-    max-width: 50%; /* Scale the image if it's too big for the container */
-    max-height: 50%;
+
+#imageArea img {
+    position: absolute;  /* Allows for dragging without affecting other elements' positions */
+    width: 150px;  /* Initial width */
+    cursor: pointer;  /* Visual indicator that the image is draggable */
+
+    touch-action: none; /* Prevents default touch behavior */
+
     cursor: grab;
 }
