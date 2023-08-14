@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() { // Make sure the DOM 
         inertia: true, 
         restrict: { 
           restriction: "parent",
-          endOnly: true,
+          endOnly: false,
         },
         autoScroll: true,
   
