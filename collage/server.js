@@ -49,7 +49,7 @@ const webSocketPromise = new Promise((resolve, reject) => {
 
 Promise.all([dbPromise, webSocketPromise])
     .then(([db, wss]) => {
-        console.log('Both MongoDB and WebSocket connections have been established');
+        console.log('Both SQLite3 and WebSocket connections have been established');
         wss.on('connection', function connection(ws) {
             console.log('A new client connected!');
 
@@ -99,7 +99,7 @@ Promise.all([dbPromise, webSocketPromise])
         });
     })
     .catch(err => {
-        console.error('Failed to connect to either MongoDB or WebSocket', err);
+        console.error('Failed to connect to either SQLite3 or WebSocket', err);
         process.exit(1);  // This will stop the server in case of a connection error
     });
 
