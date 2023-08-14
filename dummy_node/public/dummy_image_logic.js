@@ -10,32 +10,33 @@ socket.addEventListener("open", (event) => {
     }));
 });
 
-// Listen for messages
-// This is if we get a message from the server...
+// Listen for messages from the server
 socket.addEventListener("message", (event) => {
   console.log("Received from server: ", event.data); 
   const data = JSON.parse(event.data);
 
   if (data.type === 'updateInitialPosition') {
-    console.log("updating initial position for", data.id);
-    let image = document.getElementById(data.id);
-    image.style.left = data.x + "px";
-    image.style.top = data.y + "px";
-    image.setAttribute("data-x", data.x);
-    image.setAttribute("data-y", data.y);
+      console.log("updating initial position for", data.id);
+      let image = document.getElementById(data.id);
+      image.style.left = data.x + "px";
+      image.style.top = data.y + "px";
+      image.setAttribute("data-x", data.x);
+      image.setAttribute("data-y", data.y);
   } else if (data.type === 'updatePositionOnServerDragging') {
-    let image = document.getElementById(data.id);
-    image.style.transform = "translate(" + data.x + "px, " + data.y + "px)";
+      let image = document.getElementById(data.id);
+      image.style.left = data.x + "px";
+      image.style.top = data.y + "px";
+      image.setAttribute("data-x", data.x);
+      image.setAttribute("data-y", data.y);
   } else {
       console.error('Received unknown message type: ', data.type);
   }
 });
 
-document.addEventListener("DOMContentLoaded", function() { 
-    // Make sure the DOM is fully loaded before attaching handlers.
 
+document.addEventListener("DOMContentLoaded", function() { 
     // Make all images inside the #imageArea draggable
-    interact("#imageArea img")  // Selects all img elements inside the #imageArea
+    interact("#imageArea img")
       .draggable({
         inertia: false,
         restrict: {
@@ -51,26 +52,23 @@ document.addEventListener("DOMContentLoaded", function() {
             var x = (parseFloat(event.target.getAttribute("data-x")) || 0) + event.dx;
             var y = (parseFloat(event.target.getAttribute("data-y")) || 0) + event.dy;
   
-            // Translate the element
-            event.target.style.transform = "translate(" + x + "px, " + y + "px)";
-  
+            event.target.style.left = x + "px";
+            event.target.style.top = y + "px";
+
             // Update the position attributes
             event.target.setAttribute("data-x", x);
             event.target.setAttribute("data-y", y);
 
             socket.send(JSON.stringify({
               type: 'updatePositionOnSocketDragging',
-              id: event.target.id,  // include the ID in the message
+              id: event.target.id,
               x: x,
               y: y  
             }));
           },
           end(event) {
             const target = event.target;
-
             const id = target.id;
-
-            // Get the x and y positions from the data attributes
             const x = parseFloat(target.getAttribute("data-x")) || 0;
             const y = parseFloat(target.getAttribute("data-y")) || 0;
 
