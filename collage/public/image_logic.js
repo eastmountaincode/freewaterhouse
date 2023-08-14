@@ -78,13 +78,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     shouldSendUpdate = true;
                 }, 25);
             }
-
-            // socket.send(JSON.stringify({
-            //   type: 'updatePositionOnSocketDragging',
-            //   id: event.target.id,
-            //   x: x,
-            //   y: y  
-            // }));
           },
           end(event) {
 
