@@ -19,8 +19,10 @@ socket.addEventListener("message", (event) => {
   if (data.type === 'updateInitialPosition') {
     console.log("updating initial position for", data.id);
     let image = document.getElementById(data.id);
-    image.style.transform = "translate(" + data.x + "px, " + data.y + "px)";
-
+    image.style.left = data.x + "px";
+    image.style.top = data.y + "px";
+    image.setAttribute("data-x", data.x);
+    image.setAttribute("data-y", data.y);
   } else if (data.type === 'updatePositionOnServerDragging') {
     let image = document.getElementById(data.id);
     image.style.transform = "translate(" + data.x + "px, " + data.y + "px)";
