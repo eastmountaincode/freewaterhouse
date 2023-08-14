@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 shouldSendUpdate = false;
                 setTimeout(() => {
                     shouldSendUpdate = true;
-                }, throttleDelay);
+                }, 100);
             }
 
             // socket.send(JSON.stringify({
