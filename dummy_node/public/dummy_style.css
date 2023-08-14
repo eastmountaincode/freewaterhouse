@@ -28,4 +28,7 @@ h1 {
     position: absolute;  /* Allows for dragging without affecting other elements' positions */
     width: 100px;  /* Initial width */
     cursor: pointer;  /* Visual indicator that the image is draggable */
+
+    touch-action: none; /* Prevents default touch behavior */
+
 }
