@@ -12,15 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Make all images inside the #imageArea draggable
     interact("#imageArea img")  // Selects all img elements inside the #imageArea
       .draggable({
-        // Adjusted inertia settings
-        inertia: {
-          resistance: 5,     // the lambda in exponential decay
-          minSpeed: 50,      // ending speed
-          endSpeed: 5,       // minimum ending speed
-          allowResume: true,  // allow resuming an action in action resume
-          zeroResumeDelta: true, // if the action was panned in both directions
-          smoothEndDuration: 300, // animate to snap/restrict endOnly if there's no inertia
-        },
+        inertia: false,
         restrict: {
           restriction: "parent",
           elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
