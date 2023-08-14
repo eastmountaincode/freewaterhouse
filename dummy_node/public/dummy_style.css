@@ -1,0 +1,9 @@
+#imageArea {
+    width: 900px;
+    height: 700px;
+    border: 3px solid black;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
