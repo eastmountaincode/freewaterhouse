@@ -10,6 +10,8 @@ app.get('/dummy_node', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'dummy.html'));
 });
 
+app.use('/dummy_node', express.static(path.join(__dirname, 'public')));
+
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
