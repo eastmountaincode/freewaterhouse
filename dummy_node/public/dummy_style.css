@@ -7,6 +7,7 @@ body {
     font-family: Arial, sans-serif;
     gap: 1em;
 }
+
 h1 {
     text-align: center;
     width: 100%;
@@ -20,4 +21,11 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;  /* Prevents the images from being dragged outside the visible area */
+}
+
+#imageArea img {
+    position: absolute;  /* Allows for dragging without affecting other elements' positions */
+    width: 100px;  /* Initial width */
+    cursor: pointer;  /* Visual indicator that the image is draggable */
 }
