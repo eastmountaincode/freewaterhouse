@@ -67,23 +67,23 @@ document.addEventListener("DOMContentLoaded", function() {
             event.target.setAttribute("data-x", x);
             event.target.setAttribute("data-y", y);
 
-            // Throttle the position update messages
-            clearTimeout(updateTimer); // Clear any existing timer
-            updateTimer = setTimeout(() => {
-                socket.send(JSON.stringify({
-                    type: 'updatePositionOnSocketDragging',
-                    id: event.target.id,
-                    x: x,
-                    y: y  
-                }));
-            }, throttleDelay);
+            // // Throttle the position update messages
+            // clearTimeout(updateTimer); // Clear any existing timer
+            // updateTimer = setTimeout(() => {
+            //     socket.send(JSON.stringify({
+            //         type: 'updatePositionOnSocketDragging',
+            //         id: event.target.id,
+            //         x: x,
+            //         y: y  
+            //     }));
+            // }, throttleDelay);
 
-            // socket.send(JSON.stringify({
-            //   type: 'updatePositionOnSocketDragging',
-            //   id: event.target.id,
-            //   x: x,
-            //   y: y  
-            // }));
+            socket.send(JSON.stringify({
+              type: 'updatePositionOnSocketDragging',
+              id: event.target.id,
+              x: x,
+              y: y  
+            }));
           },
           end(event) {
             // Ensure the final position is sent immediately when dragging ends
