@@ -14,9 +14,9 @@ document.addEventListener("DOMContentLoaded", function() {
       .draggable({
         // Adjusted inertia settings
         inertia: {
-          resistance: 15,     // the lambda in exponential decay
-          minSpeed: 100,      // ending speed
-          endSpeed: 10,       // minimum ending speed
+          resistance: 45,     // the lambda in exponential decay
+          minSpeed: 50,      // ending speed
+          endSpeed: 5,       // minimum ending speed
           allowResume: true,  // allow resuming an action in action resume
           zeroResumeDelta: true, // if the action was panned in both directions
           smoothEndDuration: 300, // animate to snap/restrict endOnly if there's no inertia
