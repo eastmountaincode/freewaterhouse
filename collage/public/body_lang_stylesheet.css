@@ -23,7 +23,10 @@ h1 {
 
 #imageArea img {
     position: absolute;  /* Allows for dragging without affecting other elements' positions */
+    
     width: 150px;  /* Initial width */
+    height: 150px; /* Initial height */
+
     cursor: pointer;  /* Visual indicator that the image is draggable */
 
     touch-action: none; /* Prevents default touch behavior */
