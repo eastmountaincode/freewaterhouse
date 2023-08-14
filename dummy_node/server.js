@@ -26,11 +26,27 @@ const wss = new WebSocket.Server({ server });
 wss.on('connection', (ws) => {
   console.log('Client connected');
 
-  ws.on('message', (message) => {
+  ws.on('message', function incoming(message) {
+    const data = JSON.parse(message);
     console.log(`Received message => ${message}`);
+
+    if (data.type === "getInitialPosition") {
+      db.each('SELECT id, x, y FROM positions', (err, row) => {
+          if (err) {
+              throw err;
+          }
+
+          ws.send(JSON.stringify({
+              type: 'updateInitialPosition',
+              id: row.id,
+              x: row.x,
+              y: row.y
+          }));
+      });
+    }
+
   });
 
-  ws.send('Hello! Message from server.');
 });
 
 server.listen(port, () => {
