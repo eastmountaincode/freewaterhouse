@@ -21,7 +21,14 @@ socket.addEventListener("message", (event) => {
       let image = document.getElementById(data.id);
       image.style.left = data.x + 'px';
       image.style.top = data.y + 'px';
-  } 
+  } else if (data.type === 'updatePositionOnServerDragging') {
+    let image = document.getElementById(data.id);
+    //console.log("Moving image to position: ", data.position);
+    image.style.left = data.x + 'px';
+    image.style.top = data.y + 'px';
+  } else {
+      console.error('Received unknown message type: ', data.type);
+  }
 });
 
 document.addEventListener("DOMContentLoaded", function() { 
@@ -50,6 +57,29 @@ document.addEventListener("DOMContentLoaded", function() {
             // Update the position attributes
             event.target.setAttribute("data-x", x);
             event.target.setAttribute("data-y", y);
+
+            socket.send(JSON.stringify({
+              type: 'updatePositionOnSocketDragging',
+              id: event.target.id,  // include the ID in the message
+              x: x,
+              y: y  
+            }));
+          },
+          end(event) {
+            const target = event.target;
+
+            const id = target.id;
+
+            // Get the x and y positions from the data attributes
+            const x = parseFloat(target.getAttribute("data-x")) || 0;
+            const y = parseFloat(target.getAttribute("data-y")) || 0;
+
+            socket.send(JSON.stringify({
+              type: 'updatePositionInDatabase',
+              id: id,
+              x: x,
+              y: y
+            }));
           }
         }
       });

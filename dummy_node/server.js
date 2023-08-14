@@ -43,6 +43,28 @@ wss.on('connection', (ws) => {
               y: row.y
           }));
       });
+    } else if (data.type === "updatePositionInDatabase") {
+      let sql = `UPDATE images SET x = ?, y = ? WHERE id = ?`;
+      db.run(sql, [data.x, data.y, data.id], function(err) {
+          if (err) {
+              return console.error(err.message);
+          }
+          console.log(`Position updated for id: ${data.id}`);
+      });
+    } else if (data.type === "updatePositionOnSocketDragging") {
+      //console.log('--entering the updatePositionOnSocket block');
+
+      wss.clients.forEach(function each(client) {
+          // Exclude the client that made the request
+          if (client !== ws && client.readyState === WebSocket.OPEN) {
+              client.send(JSON.stringify({
+                  type: 'updatePositionOnServerDragging',
+                  id: data.id,
+                  x: data.x,
+                  y: data.y
+              }));
+          }
+      });
     }
 
   });
