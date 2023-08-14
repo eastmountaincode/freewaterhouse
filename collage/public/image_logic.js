@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 shouldSendUpdate = false;
                 setTimeout(() => {
                     shouldSendUpdate = true;
-                }, 100);
+                }, 25);
             }
 
             // socket.send(JSON.stringify({
@@ -99,6 +99,15 @@ document.addEventListener("DOMContentLoaded", function() {
               x: x,
               y: y
             }));
+
+            // Broadcast the final position to all clients to ensure sync
+            socket.send(JSON.stringify({
+                type: 'broadcastFinalPosition',
+                id: id,
+                x: x,
+                y: y
+            }));
+
           }
         }
       });
