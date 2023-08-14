@@ -44,7 +44,7 @@ wss.on('connection', (ws) => {
           }));
       });
     } else if (data.type === "updatePositionInDatabase") {
-      let sql = `UPDATE images SET x = ?, y = ? WHERE id = ?`;
+      let sql = `UPDATE positions SET x = ?, y = ? WHERE id = ?`;
       db.run(sql, [data.x, data.y, data.id], function(err) {
           if (err) {
               return console.error(err.message);
