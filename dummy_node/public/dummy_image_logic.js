@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
       .draggable({
         // Adjusted inertia settings
         inertia: {
-          resistance: 45,     // the lambda in exponential decay
+          resistance: 145,     // the lambda in exponential decay
           minSpeed: 50,      // ending speed
           endSpeed: 5,       // minimum ending speed
           allowResume: true,  // allow resuming an action in action resume
