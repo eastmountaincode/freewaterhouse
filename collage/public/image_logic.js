@@ -30,7 +30,20 @@ socket.addEventListener("message", (event) => {
         image.style.top = data.y + 'px';
         image.setAttribute("data-x", data.x);
         image.setAttribute("data-y", data.y);
-    } else {
+    } else if (data.type === "updateSizeOnServerResizing") {
+        let image = document.getElementById(data.id);
+        image.style.width = event.rect.width + 'px';
+        image.style.height = event.rect.height + 'px';
+
+        x += event.deltaRect.left;
+        y += event.deltaRect.top;
+
+        image.style.left = x + 'px';
+        image.style.top = y + 'px';
+        image.setAttribute('data-x', x);
+        image.setAttribute('data-y', y);
+    }
+    else {
         console.error('Received unknown message type: ', data.type);
     }
 });
@@ -39,7 +52,8 @@ socket.addEventListener('error', (error) => {
     console.error('WebSocket Error:', error);
 });
 
-let shouldSendUpdate = true;
+let shouldSendUpdateMove = true;
+let shouldSendUpdateResize = true;
 
 document.addEventListener("DOMContentLoaded", function() { 
     // Make all images inside the #imageArea draggable
@@ -66,16 +80,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 event.target.setAttribute("data-x", x);
                 event.target.setAttribute("data-y", y);
 
-                if (shouldSendUpdate) {
+                if (shouldSendUpdateMove) {
                     socket.send(JSON.stringify({
                         type: 'updatePositionOnSocketDragging',
                         id: event.target.id,
                         x: x,
                         y: y  
                     }));
-                    shouldSendUpdate = false;
+                    shouldSendUpdateMove = false;
                     setTimeout(() => {
-                        shouldSendUpdate = true;
+                        shouldSendUpdateMove = true;
                     }, 25);
                 }
             },
@@ -86,10 +100,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 const y = parseFloat(target.getAttribute("data-y")) || 0;
 
                 socket.send(JSON.stringify({
-                type: 'updatePositionInDatabase',
-                id: id,
-                x: x,
-                y: y
+                    type: 'updatePositionInDatabase',
+                    id: id,
+                    x: x,
+                    y: y
                 }));
 
                 // Broadcast the final position to all clients to ensure sync
@@ -136,6 +150,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 target.style.top = y + 'px';
                 target.setAttribute('data-x', x);
                 target.setAttribute('data-y', y);
+
+                if (shouldSendUpdateResize) {
+                    socket.send(JSON.stringify({
+                        type: 'updateSizeOnSocketResizing',
+                        id: event.target.id,
+                        x: x,
+                        y: y,
+                        width: event.rect.width,
+                        height: event.rect.height  
+                    }));
+                    shouldSendUpdateResize = false;
+                    setTimeout(() => {
+                        shouldSendUpdateResize = true;
+                    }, 25);
+                }
             },
             end(event) {
                 const target = event.target;

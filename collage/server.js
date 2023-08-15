@@ -85,6 +85,20 @@ Promise.all([dbPromise, webSocketPromise])
                             }));
                         }
                     });
+                } else if (data.type === "updateSizeOnSocketResizing") {
+                    wss.clients.forEach(function each(client) {
+                        // Exclude the client that made the request
+                        if (client !== ws && client.readyState === WebSocket.OPEN) {
+                            client.send(JSON.stringify({
+                                type: 'updateSizeOnServerResizing',
+                                id: data.id,
+                                x: data.x,
+                                y: data.y,
+                                width: data.width,
+                                height: data.height  
+                            }));
+                        }
+                    });
                 } else if (data.type === "broadcastFinalPosition") {
                     wss.clients.forEach(function each(client) {
                         // Exclude the client that made the request
