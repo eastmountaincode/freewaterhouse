@@ -50,6 +50,19 @@ const webSocketPromise = new Promise((resolve, reject) => {
 Promise.all([dbPromise, webSocketPromise])
     .then(([db, wss]) => {
         console.log('Both SQLite3 and WebSocket connections have been established');
+
+        // This is inside the then() after Promise.all
+        db.all('SELECT id FROM images', [], (err, rows) => {
+            if (err) {
+                throw err;
+            }
+            // rows will contain an array of results, e.g. [{id: 'Basketball.png'}, {id: 'coins.png'}]
+
+            const imageNames = rows.map(row => row.id);
+            console.log(imageNames);
+
+        });
+
         wss.on('connection', function connection(ws) {
             console.log('A new client connected!');
 
