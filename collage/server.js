@@ -78,6 +78,7 @@ Promise.all([dbPromise, webSocketPromise])
                 const data = JSON.parse(message);
                 
                 if (data.type === "getInitialPositionAndSize") {
+                    console.log("enter initial pos and size on server");
                     db.each('SELECT id, x, y, width, height FROM images', (err, row) => {
                         if (err) {
                             throw err;
