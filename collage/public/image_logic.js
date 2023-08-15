@@ -55,53 +55,87 @@ document.addEventListener("DOMContentLoaded", function() {
   
         // Event listeners for dragmove and dragend
         listeners: {
-          move(event) {
-            var x = (parseFloat(event.target.getAttribute("data-x")) || 0) + event.dx;
-            var y = (parseFloat(event.target.getAttribute("data-y")) || 0) + event.dy;
+            move(event) {
+                var x = (parseFloat(event.target.getAttribute("data-x")) || 0) + event.dx;
+                var y = (parseFloat(event.target.getAttribute("data-y")) || 0) + event.dy;
   
-            event.target.style.left = x + "px";
-            event.target.style.top = y + "px";
+                event.target.style.left = x + "px";
+                event.target.style.top = y + "px";
 
-            // Update the position attributes
-            event.target.setAttribute("data-x", x);
-            event.target.setAttribute("data-y", y);
+                // Update the position attributes
+                event.target.setAttribute("data-x", x);
+                event.target.setAttribute("data-y", y);
 
-            if (shouldSendUpdate) {
+                if (shouldSendUpdate) {
+                    socket.send(JSON.stringify({
+                        type: 'updatePositionOnSocketDragging',
+                        id: event.target.id,
+                        x: x,
+                        y: y  
+                    }));
+                    shouldSendUpdate = false;
+                    setTimeout(() => {
+                        shouldSendUpdate = true;
+                    }, 25);
+                }
+            },
+            end(event) {
+                const target = event.target;
+                const id = target.id;
+                const x = parseFloat(target.getAttribute("data-x")) || 0;
+                const y = parseFloat(target.getAttribute("data-y")) || 0;
+
                 socket.send(JSON.stringify({
-                    type: 'updatePositionOnSocketDragging',
-                    id: event.target.id,
-                    x: x,
-                    y: y  
-                }));
-                shouldSendUpdate = false;
-                setTimeout(() => {
-                    shouldSendUpdate = true;
-                }, 25);
-            }
-          },
-          end(event) {
-
-            const target = event.target;
-            const id = target.id;
-            const x = parseFloat(target.getAttribute("data-x")) || 0;
-            const y = parseFloat(target.getAttribute("data-y")) || 0;
-
-            socket.send(JSON.stringify({
-              type: 'updatePositionInDatabase',
-              id: id,
-              x: x,
-              y: y
-            }));
-
-            // Broadcast the final position to all clients to ensure sync
-            socket.send(JSON.stringify({
-                type: 'broadcastFinalPosition',
+                type: 'updatePositionInDatabase',
                 id: id,
                 x: x,
                 y: y
-            }));
+                }));
+
+                // Broadcast the final position to all clients to ensure sync
+                socket.send(JSON.stringify({
+                    type: 'broadcastFinalPosition',
+                    id: id,
+                    x: x,
+                    y: y
+                }));
 
           }
         }
-      });
+      })
+    .resizable({
+        preserveAspectRatio: true,
+        edges: { left: true, right: true, bottom: true, top: true },
+        listeners: {
+            resizemove(event) {
+                var target = event.target,
+                    x = (parseFloat(target.getAttribute('data-x')) || 0),
+                    y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+                target.style.width = event.rect.width + 'px';
+                target.style.height = event.rect.height + 'px';
+
+                x += event.deltaRect.left;
+                y += event.deltaRect.top;
+
+                target.style.left = x + 'px';
+                target.style.top = y + 'px';
+                target.setAttribute('data-x', x);
+                target.setAttribute('data-y', y);
+            },
+            resizeend(event) {
+                const target = event.target;
+                const id = target.id;
+                const width = target.style.width;
+                const height = target.style.height;
+
+                // socket.send(JSON.stringify({
+                //     type: 'updateImageSize',
+                //     id: id,
+                //     width: width,
+                //     height: height
+                // }));
+            }
+        }
+    });
 });
