@@ -17,6 +17,7 @@ socket.addEventListener("message", (event) => {
     const data = JSON.parse(event.data);
 
     if (data.type === 'initialImageNames') {
+        console.log('entered initial names');
         const imageArea = document.getElementById("imageArea");
         
         // Loop through each image name and create an img element
