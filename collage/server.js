@@ -86,6 +86,7 @@ Promise.all([dbPromise, webSocketPromise])
                         }
                     });
                 } else if (data.type === "updateSizeOnSocketResizing") {
+                    console.log("server got updateSizeOnSocketResizing")
                     wss.clients.forEach(function each(client) {
                         // Exclude the client that made the request
                         if (client !== ws && client.readyState === WebSocket.OPEN) {
