@@ -106,6 +106,16 @@ document.addEventListener("DOMContentLoaded", function() {
     .resizable({
         preserveAspectRatio: true,
         edges: { left: true, right: true, bottom: true, top: true },
+        modifiers: [
+            // Maintain the aspect ratio.
+            interact.modifiers.aspectRatio({
+                ratio: 'preserve', // Preserve the aspect ratio
+            }),
+            // Restrict the size.
+            interact.modifiers.restrictSize({
+                min: { width: 25, height: 25 } // Minimum width and height
+            })
+        ],
         listeners: {
             move(event) {
                 var target = event.target,
