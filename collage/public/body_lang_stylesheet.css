@@ -33,3 +33,7 @@ h1 {
 
     resize: none;
 }
+
+#imageArea img:hover {
+    border: 1px solid black;
+}
