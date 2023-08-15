@@ -15,7 +15,6 @@ app.get('/collage', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'index.html')); 
 });
 
-app.use('/uploaded_images', express.static(path.join(__dirname, 'uploaded_images')));
 app.use('/collage', express.static(path.join(__dirname, 'public')));
 
 
