@@ -35,7 +35,7 @@ const dbPromise = new Promise((resolve, reject) => {
 
 const webSocketPromise = new Promise((resolve, reject) => {
     const server = http.createServer(app);
-    const wss = new WebSocket.Server({ server });
+    wss = new WebSocket.Server({ server });
 
     wss.on('error', function error(err) {
         console.error('Failed to connect to WebSocket', err);
@@ -84,7 +84,7 @@ Promise.all([dbPromise, webSocketPromise])
                             throw err;
                         }
 
-                        wss.send(JSON.stringify({
+                        ws.send(JSON.stringify({
                             type: 'updateInitialPositionAndSize',
                             id: row.id,
                             x: row.x,
@@ -165,6 +165,10 @@ Promise.all([dbPromise, webSocketPromise])
                         }
                     });
                 }
+            });
+
+            ws.on('close', () => {
+                console.log('Client disconnected');
             });
             
         });
