@@ -17,7 +17,7 @@ socket.addEventListener("message", (event) => {
     const data = JSON.parse(event.data);
 
     if (data.type === 'updateInitialPositionAndSize') {
-        console.log("updating initial position for", data.id);
+        console.log("updating initial position and size for", data.id);
         let image = document.getElementById(data.id);
         image.style.left = data.x + 'px';
         image.style.top = data.y + 'px';
