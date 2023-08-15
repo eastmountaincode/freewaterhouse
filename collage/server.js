@@ -16,6 +16,8 @@ app.get('/collage', function(req, res) {
 });
 
 app.use('/collage', express.static(path.join(__dirname, 'public')));
+app.use('/uploaded_images', express.static(path.join(__dirname, 'uploaded_images')));
+
 
 let db;
 let server;
@@ -51,22 +53,27 @@ Promise.all([dbPromise, webSocketPromise])
     .then(([db, wss]) => {
         console.log('Both SQLite3 and WebSocket connections have been established');
 
-        // This is inside the then() after Promise.all
-        db.all('SELECT id FROM images', [], (err, rows) => {
-            if (err) {
-                throw err;
-            }
-            // rows will contain an array of results, e.g. [{id: 'Basketball.png'}, {id: 'coins.png'}]
-
-            const imageNames = rows.map(row => row.id);
-            console.log(imageNames);
-
-        });
-
         wss.on('connection', function connection(ws) {
             console.log('A new client connected!');
 
-            ws.on('message', function incoming(message) {
+            db.all('SELECT id FROM images', [], (err, rows) => {
+                if (err) {
+                    throw err;
+                }
+                // rows will contain an array of results, e.g. [{id: 'Basketball.png'}, {id: 'coins.png'}]
+    
+                const imageNames = rows.map(row => row.id);
+                console.log(imageNames);
+    
+                // Send image names only to this client
+                wss.send(JSON.stringify({
+                    type: 'initialImageNames',
+                    images: imageNames
+                }));
+    
+            });
+
+            wss.on('message', function incoming(message) {
                 //console.log('received: %s', message);
                 
                 const data = JSON.parse(message);
@@ -77,7 +84,7 @@ Promise.all([dbPromise, webSocketPromise])
                             throw err;
                         }
 
-                        ws.send(JSON.stringify({
+                        wss.send(JSON.stringify({
                             type: 'updateInitialPositionAndSize',
                             id: row.id,
                             x: row.x,

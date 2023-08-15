@@ -16,7 +16,20 @@ socket.addEventListener("message", (event) => {
     console.log("Received from server: ", event.data); 
     const data = JSON.parse(event.data);
 
-    if (data.type === 'updateInitialPositionAndSize') {
+    if (data.type === 'initialImageNames') {
+        const imageArea = document.getElementById("imageArea");
+        
+        // Loop through each image name and create an img element
+        data.images.forEach(imageName => {
+            const imgElement = document.createElement("img");
+            imgElement.src = `/uploaded_images/${imageName}`;  // Assuming you've set up a static route in Express for uploaded_images
+            imgElement.alt = imageName;
+            imgElement.id = imageName;
+
+            // Append to the image area or any container you want
+            imageArea.appendChild(imgElement);
+        });
+    } else if (data.type === 'updateInitialPositionAndSize') {
         console.log("updating initial position and size for", data.id);
         let image = document.getElementById(data.id);
         image.style.left = data.x + 'px';
