@@ -6,7 +6,7 @@ socket.addEventListener("open", (event) => {
     console.log("Connected to websocket server");
 
     socket.send(JSON.stringify({
-        type: 'getInitialPosition'
+        type: 'getInitialPositionAndSize'
     }));
 });
 
@@ -16,11 +16,15 @@ socket.addEventListener("message", (event) => {
     console.log("Received from server: ", event.data); 
     const data = JSON.parse(event.data);
 
-    if (data.type === 'updateInitialPosition') {
+    if (data.type === 'updateInitialPositionAndSize') {
         console.log("updating initial position for", data.id);
         let image = document.getElementById(data.id);
         image.style.left = data.x + 'px';
         image.style.top = data.y + 'px';
+
+        image.style.width = data.width + 'px';
+        image.style.height = data.height + 'px';
+
         image.setAttribute("data-x", data.x);
         image.setAttribute("data-y", data.y);
     } else if (data.type === 'updatePositionOnServerDragging') {

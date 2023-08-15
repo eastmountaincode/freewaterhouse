@@ -59,16 +59,18 @@ Promise.all([dbPromise, webSocketPromise])
                 const data = JSON.parse(message);
                 
                 if (data.type === "getInitialPosition") {
-                    db.each('SELECT id, x, y FROM images', (err, row) => {
+                    db.each('SELECT id, x, y, width, height FROM images', (err, row) => {
                         if (err) {
                             throw err;
                         }
 
                         ws.send(JSON.stringify({
-                            type: 'updateInitialPosition',
+                            type: 'updateInitialPositionAndSize',
                             id: row.id,
                             x: row.x,
-                            y: row.y
+                            y: row.y,
+                            width: row.width,
+                            height: row.height
                         }));
                     });
                 } else if (data.type === "updatePositionOnSocketDragging") {
