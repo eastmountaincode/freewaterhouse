@@ -66,7 +66,7 @@ Promise.all([dbPromise, webSocketPromise])
                 console.log(imageNames);
     
                 // Send image names only to this client
-                wss.send(JSON.stringify({
+                ws.send(JSON.stringify({
                     type: 'initialImageNames',
                     images: imageNames
                 }));
