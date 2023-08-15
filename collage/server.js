@@ -8,15 +8,32 @@ const WebSocket = require('ws');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
+const multer = require('multer');
+
 console.log(__dirname);
+
+// MULTER STUFF
+
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './public/images/')
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname)
+    }
+});
+
+const upload = multer({ storage: storage });
+
+// END MULTER STUFF
 
 // Define the route for '/collage'
 app.get('/collage', function(req, res) {
     res.sendFile(path.join(__dirname, 'public', 'index.html')); 
 });
 
+// Expose the public folder
 app.use('/collage', express.static(path.join(__dirname, 'public')));
-
 
 let db;
 let server;
@@ -51,6 +68,24 @@ const webSocketPromise = new Promise((resolve, reject) => {
 Promise.all([dbPromise, webSocketPromise])
     .then(([db, wss]) => {
         console.log('Both SQLite3 and WebSocket connections have been established');
+
+        // Endpoint to handle image uploads
+        app.post('/collage/upload', upload.single('image'), (req, res) => {
+            if (!req.file) {
+                return res.status(400).send('No file uploaded.');
+            }
+
+            const imageFile = req.file.filename;
+
+            // Insert into SQLite
+            const sql = `INSERT INTO images(id, x, y, width, height) VALUES(?, ?, ?, ?, ?)`;
+            db.run(sql, [imageFile, 0, 0, 150, 150], function(err) { // Default position and size
+                if (err) {
+                    return res.status(500).send('Failed to add image to database.');
+                }
+                res.status(200).send('Image uploaded and added to database.');
+            });
+        });
 
         wss.on('connection', function connection(ws) {
             console.log('A new client connected!');
