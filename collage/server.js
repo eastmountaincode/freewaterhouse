@@ -72,7 +72,7 @@ Promise.all([dbPromise, webSocketPromise])
     
             });
 
-            wss.on('message', function incoming(message) {
+            ws.on('message', function incoming(message) {
                 //console.log('received: %s', message);
                 
                 const data = JSON.parse(message);
