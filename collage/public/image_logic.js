@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
         preserveAspectRatio: true,
         edges: { left: true, right: true, bottom: true, top: true },
         listeners: {
-            resizemove(event) {
+            move(event) {
                 var target = event.target,
                     x = (parseFloat(target.getAttribute('data-x')) || 0),
                     y = (parseFloat(target.getAttribute('data-y')) || 0);
@@ -123,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 target.setAttribute('data-x', x);
                 target.setAttribute('data-y', y);
             },
-            resizeend(event) {
+            end(event) {
                 const target = event.target;
                 const id = target.id;
                 const width = target.style.width;
