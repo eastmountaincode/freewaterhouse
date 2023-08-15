@@ -122,6 +122,28 @@ Promise.all([dbPromise, webSocketPromise])
                         }
                         console.log(`Position updated for id: ${data.id}`);
                     });
+                } else if (data.type === "updateSizeInDatabase") {
+                    let sql = `UPDATE images SET x = ?, y = ?, width = ?, height = ? WHERE id = ?`;
+                    db.run(sql, [data.x, data.y, data.width, data.height, data.id], function(err) {
+                        if (err) {
+                            return console.error(err.message);
+                        }
+                        console.log(`Size (and position) updated for id: ${data.id}`);
+                    });
+                } else if (data.type === "broadcastFinalSize") {
+                    wss.clients.forEach(function each(client) {
+                        // Exclude the client that made the request
+                        if (client !== ws && client.readyState === WebSocket.OPEN) {
+                            client.send(JSON.stringify({
+                                type: 'updateSizeOnServerResizing',
+                                id: data.id,
+                                x: data.x,
+                                y: data.y,
+                                width: data.width,
+                                height: data.height  
+                            }));
+                        }
+                    });
                 }
             });
             

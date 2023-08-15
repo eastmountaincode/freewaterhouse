@@ -172,13 +172,33 @@ document.addEventListener("DOMContentLoaded", function() {
                 const id = target.id;
                 const width = target.style.width;
                 const height = target.style.height;
+                
+                x = (parseFloat(target.getAttribute('data-x')) || 0),
+                y = (parseFloat(target.getAttribute('data-y')) || 0);
 
-                // socket.send(JSON.stringify({
-                //     type: 'updateImageSize',
-                //     id: id,
-                //     width: width,
-                //     height: height
-                // }));
+                x += event.deltaRect.left;
+                y += event.deltaRect.top;
+
+                socket.send(JSON.stringify({
+                    type: 'updateSizeInDatabase',
+                    id: id,
+                    x: x,
+                    y: y,
+                    width: width,
+                    height: height
+
+                }));
+
+                // Broadcast the final size to all clients to ensure sync
+                socket.send(JSON.stringify({
+                    type: 'broadcastFinalSize',
+                    id: id,
+                    x: x,
+                    y: y,
+                    width: width,
+                    height: height
+                }));
+
             }
         }
     });
