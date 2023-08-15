@@ -107,10 +107,10 @@ document.addEventListener("DOMContentLoaded", function() {
         preserveAspectRatio: true,
         edges: { left: true, right: true, bottom: true, top: true },
         modifiers: [
-            // Maintain the aspect ratio.
-            interact.modifiers.aspectRatio({
-                ratio: 'preserve', // Preserve the aspect ratio
-            }),
+            // // Maintain the aspect ratio.
+            // interact.modifiers.aspectRatio({
+            //     ratio: 'preserve', // Preserve the aspect ratio
+            // }),
             // Restrict the size.
             interact.modifiers.restrictSize({
                 min: { width: 25, height: 25 } // Minimum width and height
