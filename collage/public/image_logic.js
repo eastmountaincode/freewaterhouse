@@ -109,8 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
         modifiers: [
             // Maintain the aspect ratio.
             interact.modifiers.aspectRatio({
-                // ratio: 'preserve', // Preserve the aspect ratio
-                ratio: 2
+                ratio: 'preserve', // Preserve the aspect ratio
             }),
             // Restrict the size.
             interact.modifiers.restrictSize({
