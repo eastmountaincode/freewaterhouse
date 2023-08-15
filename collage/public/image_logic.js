@@ -170,8 +170,8 @@ document.addEventListener("DOMContentLoaded", function() {
             end(event) {
                 const target = event.target;
                 const id = target.id;
-                const width = target.style.width;
-                const height = target.style.height;
+                const width = event.rect.width;
+                const height = event.rect.height;
                 
                 x = (parseFloat(target.getAttribute('data-x')) || 0),
                 y = (parseFloat(target.getAttribute('data-y')) || 0);
