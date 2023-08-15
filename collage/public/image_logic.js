@@ -32,14 +32,11 @@ socket.addEventListener("message", (event) => {
         image.setAttribute("data-y", data.y);
     } else if (data.type === "updateSizeOnServerResizing") {
         let image = document.getElementById(data.id);
-        image.style.width = event.rect.width + 'px';
-        image.style.height = event.rect.height + 'px';
+        image.style.width = data.width + 'px';
+        image.style.height = data.height + 'px';
 
-        x += event.deltaRect.left;
-        y += event.deltaRect.top;
-
-        image.style.left = x + 'px';
-        image.style.top = y + 'px';
+        image.style.left = data.x + 'px';
+        image.style.top = data.y + 'px';
         image.setAttribute('data-x', x);
         image.setAttribute('data-y', y);
     }
