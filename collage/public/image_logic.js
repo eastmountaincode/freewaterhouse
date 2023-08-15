@@ -23,7 +23,7 @@ socket.addEventListener("message", (event) => {
         // Loop through each image name and create an img element
         data.images.forEach(imageName => {
             const imgElement = document.createElement("img");
-            imgElement.src = `/uploaded_images/${imageName}`;  // Assuming you've set up a static route in Express for uploaded_images
+            imgElem.src = `/collage/uploaded_images/${imageName}`;
             imgElement.alt = imageName;
             imgElement.id = imageName;
 
