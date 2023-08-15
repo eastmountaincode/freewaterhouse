@@ -37,8 +37,8 @@ socket.addEventListener("message", (event) => {
 
         image.style.left = data.x + 'px';
         image.style.top = data.y + 'px';
-        image.setAttribute('data-x', x);
-        image.setAttribute('data-y', y);
+        image.setAttribute('data-x', data.x);
+        image.setAttribute('data-y', data.y);
     }
     else {
         console.error('Received unknown message type: ', data.type);
