@@ -25,7 +25,8 @@ uploadButton.addEventListener('click', function () {
     xhr.onload = function () {
         if (this.status === 200) {
             alert('Image uploaded successfully!');
-            // TODO: Handle successful upload logic, like adding the new image to the image area dynamically.
+            // TODO: Handle successful upload logic,
+            // like adding the new image to the image area dynamically.
         } else {
             alert('Error uploading image.');
         }
