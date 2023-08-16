@@ -56,8 +56,8 @@ uploadButton.addEventListener('click', function () {
 
                 let image = document.getElementById(imageName);
     
-                image.style.width = newWidth;
-                image.style.height = newHeight;
+                image.style.width = newWidth + 'px';
+                image.style.height = newHeight + 'px';
 
                 image.style.left = 0 + 'px';
                 image.style.top = 0 + 'px';
