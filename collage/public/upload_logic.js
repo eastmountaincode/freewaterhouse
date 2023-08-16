@@ -53,15 +53,17 @@ uploadButton.addEventListener('click', function () {
                 }
                 console.log(newWidth);
                 console.log(newHeight);
+
+                let image = document.getElementById(imageName);
     
-                imgElement.style.width = newWidth;
-                imgElement.style.height = newHeight;
+                image.style.width = newWidth;
+                image.style.height = newHeight;
 
-                imgElement.style.left = 0 + 'px';
-                imgElement.style.top = 0 + 'px';
+                image.style.left = 0 + 'px';
+                image.style.top = 0 + 'px';
 
-                imgElement.setAttribute("data-x", 0);
-                imgElement.setAttribute("data-y", 0);
+                image.setAttribute("data-x", 0);
+                image.setAttribute("data-y", 0);
             };
     
             // Append to the image area or any container you want

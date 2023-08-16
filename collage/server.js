@@ -80,6 +80,7 @@ Promise.all([dbPromise, webSocketPromise])
 
             // Get dimensions of uploaded image
             const dimensions = sizeOf(req.file.path);
+            console.log(dimensions);
             const originalWidth = dimensions.width;
             const originalHeight = dimensions.height;
             let newWidth, newHeight;
