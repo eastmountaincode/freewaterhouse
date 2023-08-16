@@ -25,8 +25,16 @@ uploadButton.addEventListener('click', function () {
     xhr.onload = function () {
         if (this.status === 200) {
             alert('Image uploaded successfully!');
-            // TODO: Handle successful upload logic,
-            // like adding the new image to the image area dynamically.
+
+            const imageName = imageInput.files[0].name;
+
+            const imgElement = document.createElement("img");
+            imgElement.src = `/collage/uploaded_images/${imageName}`;
+            imgElement.alt = imageName;
+            imgElement.id = imageName;
+
+            // Append to the image area or any container you want
+            imageArea.appendChild(imgElement);
         } else {
             alert('Error uploading image.');
         }
