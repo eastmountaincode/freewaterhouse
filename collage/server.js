@@ -9,6 +9,7 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
 const multer = require('multer');
+const sizeOf = require('image-size');
 
 console.log(__dirname);
 
