@@ -25,14 +25,35 @@ uploadButton.addEventListener('click', function () {
     xhr.onload = function () {
         if (this.status === 200) {
             alert('Image uploaded successfully!');
-
+    
             const imageName = imageInput.files[0].name;
-
+    
             const imgElement = document.createElement("img");
             imgElement.src = `/collage/uploaded_images/${imageName}`;
             imgElement.alt = imageName;
             imgElement.id = imageName;
-
+    
+            // This function will resize the image according to its aspect ratio
+            imgElement.onload = function() {
+                const originalWidth = this.naturalWidth;
+                const originalHeight = this.naturalHeight;
+                let newWidth, newHeight;
+    
+                if (originalWidth > originalHeight) {
+                    newWidth = 150;
+                    newHeight = (originalHeight / originalWidth) * 150;
+                } else if (originalWidth < originalHeight) {
+                    newHeight = 150;
+                    newWidth = (originalWidth / originalHeight) * 150;
+                } else {
+                    newWidth = 150;
+                    newHeight = 150;
+                }
+    
+                imgElement.width = newWidth;
+                imgElement.height = newHeight;
+            };
+    
             // Append to the image area or any container you want
             imageArea.appendChild(imgElement);
         } else {

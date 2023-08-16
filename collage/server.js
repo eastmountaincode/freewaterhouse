@@ -77,15 +77,33 @@ Promise.all([dbPromise, webSocketPromise])
 
             const imageFile = req.file.filename;
 
+            // Get dimensions of uploaded image
+            const dimensions = sizeOf(req.file.path);
+            const originalWidth = dimensions.width;
+            const originalHeight = dimensions.height;
+            let newWidth, newHeight;
+
+            if (originalWidth > originalHeight) {
+                newWidth = 150;
+                newHeight = (originalHeight / originalWidth) * 150;
+            } else if (originalWidth < originalHeight) {
+                newHeight = 150;
+                newWidth = (originalWidth / originalHeight) * 150;
+            } else {
+                newWidth = 150;
+                newHeight = 150;
+            }
+
             // Insert into SQLite
             const sql = `INSERT INTO images(id, x, y, width, height) VALUES(?, ?, ?, ?, ?)`;
-            db.run(sql, [imageFile, 0, 0, 150, 150], function(err) { // Default position and size
+            db.run(sql, [imageFile, 0, 0, newWidth, newHeight], function(err) { // Set the new width and height
                 if (err) {
                     return res.status(500).send('Failed to add image to database.');
                 }
                 res.status(200).send('Image uploaded and added to database.');
             });
         });
+
 
         wss.on('connection', function connection(ws) {
             console.log('A new client connected!');
