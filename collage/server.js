@@ -219,6 +219,18 @@ Promise.all([dbPromise, webSocketPromise])
                             }));
                         }
                     });
+                } else if (data.type === "newImageUploaded") {
+                    wss.clients.forEach(function each(client) {
+                        // Exclude the client that made the request
+                        if (client !== ws && client.readyState === WebSocket.OPEN) {
+                            client.send(JSON.stringify({
+                                type: 'updateNewImageOnSocket',
+                                imageName: data.imageName,
+                                imageWidth: data.imageWidth,
+                                imageHeight: data.imageHeight 
+                            }));
+                        }
+                    });
                 }
             });
 

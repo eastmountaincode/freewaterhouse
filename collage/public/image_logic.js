@@ -57,8 +57,44 @@ socket.addEventListener("message", (event) => {
         image.style.top = data.y + 'px';
         image.setAttribute('data-x', data.x);
         image.setAttribute('data-y', data.y);
-    }
-    else {
+    } else if (data.type === "updateNewImageOnSocket") {
+        const imageName = data.imageName;
+        const imgElement = document.createElement("img");
+        imgElement.src = `/collage/uploaded_images/${imageName}`;
+        imgElement.alt = imageName;
+        imgElement.id = imageName;
+
+        imgElement.onload = function() {
+            const originalWidth = this.naturalWidth;
+            const originalHeight = this.naturalHeight;
+            let newWidth, newHeight;
+
+            if (originalWidth > originalHeight) {
+                newWidth = 150;
+                newHeight = (originalHeight / originalWidth) * 150;
+            } else if (originalWidth < originalHeight) {
+                newHeight = 150;
+                newWidth = (originalWidth / originalHeight) * 150;
+            } else {
+                newWidth = 150;
+                newHeight = 150;
+            }
+
+            this.style.width = newWidth + 'px';
+            this.style.height = newHeight + 'px';
+
+            this.style.left = 0 + 'px';
+            this.style.top = 0 + 'px';
+
+            this.setAttribute("data-x", 0);
+            this.setAttribute("data-y", 0);
+
+        };
+
+        // Append to the image area or any container you want
+        imageArea.appendChild(imgElement);
+
+    } else {
         console.error('Received unknown message type: ', data.type);
     }
 });

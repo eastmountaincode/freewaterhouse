@@ -64,6 +64,16 @@ uploadButton.addEventListener('click', function () {
 
                 image.setAttribute("data-x", 0);
                 image.setAttribute("data-y", 0);
+
+                // Notify server about the new image
+                if (typeof socket !== 'undefined' && socket.readyState === WebSocket.OPEN) {
+                    socket.send(JSON.stringify({
+                        type: 'newImageUploaded',
+                        imageName: imageName,
+                        imageWidth: newWidth,
+                        imageHeight: newHeight,
+                    }));
+                }
             };
     
             // Append to the image area or any container you want
