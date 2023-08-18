@@ -312,8 +312,8 @@ Promise.all([dbPromise, webSocketPromise])
                             }
                             const maxZIndex = row.maxZIndex;
                 
-                            // Set the zIndex of the image sent to the front to maxZIndex + 1
-                            db.run("UPDATE images SET zIndex = ? WHERE id = ?", [maxZIndex + 1, data.id], (err) => {
+                            // Set the zIndex of the image sent to the front to maxZIndex
+                            db.run("UPDATE images SET zIndex = ? WHERE id = ?", [maxZIndex, data.id], (err) => {
                                 if (err) {
                                     console.error(err.message);
                                     return;
