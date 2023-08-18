@@ -30,6 +30,7 @@ uploadButton.addEventListener('click', function () {
         if (this.status === 200) {
             alert('Image uploaded successfully!');
     
+            // imageName being defined by the random unique ID
             const imgElement = document.createElement("img");
             imgElement.src = `/collage/uploaded_images/${imageName}`;
             imgElement.alt = imageName;
