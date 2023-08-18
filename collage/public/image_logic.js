@@ -107,6 +107,9 @@ let shouldSendUpdateMove = true;
 let shouldSendUpdateResize = true;
 
 let selectedImage = null;
+const deleteButton = document.getElementById('deleteButton');
+const confirmDeleteButton = document.getElementById('confirmDelete');
+const cancelDeleteButton = document.getElementById('cancelDelete');
 
 document.addEventListener("DOMContentLoaded", function() { 
 
