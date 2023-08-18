@@ -392,6 +392,8 @@ document.addEventListener("DOMContentLoaded", function() {
         deleteButton.disabled = true;
         confirmDeleteButton.disabled = true;
         cancelDeleteButton.disabled = true;
+        sendToFrontButton.disabled = true;
+        sendToBackButton.disabled = true;
 
     });
 
