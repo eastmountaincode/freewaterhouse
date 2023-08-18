@@ -251,5 +251,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
             }
         }
+    })
+    .on('tap', function(event) {
+        event.preventDefault()
+        if (selectedImage) {
+            selectedImage.classList.remove('selected');
+        }
+        event.currentTarget.classList.add('selected');
+        selectedImage = event.currentTarget;
     });
 });

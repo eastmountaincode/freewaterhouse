@@ -37,3 +37,8 @@ h1 {
 #imageArea img:hover {
     border: 1px solid black;
 }
+
+.selected {
+    border: 2px solid red;
+    box-shadow: 0px 0px 10px rgba(0, 0, 255, 0.5);
+}
