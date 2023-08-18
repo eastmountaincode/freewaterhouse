@@ -251,6 +251,19 @@ Promise.all([dbPromise, webSocketPromise])
                         console.log(`Image deleted from database for id: ${data.id}`);
                     });
 
+                    // Delete image from server
+                    // Path to the image based on multer's configuration
+                    const imagePath = path.join(__dirname, 'public', 'uploaded_images', data.id); 
+
+                    // Delete the image from the server
+                    fs.unlink(imagePath, (err) => {
+                        if (err) {
+                            console.error(`Error deleting the image with id: ${data.id}. Error: ${err.message}`);
+                        } else {
+                            console.log(`Image with id: ${data.id} successfully deleted from the server.`);
+                        }
+                    });
+
                 }
             });
 
