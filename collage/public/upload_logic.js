@@ -70,12 +70,14 @@ uploadButton.addEventListener('click', function () {
 
                 // Check if the zIndexLedger is empty
                 if (Object.keys(zIndexLedger).length === 0) {
+                    console.log('ledger empty');
                     // Set the style with zIndex 0
                     image.style.zIndex = 0;
                     // Update the ledger with the first image
                     zIndexLedger[imageName] = 0;
                     maxZIndex = 0;
                 } else {
+                    console.log('ledger not empty');
                     // Calculate the next zIndex
                     let maxZIndex = Math.max(...Object.values(zIndexLedger));
 
