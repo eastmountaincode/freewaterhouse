@@ -10,16 +10,16 @@
     <h1>Body Language</h1>
     <div id="uploadSection">
         <label for="imageInput">Add Image:</label>
-        <input type="file" id="imageInput" accept="image/*">
-        <button id="uploadButton" disabled>Upload</button>
+        <input type="file" id="imageInput" class="buttonCheck" accept="image/*">
+        <button id="uploadButton" class="buttonCheck" disabled>Upload</button>
         <progress id="uploadProgress" value="0" max="100"></progress>
     </div>
     <div id="deleteSection">
         <span>Delete Image: </span>
-        <button id="deleteButton" disabled>Delete</button>
+        <button id="deleteButton" class="buttonCheck" disabled>Delete</button>
         <span id="confirmText" style="opacity: 0.3;">Are you sure?</span>
-        <button id="confirmDelete" disabled>Yes</button>
-        <button id="cancelDelete" disabled>No</button>
+        <button id="confirmDelete" class="buttonCheck" disabled>Yes</button>
+        <button id="cancelDelete" class="buttonCheck" disabled>No</button>
     </div>
     <div id="imageArea">
     </div>

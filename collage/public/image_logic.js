@@ -313,7 +313,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener('click', function(event) {
     // Check if the clicked element is not an image inside the #imageArea
-    if (!event.target.matches('#imageArea img') && event.target !== selectedImage) {
+    if (!event.target.matches('#imageArea img') 
+        && event.target !== selectedImage
+        && !event.target.classList.contains('buttonCheck')) {
+            
         // If there's a selected image, remove its 'selected' class
         if (selectedImage) {
             selectedImage.classList.remove('selected');
