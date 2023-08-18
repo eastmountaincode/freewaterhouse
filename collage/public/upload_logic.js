@@ -74,17 +74,16 @@ uploadButton.addEventListener('click', function () {
                     image.style.zIndex = 0;
                     // Update the ledger with the first image
                     zIndexLedger[imageName] = 0;
-                    nextZIndex = 0;
+                    maxZIndex = 0;
                 } else {
                     // Calculate the next zIndex
                     let maxZIndex = Math.max(...Object.values(zIndexLedger));
-                    let nextZIndex = maxZIndex + 1;
 
                     // Set the style
-                    image.style.zIndex = nextZIndex;
+                    image.style.zIndex = maxZIndex;
 
                     // Update the ledger
-                    zIndexLedger[imageName] = nextZIndex;
+                    zIndexLedger[imageName] = maxZIndex;
                 }
 
                 // Notify server about the new image
@@ -94,7 +93,7 @@ uploadButton.addEventListener('click', function () {
                         imageName: imageName,
                         imageWidth: newWidth,
                         imageHeight: newHeight,
-                        zIndex: nextZIndex
+                        zIndex: maxZIndex
                     }));
                 }
             };
