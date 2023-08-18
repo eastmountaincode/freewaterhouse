@@ -78,6 +78,12 @@ uploadButton.addEventListener('click', function () {
     
             // Append to the image area or any container you want
             imageArea.appendChild(imgElement);
+
+            // Reset the input, disable the upload button, and reset the progress bar
+            imageInput.value = '';
+            uploadButton.disabled = true;
+            uploadProgress.value = 0;
+
         } else {
             alert('Error uploading image.');
         }
