@@ -107,7 +107,8 @@ let shouldSendUpdateMove = true;
 let shouldSendUpdateResize = true;
 
 document.addEventListener("DOMContentLoaded", function() { 
-    // Make all images inside the #imageArea draggable
+    let selectedImage = null;
+
     interact("#imageArea img")
       .draggable({
         inertia: false,
