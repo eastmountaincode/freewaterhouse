@@ -71,6 +71,12 @@ uploadButton.addEventListener('click', function () {
                 let maxZIndex = Math.max(...Object.values(zIndexLedger));
                 let nextZIndex = maxZIndex + 1;
 
+                // Set the style 
+                image.style.zIndex = nextZIndex;
+
+                // update the ledger
+                zIndexLedger[imageName] = nextZIndex;
+
                 // Notify server about the new image
                 if (typeof socket !== 'undefined' && socket.readyState === WebSocket.OPEN) {
                     socket.send(JSON.stringify({
