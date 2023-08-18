@@ -68,14 +68,24 @@ uploadButton.addEventListener('click', function () {
                 image.setAttribute("data-x", 0);
                 image.setAttribute("data-y", 0);
 
-                let maxZIndex = Math.max(...Object.values(zIndexLedger));
-                let nextZIndex = maxZIndex + 1;
+                // Check if the zIndexLedger is empty
+                if (Object.keys(zIndexLedger).length === 0) {
+                    // Set the style with zIndex 0
+                    image.style.zIndex = 0;
+                    // Update the ledger with the first image
+                    zIndexLedger[imageName] = 0;
+                    nextZIndex = 0;
+                } else {
+                    // Calculate the next zIndex
+                    let maxZIndex = Math.max(...Object.values(zIndexLedger));
+                    let nextZIndex = maxZIndex + 1;
 
-                // Set the style 
-                image.style.zIndex = nextZIndex;
+                    // Set the style
+                    image.style.zIndex = nextZIndex;
 
-                // update the ledger
-                zIndexLedger[imageName] = nextZIndex;
+                    // Update the ledger
+                    zIndexLedger[imageName] = nextZIndex;
+                }
 
                 // Notify server about the new image
                 if (typeof socket !== 'undefined' && socket.readyState === WebSocket.OPEN) {
