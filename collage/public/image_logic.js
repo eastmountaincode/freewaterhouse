@@ -125,6 +125,25 @@ socket.addEventListener("message", (event) => {
             cancelDeleteButton.disabled = true;
             confirmText.style.opacity = '0.4';
         }
+
+        // Determine the z-index of the deleted image
+        const deletedZIndex = zIndexLedger[data.id];
+        
+        // Update z-indices in the ledger and on the actual elements
+        for (let id in zIndexLedger) {
+            if (zIndexLedger[id] > deletedZIndex) {
+                zIndexLedger[id] -= 1;
+                
+                // Also update the actual image's z-index
+                let affectedImage = document.getElementById(id);
+                if (affectedImage) {
+                    affectedImage.style.zIndex = zIndexLedger[id];
+                }
+            }
+        }
+    
+        // Remove the deleted image from the zIndexLedger
+        delete zIndexLedger[data.id];
         
         // Remove the image from the DOM
         image.remove();

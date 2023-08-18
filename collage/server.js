@@ -254,29 +254,48 @@ Promise.all([dbPromise, webSocketPromise])
                             }));
                         }
                     });
-                    // Delete image from database
-                    let sql = `DELETE FROM images WHERE id = ?`;
-                    db.run(sql, [data.id], function(err) {
+                    
+                    // Get the zIndex of the image that's going to be deleted
+                    let fetchZIndex = `SELECT zIndex FROM images WHERE id = ?`;
+                    db.get(fetchZIndex, [data.id], (err, row) => {
                         if (err) {
                             return console.error(err.message);
                         }
-                        console.log(`Image deleted from database for id: ${data.id}`);
+                        
+                        const zIndexToDelete = row.zIndex;
+                
+                        // Delete image from database
+                        let sql = `DELETE FROM images WHERE id = ?`;
+                        db.run(sql, [data.id], function(err) {
+                            if (err) {
+                                return console.error(err.message);
+                            }
+                            console.log(`Image deleted from database for id: ${data.id}`);
+                            
+                            // Adjust the zIndex for images that had a higher zIndex than the deleted image
+                            let adjustZIndex = `UPDATE images SET zIndex = zIndex - 1 WHERE zIndex > ?`;
+                            db.run(adjustZIndex, [zIndexToDelete], function(err) {
+                                if (err) {
+                                    return console.error(`Failed to adjust zIndex after deletion. Error: ${err.message}`);
+                                }
+                                console.log(`zIndex adjusted for images after deletion of image with zIndex: ${zIndexToDelete}`);
+                            });
+                        });
+                
+                        // Delete image from server
+                        const imagePath = path.join(__dirname, 'public', 'uploaded_images', data.id); 
+                
+                        // Delete the image from the server
+                        fs.unlink(imagePath, (err) => {
+                            if (err) {
+                                console.error(`Error deleting the image with id: ${data.id}. Error: ${err.message}`);
+                            } else {
+                                console.log(`Image with id: ${data.id} successfully deleted from the server.`);
+                            }
+                        });
                     });
-
-                    // Delete image from server
-                    // Path to the image based on multer's configuration
-                    const imagePath = path.join(__dirname, 'public', 'uploaded_images', data.id); 
-
-                    // Delete the image from the server
-                    fs.unlink(imagePath, (err) => {
-                        if (err) {
-                            console.error(`Error deleting the image with id: ${data.id}. Error: ${err.message}`);
-                        } else {
-                            console.log(`Image with id: ${data.id} successfully deleted from the server.`);
-                        }
-                    });
-
                 }
+                    
             });
 
             ws.on('close', () => {
