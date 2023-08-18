@@ -321,7 +321,7 @@ Promise.all([dbPromise, webSocketPromise])
                                 }
                 
                                 // Decrease the zIndex of images that were originally above the selected image by 1
-                                db.run("UPDATE images SET zIndex = zIndex - 1 WHERE zIndex >= ? AND id !=", [originalZIndex, data.id], (err) => {
+                                db.run("UPDATE images SET zIndex = zIndex - 1 WHERE zIndex > ? AND id != ?", [originalZIndex, data.id], (err) => {
                                     if (err) {
                                         console.error(err.message);
                                     }
