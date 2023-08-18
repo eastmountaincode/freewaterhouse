@@ -103,11 +103,11 @@ Promise.all([dbPromise, webSocketPromise])
                     return res.status(500).send('Failed to retrieve max zIndex from database.');
                 }
                 // Compute the next zIndex
-                const nextZIndex = (row && row.maxZIndex ? row.maxZIndex : 0) + 1;
+                const maxZIndex = (row && row.maxZIndex ? row.maxZIndex : 0);
 
                 // Insert into SQLite
                 const sql = `INSERT INTO images(id, x, y, width, height, zIndex) VALUES(?, ?, ?, ?, ?, ?)`;
-                db.run(sql, [imageFile, 0, 0, newWidth, newHeight, nextZIndex], function(err) {
+                db.run(sql, [imageFile, 0, 0, newWidth, newHeight, maxZIndex], function(err) {
                     if (err) {
                         return res.status(500).send('Failed to add image to database.');
                     }
@@ -320,7 +320,7 @@ Promise.all([dbPromise, webSocketPromise])
                                 }
                 
                                 // Decrease the zIndex of images that were originally above the selected image by 1
-                                db.run("UPDATE images SET zIndex = zIndex - 1 WHERE zIndex > ? AND zIndex <= ?", [originalZIndex, maxZIndex], (err) => {
+                                db.run("UPDATE images SET zIndex = zIndex - 1 WHERE zIndex > ? AND id !=", [originalZIndex, data.id], (err) => {
                                     if (err) {
                                         console.error(err.message);
                                     }
