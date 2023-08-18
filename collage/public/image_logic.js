@@ -110,6 +110,7 @@ let selectedImage = null;
 const deleteButton = document.getElementById('deleteButton');
 const confirmDeleteButton = document.getElementById('confirmDelete');
 const cancelDeleteButton = document.getElementById('cancelDelete');
+const confirmText = document.getElementById('confirmText');
 
 document.addEventListener("DOMContentLoaded", function() { 
 
@@ -278,6 +279,9 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("enabling yes and no");
             confirmDeleteButton.disabled = false;
             cancelDeleteButton.disabled = false;
+
+            // Set opacity of the "Are you sure" text
+            confirmText.style.opacity = '1.0';
         }
     });
 
@@ -301,6 +305,8 @@ document.addEventListener("DOMContentLoaded", function() {
     cancelDeleteButton.addEventListener('click', function() {
         confirmDeleteButton.disabled = true;
         cancelDeleteButton.disabled = true;
+
+        confirmText.style.opacity = '0.4';
     });
 
 });
