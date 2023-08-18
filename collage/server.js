@@ -102,12 +102,13 @@ Promise.all([dbPromise, webSocketPromise])
                 if (err) {
                     return res.status(500).send('Failed to retrieve max zIndex from database.');
                 }
+                
                 // Compute the next zIndex
-                const maxZIndex = (row && row.maxZIndex ? row.maxZIndex : 0);
+                const zIndex = (row && row.maxZIndex != null) ? row.maxZIndex + 1 : 0;
 
                 // Insert into SQLite
                 const sql = `INSERT INTO images(id, x, y, width, height, zIndex) VALUES(?, ?, ?, ?, ?, ?)`;
-                db.run(sql, [imageFile, 0, 0, newWidth, newHeight, maxZIndex], function(err) {
+                db.run(sql, [imageFile, 0, 0, newWidth, newHeight, zIndex], function(err) {
                     if (err) {
                         return res.status(500).send('Failed to add image to database.');
                     }
