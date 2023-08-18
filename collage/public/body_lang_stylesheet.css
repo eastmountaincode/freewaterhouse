@@ -47,6 +47,7 @@ h1 {
     text-align: left;
     width: 70%;
     border: 1px solid black;
+    padding: 5px;
 }
 
 #deleteButton {
