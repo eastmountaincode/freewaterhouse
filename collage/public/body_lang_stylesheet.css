@@ -34,20 +34,11 @@ h1 {
     resize: none;
 }
 
-#imageArea img {
-    border: 1px solid transparent;  /* Default state */
-}
 
 #imageArea img:hover {
     border: 1px solid black;
 }
 
 .selected {
-    border: 1px solid red;  /* Matching the border width with hover state */
-    box-shadow: 0px 0px 10px black;
-}
-
-.selected:hover {
-    border: 1px solid red;  /* Explicitly setting for hover */
     box-shadow: 0px 0px 10px black;
 }

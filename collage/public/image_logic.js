@@ -106,8 +106,9 @@ socket.addEventListener('error', (error) => {
 let shouldSendUpdateMove = true;
 let shouldSendUpdateResize = true;
 
+let selectedImage = null;
+
 document.addEventListener("DOMContentLoaded", function() { 
-    let selectedImage = null;
 
     interact("#imageArea img")
       .draggable({
@@ -261,4 +262,15 @@ document.addEventListener("DOMContentLoaded", function() {
         event.currentTarget.classList.add('selected');
         selectedImage = event.currentTarget;
     });
+});
+
+document.addEventListener('click', function(event) {
+    // Check if the clicked element is not an image inside the #imageArea
+    if (!event.target.matches('#imageArea img')) {
+        // If there's a selected image, remove its 'selected' class
+        if (selectedImage) {
+            selectedImage.classList.remove('selected');
+            selectedImage = null; // Reset the selectedImage
+        }
+    }
 });
