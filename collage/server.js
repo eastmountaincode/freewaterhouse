@@ -231,6 +231,26 @@ Promise.all([dbPromise, webSocketPromise])
                             }));
                         }
                     });
+                } else if (data.type === "deleteImage") {
+                    // Send the delete instruction to all users on socket
+                    wss.clients.forEach(function each(client) {
+                        // Exclude the client that made the request
+                        if (client !== ws && client.readyState === WebSocket.OPEN) {
+                            client.send(JSON.stringify({
+                                type: 'deleteImageOnSocket',
+                                id: data.id
+                            }));
+                        }
+                    });
+                    // Delete image from database
+                    let sql = `DELETE FROM images WHERE id = ?`;
+                    db.run(sql, [data.id], function(err) {
+                        if (err) {
+                            return console.error(err.message);
+                        }
+                        console.log(`Image deleted from database for id: ${data.id}`);
+                    });
+
                 }
             });
 

@@ -1,3 +1,14 @@
+// Global variables
+
+let shouldSendUpdateMove = true;
+let shouldSendUpdateResize = true;
+
+let selectedImage = null;
+const deleteButton = document.getElementById('deleteButton');
+const confirmDeleteButton = document.getElementById('confirmDelete');
+const cancelDeleteButton = document.getElementById('cancelDelete');
+const confirmText = document.getElementById('confirmText');
+
 // Create WebSocket connection.
 const socket = new WebSocket('wss://freewaterhouse.com/ws');
  
@@ -94,6 +105,19 @@ socket.addEventListener("message", (event) => {
         // Append to the image area or any container you want
         imageArea.appendChild(imgElement);
 
+    } else if (data.type === "deleteImageOnSocket") {
+        // Check if the image that's being deleted is currently selected
+        if (selectedImage && selectedImage.id === data.id) {
+            // Reset the selected image and button states
+            selectedImage = null;
+            deleteButton.disabled = true;
+            confirmDeleteButton.disabled = true;
+            cancelDeleteButton.disabled = true;
+            confirmText.style.opacity = '0.4';
+        }
+        
+        // Remove the image from the DOM
+        image.remove();
     } else {
         console.error('Received unknown message type: ', data.type);
     }
@@ -102,15 +126,6 @@ socket.addEventListener("message", (event) => {
 socket.addEventListener('error', (error) => {
     console.error('WebSocket Error:', error);
 });
-
-let shouldSendUpdateMove = true;
-let shouldSendUpdateResize = true;
-
-let selectedImage = null;
-const deleteButton = document.getElementById('deleteButton');
-const confirmDeleteButton = document.getElementById('confirmDelete');
-const cancelDeleteButton = document.getElementById('cancelDelete');
-const confirmText = document.getElementById('confirmText');
 
 document.addEventListener("DOMContentLoaded", function() { 
 
@@ -276,7 +291,6 @@ document.addEventListener("DOMContentLoaded", function() {
         // enabled in the first place if an image is selected, but
         // here we are
         if (selectedImage) {
-            console.log("enabling yes and no");
             confirmDeleteButton.disabled = false;
             cancelDeleteButton.disabled = false;
 
@@ -285,21 +299,21 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // // Confirm deletion
-    // confirmDeleteButton.addEventListener('click', function() {
-    //     if (selectedImage) {
-    //         selectedImage.remove();
-    //         // send deletion info to server...
-    //         socket.send(JSON.stringify({
-    //             type: 'deleteImage',
-    //             id: selectedImage.id
-    //         }));
-    //     }
-    //     selectedImage = null;
-    //     deleteButton.disabled = true;
-    //     confirmDeleteButton.disabled = true;
-    //     cancelDeleteButton.disabled = true;
-    // });
+    // Confirm deletion
+    confirmDeleteButton.addEventListener('click', function() {
+        if (selectedImage) {
+            selectedImage.remove();
+            // send deletion info to server...
+            socket.send(JSON.stringify({
+                type: 'deleteImage',
+                id: selectedImage.id
+            }));
+        }
+        selectedImage = null;
+        deleteButton.disabled = true;
+        confirmDeleteButton.disabled = true;
+        cancelDeleteButton.disabled = true;
+    });
 
     // Cancel deletion
     cancelDeleteButton.addEventListener('click', function() {
@@ -316,7 +330,7 @@ document.addEventListener('click', function(event) {
     if (!event.target.matches('#imageArea img') 
         && event.target !== selectedImage
         && !event.target.classList.contains('buttonCheck')) {
-            
+
         // If there's a selected image, remove its 'selected' class
         if (selectedImage) {
             selectedImage.classList.remove('selected');
