@@ -255,13 +255,50 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     })
     .on('tap', function(event) {
-        event.preventDefault()
         if (selectedImage) {
             selectedImage.classList.remove('selected');
         }
         event.currentTarget.classList.add('selected');
         selectedImage = event.currentTarget;
+
+        deleteButton.disabled = false; // enable the delete button on image selection
+
+        event.preventDefault();
     });
+
+    // Delete button clicked
+    deleteButton.addEventListener('click', function() {
+        // this is a bit redundant since the button will only be
+        // enabled in the first place if an image is selected, but
+        // here we are
+        if (selectedImage) {
+            confirmDeleteButton.disabled = false;
+            cancelDeleteButton.disabled = false;
+        }
+    });
+
+    // // Confirm deletion
+    // confirmDeleteButton.addEventListener('click', function() {
+    //     if (selectedImage) {
+    //         selectedImage.remove();
+    //         // send deletion info to server...
+    //         socket.send(JSON.stringify({
+    //             type: 'deleteImage',
+    //             id: selectedImage.id
+    //         }));
+    //     }
+    //     selectedImage = null;
+    //     deleteButton.disabled = true;
+    //     confirmDeleteButton.disabled = true;
+    //     cancelDeleteButton.disabled = true;
+    // });
+
+    // Cancel deletion
+    cancelDeleteButton.addEventListener('click', function() {
+        confirmDeleteButton.disabled = true;
+        cancelDeleteButton.disabled = true;
+    });
+
 });
 
 document.addEventListener('click', function(event) {
@@ -270,7 +307,12 @@ document.addEventListener('click', function(event) {
         // If there's a selected image, remove its 'selected' class
         if (selectedImage) {
             selectedImage.classList.remove('selected');
-            selectedImage = null; // Reset the selectedImage
         }
+        selectedImage = null; // Reset the selectedImage
+
+        // If nothing is selected, then disable delete features
+        deleteButton.disabled = true;
+        confirmDeleteButton.disabled = true;
+        cancelDeleteButton.disabled = true;
     }
 });
