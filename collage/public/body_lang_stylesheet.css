@@ -42,3 +42,10 @@ h1 {
 .selected {
     box-shadow: 0px 0px 10px black;
 }
+
+#uploadSection, #deleteSection {
+    display: flex;
+    align-items: center; 
+    gap: 10px; /* This creates a gap between the child elements */
+}
+
