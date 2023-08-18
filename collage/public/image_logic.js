@@ -344,7 +344,7 @@ document.addEventListener("DOMContentLoaded", function() {
         cancelDeleteButton.disabled = true;
 
         // Determine the z-index of the deleted image
-        const deletedZIndex = zIndexLedger[data.id];
+        const deletedZIndex = zIndexLedger[selectedImage.id];
         
         // Update z-indices in the ledger and on the actual elements
         for (let id in zIndexLedger) {
@@ -360,7 +360,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     
         // Remove the deleted image from the zIndexLedger
-        delete zIndexLedger[data.id];
+        delete zIndexLedger[selectedImage.id];
     });
 
     // Cancel deletion
