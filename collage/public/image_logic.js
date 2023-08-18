@@ -275,6 +275,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // enabled in the first place if an image is selected, but
         // here we are
         if (selectedImage) {
+            console.log("enabling yes and no");
             confirmDeleteButton.disabled = false;
             cancelDeleteButton.disabled = false;
         }
