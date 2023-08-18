@@ -8,6 +8,9 @@ const deleteButton = document.getElementById('deleteButton');
 const confirmDeleteButton = document.getElementById('confirmDelete');
 const cancelDeleteButton = document.getElementById('cancelDelete');
 const confirmText = document.getElementById('confirmText');
+const imageArea = document.getElementById("imageArea");
+
+let zIndexLedger = {};
 
 // Create WebSocket connection.
 const socket = new WebSocket('wss://freewaterhouse.com/ws');
@@ -29,7 +32,6 @@ socket.addEventListener("message", (event) => {
 
     if (data.type === 'initialImageNames') {
         console.log('entered initial names');
-        const imageArea = document.getElementById("imageArea");
         
         // Loop through each image name and create an img element
         data.images.forEach(imageName => {
@@ -52,6 +54,10 @@ socket.addEventListener("message", (event) => {
 
         image.setAttribute("data-x", data.x);
         image.setAttribute("data-y", data.y);
+
+        image.style.zIndex = data.zIndex;
+        zIndexLedger[data.id] = data.zIndex;
+
     } else if (data.type === 'updatePositionOnServerDragging') {
         let image = document.getElementById(data.id);
         //console.log("Moving image to position: ", data.position);
@@ -99,6 +105,8 @@ socket.addEventListener("message", (event) => {
 
             this.setAttribute("data-x", 0);
             this.setAttribute("data-y", 0);
+
+            image.style.zIndex = data.zIndex
 
         };
 

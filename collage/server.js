@@ -134,7 +134,7 @@ Promise.all([dbPromise, webSocketPromise])
                 
                 if (data.type === "getInitialPositionAndSize") {
                     console.log("enter initial pos and size on server");
-                    db.each('SELECT id, x, y, width, height FROM images', (err, row) => {
+                    db.each('SELECT id, x, y, width, height, zIndex FROM images', (err, row) => {
                         if (err) {
                             throw err;
                         }
@@ -145,7 +145,8 @@ Promise.all([dbPromise, webSocketPromise])
                             x: row.x,
                             y: row.y,
                             width: row.width,
-                            height: row.height
+                            height: row.height,
+                            zIndex: row.zIndex
                         }));
                     });
                 } else if (data.type === "updatePositionOnSocketDragging") {
@@ -227,7 +228,8 @@ Promise.all([dbPromise, webSocketPromise])
                                 type: 'updateNewImageOnSocket',
                                 imageName: data.imageName,
                                 imageWidth: data.imageWidth,
-                                imageHeight: data.imageHeight 
+                                imageHeight: data.imageHeight,
+                                imageZIndex: data.zIndex
                             }));
                         }
                     });

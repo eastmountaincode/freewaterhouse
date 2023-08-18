@@ -68,6 +68,9 @@ uploadButton.addEventListener('click', function () {
                 image.setAttribute("data-x", 0);
                 image.setAttribute("data-y", 0);
 
+                let maxZIndex = Math.max(...Object.values(zIndexLedger));
+                let nextZIndex = maxZIndex + 1;
+
                 // Notify server about the new image
                 if (typeof socket !== 'undefined' && socket.readyState === WebSocket.OPEN) {
                     socket.send(JSON.stringify({
@@ -75,6 +78,7 @@ uploadButton.addEventListener('click', function () {
                         imageName: imageName,
                         imageWidth: newWidth,
                         imageHeight: newHeight,
+                        zIndex: nextZIndex
                     }));
                 }
             };
