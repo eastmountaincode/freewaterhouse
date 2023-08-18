@@ -29,11 +29,6 @@ uploadButton.addEventListener('click', function () {
     xhr.onload = function () {
         if (this.status === 200) {
             alert('Image uploaded successfully!');
-
-            // Generate a unique ID for the image
-            const uniqueID = uuidv4();
-    
-            const imageName = imageInput.files[0].name;
     
             const imgElement = document.createElement("img");
             imgElement.src = `/collage/uploaded_images/${imageName}`;
