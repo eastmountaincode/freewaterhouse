@@ -9,8 +9,12 @@ imageInput.addEventListener('change', function () {
 });
 
 uploadButton.addEventListener('click', function () {
+    // Generate a unique ID for the image
+    const imageName = uuidv4();
+
     const formData = new FormData();
-    formData.append('image', imageInput.files[0]);
+
+    formData.append('image', imageInput.files[0], imageName);  // specify imageName as filename here
 
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/collage/upload', true);
@@ -25,6 +29,9 @@ uploadButton.addEventListener('click', function () {
     xhr.onload = function () {
         if (this.status === 200) {
             alert('Image uploaded successfully!');
+
+            // Generate a unique ID for the image
+            const uniqueID = uuidv4();
     
             const imageName = imageInput.files[0].name;
     
