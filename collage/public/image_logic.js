@@ -405,6 +405,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     sendToFrontButton.addEventListener('click', function() {
         if (selectedImage) {
+            console.log(zIndexLedger);
             const currentMaxZIndex = Math.max(...Object.values(zIndexLedger));
             const originalZIndex = parseInt(selectedImage.style.zIndex) || 0;
     
