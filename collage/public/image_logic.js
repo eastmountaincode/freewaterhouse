@@ -106,6 +106,8 @@ socket.addEventListener("message", (event) => {
         imageArea.appendChild(imgElement);
 
     } else if (data.type === "deleteImageOnSocket") {
+        let image = document.getElementById(data.id);
+        
         // Check if the image that's being deleted is currently selected
         if (selectedImage && selectedImage.id === data.id) {
             // Reset the selected image and button states
