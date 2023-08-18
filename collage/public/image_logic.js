@@ -9,6 +9,8 @@ const confirmDeleteButton = document.getElementById('confirmDelete');
 const cancelDeleteButton = document.getElementById('cancelDelete');
 const confirmText = document.getElementById('confirmText');
 const imageArea = document.getElementById("imageArea");
+const sendToFrontButton = document.getElementById('sendToFrontButton')
+const sendToBackButton = document.getElementById('sendToBackButton')
 
 let zIndexLedger = {};
 
@@ -147,6 +149,32 @@ socket.addEventListener("message", (event) => {
         
         // Remove the image from the DOM
         image.remove();
+    } else if (data.type === "sendToFrontEventOnSocket") {
+        const image = document.getElementById(data.id);
+        if (image) {
+            const currentMaxZIndex = Math.max(...Object.values(zIndexLedger));
+            const originalZIndex = parseInt(image.style.zIndex) || 0;
+            
+            // Iterate through zIndexLedger and decrement the zIndex for images
+            // that originally had a z-index greater than the selected image.
+    
+            // updating socket zIndexLedger
+            for (const [imageId, zIndex] of Object.entries(zIndexLedger)) {
+                if (zIndex > originalZIndex) {
+                    const imageElem = document.getElementById(imageId);
+                    // update socket image
+                    imageElem.style.zIndex = zIndex - 1;
+                    // update socket ledger
+                    zIndexLedger[imageId] = zIndex - 1;
+                }
+            }
+    
+            // Update the zIndexLedger for the selected image
+            zIndexLedger[image.id] = currentMaxZIndex;
+            // Actually update the image
+            image.style.zIndex = currentMaxZIndex;
+        }
+
     } else {
         console.error('Received unknown message type: ', data.type);
     }
@@ -310,6 +338,8 @@ document.addEventListener("DOMContentLoaded", function() {
         selectedImage = event.currentTarget;
 
         deleteButton.disabled = false; // enable the delete button on image selection
+        sendToFrontButton.disabled = false;
+        sendToBackButton.disabled = false;
 
         event.preventDefault();
     });
@@ -373,6 +403,41 @@ document.addEventListener("DOMContentLoaded", function() {
         confirmText.style.opacity = '0.4';
     });
 
+    sendToFrontButton.addEventListener('click', function() {
+        if (selectedImage) {
+            const currentMaxZIndex = Math.max(...Object.values(zIndexLedger));
+            const originalZIndex = parseInt(selectedImage.style.zIndex) || 0;
+    
+            // Iterate through zIndexLedger and decrement the zIndex for images
+            // that originally had a z-index greater than the selected image.
+
+            // updating local zIndexLedger
+            for (const [imageId, zIndex] of Object.entries(zIndexLedger)) {
+                if (zIndex > originalZIndex) {
+                    const imageElem = document.getElementById(imageId);
+                    // update local image
+                    imageElem.style.zIndex = zIndex - 1;
+                    // update local ledger
+                    zIndexLedger[imageId] = zIndex - 1;
+                }
+            }
+
+            // Update the zIndexLedger for the selected image
+            zIndexLedger[selectedImage.id] = currentMaxZIndex;
+            // Actually update the image
+            selectedImage.style.zIndex = currentMaxZIndex;
+    
+            // Notify the server about the selected image's z-index change
+            if (typeof socket !== 'undefined' && socket.readyState === WebSocket.OPEN) {
+                socket.send(JSON.stringify({
+                    type: 'sendToFrontEvent',
+                    id: selectedImage.id,
+                }));
+            }
+        }
+    });
+    
+
 });
 
 document.addEventListener('click', function(event) {
@@ -391,6 +456,8 @@ document.addEventListener('click', function(event) {
         deleteButton.disabled = true;
         confirmDeleteButton.disabled = true;
         cancelDeleteButton.disabled = true;
+        sendToFrontButton.disabled = true;
+        sendToBackButton.disabled = true;
 
         confirmText.style.opacity = '0.4';
     }
