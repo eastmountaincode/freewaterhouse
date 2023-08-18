@@ -45,7 +45,11 @@ h1 {
 
 #uploadSection, #deleteSection {
     display: flex;
-    align-items: center; 
+    align-items: left; 
     gap: 10px; /* This creates a gap between the child elements */
+}
+
+#deleteButton {
+    margin-right: 20px; /* Adjust value as necessary */
 }
 
