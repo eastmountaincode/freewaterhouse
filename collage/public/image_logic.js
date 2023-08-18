@@ -338,10 +338,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 id: selectedImage.id
             }));
         }
-        selectedImage = null;
-        deleteButton.disabled = true;
-        confirmDeleteButton.disabled = true;
-        cancelDeleteButton.disabled = true;
 
         // Determine the z-index of the deleted image
         const deletedZIndex = zIndexLedger[selectedImage.id];
@@ -361,6 +357,12 @@ document.addEventListener("DOMContentLoaded", function() {
     
         // Remove the deleted image from the zIndexLedger
         delete zIndexLedger[selectedImage.id];
+        
+        selectedImage = null;
+        deleteButton.disabled = true;
+        confirmDeleteButton.disabled = true;
+        cancelDeleteButton.disabled = true;
+
     });
 
     // Cancel deletion
