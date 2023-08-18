@@ -313,7 +313,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener('click', function(event) {
     // Check if the clicked element is not an image inside the #imageArea
-    if (!event.target.matches('#imageArea img')) {
+    if (!event.target.matches('#imageArea img') && event.target !== selectedImage) {
         // If there's a selected image, remove its 'selected' class
         if (selectedImage) {
             selectedImage.classList.remove('selected');
@@ -324,5 +324,7 @@ document.addEventListener('click', function(event) {
         deleteButton.disabled = true;
         confirmDeleteButton.disabled = true;
         cancelDeleteButton.disabled = true;
+
+        confirmText.style.opacity = '0.4';
     }
 });
