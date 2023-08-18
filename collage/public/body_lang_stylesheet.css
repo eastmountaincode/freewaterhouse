@@ -54,3 +54,8 @@ h1 {
     margin-right: 65px; /* space between delete button and are you sure text */
 }
 
+#bottomPadding {
+    height: 50px;
+    width: 100%;
+}
+
