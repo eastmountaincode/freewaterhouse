@@ -96,13 +96,23 @@ Promise.all([dbPromise, webSocketPromise])
                 newHeight = 150;
             }
 
-            // Insert into SQLite
-            const sql = `INSERT INTO images(id, x, y, width, height) VALUES(?, ?, ?, ?, ?)`;
-            db.run(sql, [imageFile, 0, 0, newWidth, newHeight], function(err) { // Set the new width and height
+            // Fetch the maximum zIndex currently in the database
+            const zIndexQuery = `SELECT MAX(zIndex) as maxZIndex FROM images`;
+            db.get(zIndexQuery, [], (err, row) => {
                 if (err) {
-                    return res.status(500).send('Failed to add image to database.');
+                    return res.status(500).send('Failed to retrieve max zIndex from database.');
                 }
-                res.status(200).send('Image uploaded and added to database.');
+                // Compute the next zIndex
+                const nextZIndex = (row && row.maxZIndex ? row.maxZIndex : 0) + 1;
+
+                // Insert into SQLite
+                const sql = `INSERT INTO images(id, x, y, width, height, zIndex) VALUES(?, ?, ?, ?, ?, ?)`;
+                db.run(sql, [imageFile, 0, 0, newWidth, newHeight, nextZIndex], function(err) {
+                    if (err) {
+                        return res.status(500).send('Failed to add image to database.');
+                    }
+                    res.status(200).send('Image uploaded and added to database.');
+                });
             });
         });
 
