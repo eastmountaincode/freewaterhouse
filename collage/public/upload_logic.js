@@ -54,25 +54,21 @@ uploadButton.addEventListener('click', function () {
                     newWidth = 150;
                     newHeight = 150;
                 }
-                console.log(newWidth);
-                console.log(newHeight);
-
-                let image = document.getElementById(imageName);
     
-                image.style.width = newWidth + 'px';
-                image.style.height = newHeight + 'px';
+                imgElement.style.width = newWidth + 'px';
+                imgElement.style.height = newHeight + 'px';
 
-                image.style.left = 0 + 'px';
-                image.style.top = 0 + 'px';
+                imgElement.style.left = 0 + 'px';
+                imgElement.style.top = 0 + 'px';
 
-                image.setAttribute("data-x", 0);
-                image.setAttribute("data-y", 0);
+                imgElement.setAttribute("data-x", 0);
+                imgElement.setAttribute("data-y", 0);
 
                 // Check if the zIndexLedger is empty
                 if (Object.keys(zIndexLedger).length === 0) {
                     console.log('ledger empty');
                     // Set the style with zIndex 0
-                    image.style.zIndex = 0;
+                    imgElement.style.zIndex = 0;
                     // Update the ledger with the first image
                     zIndexLedger[imageName] = 0;
                     newImageZIndex = 0;
@@ -82,7 +78,7 @@ uploadButton.addEventListener('click', function () {
                     let maxZIndex = Math.max(...Object.values(zIndexLedger));
 
                     // Set the style
-                    image.style.zIndex = maxZIndex + 1;
+                    imgElement.style.zIndex = maxZIndex + 1;
 
                     // Update the ledger
                     zIndexLedger[imageName] = maxZIndex + 1;
