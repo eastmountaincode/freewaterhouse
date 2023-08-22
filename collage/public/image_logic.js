@@ -608,28 +608,25 @@ document.addEventListener("DOMContentLoaded", function() {
 
     downloadScreenshotButton.addEventListener('click', function() {
         var imageArea = document.getElementById('imageArea');
-        var clonedImageArea = imageArea.cloneNode(true);  // clone the element
         
-        // optional: to remove any styles that you don't want in the screenshot
-        clonedImageArea.style.border = 'none';
+        // Store the original border style
+        var originalBorderStyle = imageArea.style.border;
         
-        document.body.appendChild(clonedImageArea);  // temporarily append to document
-        clonedImageArea.style.display = 'none';  // ensure it doesn't disturb your layout
-
-        html2canvas(clonedImageArea).then(function(canvas) {
+        // Modify the border style
+        imageArea.style.border = 'none';
+    
+        html2canvas(imageArea).then(function(canvas) {
             var imgDataUrl = canvas.toDataURL();
             var a = document.createElement('a');
             a.href = imgDataUrl;
             a.download = 'screenshot.png';
             a.click();
-
-            // Cleanup: remove the cloned element after capture
-            document.body.removeChild(clonedImageArea);
+    
+            // Revert the border style back to its original state
+            imageArea.style.border = originalBorderStyle;
         });
     });
     
-    
-
 });
 
 document.addEventListener('click', function(event) {
