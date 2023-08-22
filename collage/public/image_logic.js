@@ -507,6 +507,12 @@ document.addEventListener("DOMContentLoaded", function() {
             }));
         }
 
+        // Set the buttons back
+        confirmDeleteAllButton.disabled = true;
+        cancelDeleteAllButton.disabled = true;
+
+        confirmDeleteAllText.style.opacity = '0.3';
+
 
 
     });
