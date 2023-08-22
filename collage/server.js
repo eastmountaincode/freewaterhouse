@@ -340,6 +340,42 @@ Promise.all([dbPromise, webSocketPromise])
                         }
                     });
 
+                } else if (data.type === "sendToBackEvent") {
+                    // Get the original zIndex of the image
+                    let originalZIndex;
+                    db.get("SELECT zIndex FROM images WHERE id = ?", [data.id], (err, row) => {
+                        if (err) {
+                            console.error(err.message);
+                            return;
+                        }
+                        originalZIndex = row.zIndex;
+                
+                        // Set the zIndex of the image sent to the back to 0
+                        db.run("UPDATE images SET zIndex = ? WHERE id = ?", [0, data.id], (err) => {
+                            if (err) {
+                                console.error(err.message);
+                                return;
+                            }
+                
+                            // Increase the zIndex of images that were originally below the selected image by 1
+                            db.run("UPDATE images SET zIndex = zIndex + 1 WHERE zIndex < ? AND id != ?", [originalZIndex, data.id], (err) => {
+                                if (err) {
+                                    console.error(err.message);
+                                }
+                            });     
+                        });
+                    });
+                    // Send the sendToFrontEvent to all users on socket
+                    wss.clients.forEach(function each(client) {
+                        // Exclude the client that made the request
+                        if (client !== ws && client.readyState === WebSocket.OPEN) {
+                            client.send(JSON.stringify({
+                                type: 'sendToBackEventOnSocket',
+                                id: data.id
+                            }));
+                        }
+                    });
+
                 } else if (data.type === "deleteAllEvent") {
                     // Remove everything from the database
                     db.run("DELETE FROM images", (err) => {

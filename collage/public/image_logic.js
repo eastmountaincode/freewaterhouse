@@ -187,6 +187,32 @@ socket.addEventListener("message", (event) => {
             image.style.zIndex = currentMaxZIndex;
         }
 
+    } else if (data.type === "sendToBackEventOnSocket") {
+        const image = document.getElementById(data.id);
+
+        if (image) {
+            const originalZIndex = parseInt(image.style.zIndex) || 0;
+            
+            // Iterate through zIndexLedger and increment the zIndex for images
+            // that originally had a z-index below than the selected image.
+    
+            // updating socket zIndexLedger
+            for (const [imageId, zIndex] of Object.entries(zIndexLedger)) {
+                if (zIndex < originalZIndex) {
+                    const imageElem = document.getElementById(imageId);
+                    // update socket image
+                    imageElem.style.zIndex = zIndex + 1;
+                    // update socket ledger
+                    zIndexLedger[imageId] = zIndex + 1;
+                }
+            }
+    
+            // Update the zIndexLedger for the selected image
+            zIndexLedger[image.id] = 0;
+            // Actually update the image
+            image.style.zIndex = 0;
+        }
+
     } else if (data.type === "deleteAllEventOnSocket") {
         // empty the local zIndexLedger
         zIndexLedger = {};
@@ -478,6 +504,36 @@ document.addEventListener("DOMContentLoaded", function() {
             if (typeof socket !== 'undefined' && socket.readyState === WebSocket.OPEN) {
                 socket.send(JSON.stringify({
                     type: 'sendToFrontEvent',
+                    id: selectedImage.id,
+                }));
+            }
+        }
+    });
+
+    sendToBackButton.addEventListener('click', function() {
+        if (selectedImage) {
+            const originalZIndex = parseInt(selectImage.style.zIndex) || 0;
+            
+            // updating local zIndexLedger
+            for (const [imageId, zIndex] of Object.entries(zIndexLedger)) {
+                if (zIndex < originalZIndex) {
+                    const imageElem = document.getElementById(imageId);
+                    // update local image
+                    imageElem.style.zIndex = zIndex + 1;
+                    // update local ledger
+                    zIndexLedger[imageId] = zIndex + 1;
+                }
+            }
+
+            // Update the zIndexLedger for the selected image
+            zIndexLedger[selectedImage.id] = 0;
+            // Actually update the image
+            selectedImage.style.zIndex = 0;
+
+            // Notify the server about the selected image's z-index change
+            if (typeof socket !== 'undefined' && socket.readyState === WebSocket.OPEN) {
+                socket.send(JSON.stringify({
+                    type: 'sendToBackEvent',
                     id: selectedImage.id,
                 }));
             }
