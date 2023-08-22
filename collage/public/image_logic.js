@@ -129,8 +129,12 @@ socket.addEventListener("message", (event) => {
             // Reset the selected image and button states
             selectedImage = null;
             deleteButton.disabled = true;
+
             confirmDeleteButton.disabled = true;
             cancelDeleteButton.disabled = true;
+            sendToFrontButton.disalbed = true;
+            sendToBackButton.disabled = true;
+            
             confirmText.style.opacity = '0.4';
         }
 
@@ -505,6 +509,17 @@ document.addEventListener("DOMContentLoaded", function() {
             socket.send(JSON.stringify({
                 type: 'deleteAllEvent'
             }));
+        }
+
+        if (selectedImage) {
+            // Reset the selected image and button states
+            selectedImage = null;
+            deleteButton.disabled = true;
+            confirmDeleteButton.disabled = true;
+            cancelDeleteButton.disabled = true;
+            sendToFrontButton.disalbed = true;
+            sendToBackButton.disabled = true;
+            confirmText.style.opacity = '0.4';
         }
 
         // Set the buttons back
