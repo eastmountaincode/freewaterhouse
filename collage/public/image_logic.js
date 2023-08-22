@@ -134,7 +134,7 @@ socket.addEventListener("message", (event) => {
             cancelDeleteButton.disabled = true;
             sendToFrontButton.disalbed = true;
             sendToBackButton.disabled = true;
-            
+
             confirmText.style.opacity = '0.4';
         }
 
@@ -203,6 +203,19 @@ socket.addEventListener("message", (event) => {
             // Remove the image from the DOM
             imageArea.removeChild(image);
         });
+
+        if (selectedImage) {
+            // Reset the selected image and button states
+            selectedImage = null;
+            deleteButton.disabled = true;
+
+            confirmDeleteButton.disabled = true;
+            cancelDeleteButton.disabled = true;
+            sendToFrontButton.disalbed = true;
+            sendToBackButton.disabled = true;
+            
+            confirmText.style.opacity = '0.4';
+        }
         
     } else {
         console.error('Received unknown message type: ', data.type);
