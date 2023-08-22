@@ -49,6 +49,10 @@ h1 {
     width: 70%;
     border: 1px solid black;
     padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #deleteButton, #deleteAllButton {
