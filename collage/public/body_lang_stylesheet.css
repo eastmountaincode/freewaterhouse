@@ -68,22 +68,12 @@ h1 {
 
 /* Media query for mobile screens */
 @media only screen and (max-width: 1068px) {
+    body {
+        background-color: red;
+    }
     button.buttonCheck {
-        padding: 12px 20px;  /* Increase padding for larger buttons */
-        font-size: 18px;     /* Increase font size for readability */
-    }
-
-    #deleteButton, #deleteAllButton {
-        margin-right: 30px; /* Adjust margin to better fit larger buttons */
-    }
-
-    #zIndexText {
-        margin-right: 10px; /* Adjust margin */
-    }
-
-    #uploadSection, #deleteSection, #zIndexControlSection, #deleteAllSection {
-        padding: 20px;   /* Increase padding for better touch targets on mobile */
-        width: 90%;      /* Increase width to take up more space on smaller screens */
+        padding: 18px 30px;  /* Increase padding for larger buttons */
+        font-size: 24px;     /* Increase font size for readability */
     }
 
 }
