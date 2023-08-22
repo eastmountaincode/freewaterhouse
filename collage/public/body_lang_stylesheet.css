@@ -67,7 +67,7 @@ h1 {
 
 
 /* Media query for mobile screens */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 868px) {
     button.buttonCheck {
         padding: 12px 20px;  /* Increase padding for larger buttons */
         font-size: 18px;     /* Increase font size for readability */
