@@ -117,8 +117,8 @@ socket.addEventListener("message", (event) => {
 
             console.log("setting new image z index on socket")
             console.log(data.zIndex)
-            this.style.zIndex = data.zIndex
-            zIndexLedger[data.imageName] = data.zIndex;
+            this.style.zIndex = data.imageZIndex
+            zIndexLedger[data.imageName] = data.imageZIndex;
 
         };
 
