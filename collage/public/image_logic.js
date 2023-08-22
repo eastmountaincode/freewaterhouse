@@ -240,7 +240,7 @@ socket.addEventListener("message", (event) => {
 
             confirmDeleteButton.disabled = true;
             cancelDeleteButton.disabled = true;
-            sendToFrontButton.disalbed = true;
+            sendToFrontButton.disabled = true;
             sendToBackButton.disabled = true;
             
             confirmText.style.opacity = '0.4';
