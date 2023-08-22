@@ -70,20 +70,7 @@ h1 {
 @media only screen and (max-width: 768px) {
     body {
         background-color: blue;
-        font-size: 24px;
     }
-    button.buttonCheck {
-        padding: 18px 30px;  /* Increase padding for larger buttons */
-        font-size: 24px;     /* Increase font size for readability */
-    }
-
-    #uploadSection, #deleteSection, #zIndexControlSection, #deleteAllSection {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-
-
 }
 
 
