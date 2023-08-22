@@ -232,8 +232,6 @@ Promise.all([dbPromise, webSocketPromise])
                         }
                     });
                 } else if (data.type === "newImageUploaded") {
-                    console.log("on server, received z index of ");
-                    console.log(data.zIndex);
                     wss.clients.forEach(function each(client) {
                         // Exclude the client that made the request
                         if (client !== ws && client.readyState === WebSocket.OPEN) {

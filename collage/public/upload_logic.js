@@ -86,8 +86,6 @@ uploadButton.addEventListener('click', function () {
                     newImageZIndex = maxZIndex + 1;
                 }
 
-                console.log("sending new image z index :")
-                console.log(newImageZIndex);
 
                 // Notify server about the new image
                 if (typeof socket !== 'undefined' && socket.readyState === WebSocket.OPEN) {
