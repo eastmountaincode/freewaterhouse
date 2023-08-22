@@ -340,6 +340,25 @@ Promise.all([dbPromise, webSocketPromise])
                         }
                     });
 
+                } else if (data.type === "deleteAllEvent") {
+                    // Remove everything from the database
+                    db.run("DELETE FROM images", (err) => {
+                        if (err) {
+                            console.error(err.message);
+                            return
+                        }
+                    });
+
+                    // Inform everyone else on the socket
+                    wss.clients.forEach(function each(client) {
+                        // Exclude the client that made the request
+                        if (client !== ws && client.readyState === WebSocket.OPEN) {
+                            client.send(JSON.stringify({
+                                type: 'deleteAllEventOnSocket',
+                            }));
+                        }
+                    });
+
                 }
                 
                     

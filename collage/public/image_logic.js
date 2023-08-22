@@ -12,6 +12,12 @@ const imageArea = document.getElementById("imageArea");
 const sendToFrontButton = document.getElementById('sendToFrontButton')
 const sendToBackButton = document.getElementById('sendToBackButton')
 
+const deleteAllButton = document.getElementById('deleteAllButton');
+const confirmDeleteAllButton = document.getElementById('confirmDeleteAllButton');
+const cancelDeleteAllButton = document.getElementById('cancelDeleteAllButton');
+const confirmDeleteAllText = document.getElementById('confirmDeleteAllText');
+
+
 let zIndexLedger = {};
 
 // Create WebSocket connection.
@@ -175,6 +181,25 @@ socket.addEventListener("message", (event) => {
             image.style.zIndex = currentMaxZIndex;
         }
 
+    } else if (data.type === "deleteAllEventOnSocket") {
+        // empty the local zIndexLedger
+        zIndexLedger = {};
+        
+        // Select the imageArea div
+        const imageArea = document.getElementById('imageArea');
+
+        // Retrieve all img elements inside imageArea
+        const images = imageArea.querySelectorAll('img');
+
+        // Iterate over the images to get their IDs and remove them
+        images.forEach(image => {
+            // You can access the image's ID with image.id
+            console.log(`Deleting image with ID: ${image.id}`);  // Optional: Just to log the IDs being deleted
+            
+            // Remove the image from the DOM
+            imageArea.removeChild(image);
+        });
+        
     } else {
         console.error('Received unknown message type: ', data.type);
     }
@@ -187,7 +212,7 @@ socket.addEventListener('error', (error) => {
 document.addEventListener("DOMContentLoaded", function() { 
 
     interact("#imageArea img")
-      .draggable({
+    .draggable({
         inertia: false,
         restrict: {
           restriction: "parent",
@@ -245,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
           }
         }
-      })
+    })
     .resizable({
         preserveAspectRatio: true,
         edges: { left: true, right: true, bottom: true, top: true },
@@ -439,6 +464,53 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     });
+
+    deleteAllButton.addEventListener('click', function() {
+        // Enable the confirmation buttons
+        confirmDeleteAllButton.disabled = false;
+        cancelDeleteAllButton.disabled = false;
+    
+        // Set opacity of the "Are you sure" text for deleting all images
+        confirmDeleteAllText.style.opacity = '1.0';
+    });
+
+    cancelDeleteAllButton.addEventListener('click', function() {
+        confirmDeleteAllButton.disabled = true;
+        cancelDeleteAllButton.disabled = true;
+
+        confirmDeleteAllText.style.opacity = '0.4';
+    });
+
+    confirmDeleteAllButton.addEventListener('click', function() {
+        // empty the local zIndexLedger
+        zIndexLedger = {};
+        
+        // Select the imageArea div
+        const imageArea = document.getElementById('imageArea');
+
+        // Retrieve all img elements inside imageArea
+        const images = imageArea.querySelectorAll('img');
+
+        // Iterate over the images to get their IDs and remove them
+        images.forEach(image => {
+            // You can access the image's ID with image.id
+            console.log(`Deleting image with ID: ${image.id}`);  // Optional: Just to log the IDs being deleted
+            
+            // Remove the image from the DOM
+            imageArea.removeChild(image);
+        });
+
+        // Notify the server about the selected image's z-index change
+        if (typeof socket !== 'undefined' && socket.readyState === WebSocket.OPEN) {
+            socket.send(JSON.stringify({
+                type: 'deleteAllEvent'
+            }));
+        }
+
+
+
+    });
+    
     
 
 });
