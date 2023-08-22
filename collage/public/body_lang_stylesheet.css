@@ -82,10 +82,7 @@ h1 {
         align-items: flex-start;
     }
     
-    #imageArea {
-        width: 90vw; /* 90% of the viewport width */
-        height: 70vh; /* 70% of the viewport height, you can adjust as per your need */
-    }
+
 
 }
 
