@@ -478,7 +478,7 @@ document.addEventListener("DOMContentLoaded", function() {
         confirmDeleteAllButton.disabled = true;
         cancelDeleteAllButton.disabled = true;
 
-        confirmDeleteAllText.style.opacity = '0.4';
+        confirmDeleteAllText.style.opacity = '0.3';
     });
 
     confirmDeleteAllButton.addEventListener('click', function() {
@@ -534,6 +534,6 @@ document.addEventListener('click', function(event) {
         sendToFrontButton.disabled = true;
         sendToBackButton.disabled = true;
 
-        confirmText.style.opacity = '0.4';
+        confirmText.style.opacity = '0.3';
     }
 });
