@@ -9,6 +9,7 @@ const confirmDeleteButton = document.getElementById('confirmDelete');
 const cancelDeleteButton = document.getElementById('cancelDelete');
 const confirmText = document.getElementById('confirmText');
 const imageArea = document.getElementById("imageArea");
+
 const sendToFrontButton = document.getElementById('sendToFrontButton')
 const sendToBackButton = document.getElementById('sendToBackButton')
 
@@ -512,7 +513,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     sendToBackButton.addEventListener('click', function() {
         if (selectedImage) {
-            const originalZIndex = parseInt(selectImage.style.zIndex) || 0;
+            const originalZIndex = parseInt(selectedImage.style.zIndex) || 0;
             
             // updating local zIndexLedger
             for (const [imageId, zIndex] of Object.entries(zIndexLedger)) {
