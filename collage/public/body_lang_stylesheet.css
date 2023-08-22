@@ -77,6 +77,13 @@ h1 {
         font-size: 24px;     /* Increase font size for readability */
     }
 
+    #uploadSection, #deleteSection, #zIndexControlSection,
+    #deleteAllSection {
+        text-align: left;
+        width: 80%;
+        border: 1px solid black;
+    }
+
 }
 
 
