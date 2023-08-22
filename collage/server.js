@@ -345,10 +345,32 @@ Promise.all([dbPromise, webSocketPromise])
                     db.run("DELETE FROM images", (err) => {
                         if (err) {
                             console.error(err.message);
-                            return
+                            return;
                         }
+                
+                        // Delete all files from the 'uploaded_images' directory
+                        const directoryPath = path.join(__dirname, 'public', 'uploaded_images');
+                
+                        fs.readdir(directoryPath, (err, files) => {
+                            if (err) {
+                                console.error(`Error reading the directory: ${err.message}`);
+                                return;
+                            }
+                
+                            // Loop through and delete each file
+                            files.forEach(file => {
+                                const filePath = path.join(directoryPath, file);
+                                fs.unlink(filePath, (err) => {
+                                    if (err) {
+                                        console.error(`Error deleting the file: ${file}. Error: ${err.message}`);
+                                    } else {
+                                        console.log(`File: ${file} successfully deleted from the server.`);
+                                    }
+                                });
+                            });
+                        });
                     });
-
+                
                     // Inform everyone else on the socket
                     wss.clients.forEach(function each(client) {
                         // Exclude the client that made the request
@@ -358,7 +380,6 @@ Promise.all([dbPromise, webSocketPromise])
                             }));
                         }
                     });
-
                 }
                 
                     
