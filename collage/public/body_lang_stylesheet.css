@@ -66,11 +66,3 @@ h1 {
 }
 
 
-/* Media query for mobile screens */
-@media only screen and (max-width: 768px) {
-    body {
-        background-color: blue;
-    }
-}
-
-
