@@ -18,6 +18,8 @@ const confirmDeleteAllButton = document.getElementById('confirmDeleteAllButton')
 const cancelDeleteAllButton = document.getElementById('cancelDeleteAllButton');
 const confirmDeleteAllText = document.getElementById('confirmDeleteAllText');
 
+const downloadScreenshotButton = document.getElementById('downloadScreenshotButton');
+
 
 let zIndexLedger = {};
 
@@ -602,6 +604,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
+    });
+
+    downloadScreenshotButton.addEventListener('click', function() {
+        html2canvas(document.getElementById('imageArea')).then(function(canvas) {
+            // Convert the canvas to a data URL
+            var imgDataUrl = canvas.toDataURL();
+    
+            // download the image:
+            var a = document.createElement('a');
+            a.href = imgDataUrl;
+            a.download = 'screenshot.png';
+            a.click();
+        });
     });
     
     
