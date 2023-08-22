@@ -115,6 +115,7 @@ socket.addEventListener("message", (event) => {
             this.setAttribute("data-y", 0);
 
             imgElement.style.zIndex = data.zIndex
+            zIndexLedger[data.imageName] = data.zIndex;
 
         };
 
@@ -159,7 +160,7 @@ socket.addEventListener("message", (event) => {
         
         // Remove the image from the DOM
         image.remove();
-        
+
     } else if (data.type === "sendToFrontEventOnSocket") {
         const image = document.getElementById(data.id);
         if (image) {
