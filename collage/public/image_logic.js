@@ -607,15 +607,24 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     downloadScreenshotButton.addEventListener('click', function() {
-        html2canvas(document.getElementById('imageArea')).then(function(canvas) {
-            // Convert the canvas to a data URL
+        var imageArea = document.getElementById('imageArea');
+        var clonedImageArea = imageArea.cloneNode(true);  // clone the element
+        
+        // optional: to remove any styles that you don't want in the screenshot
+        clonedImageArea.style.border = 'none';
+        
+        document.body.appendChild(clonedImageArea);  // temporarily append to document
+        clonedImageArea.style.display = 'none';  // ensure it doesn't disturb your layout
+
+        html2canvas(clonedImageArea).then(function(canvas) {
             var imgDataUrl = canvas.toDataURL();
-    
-            // download the image:
             var a = document.createElement('a');
             a.href = imgDataUrl;
             a.download = 'screenshot.png';
             a.click();
+
+            // Cleanup: remove the cloned element after capture
+            document.body.removeChild(clonedImageArea);
         });
     });
     
