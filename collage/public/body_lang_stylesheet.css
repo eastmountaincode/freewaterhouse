@@ -77,11 +77,14 @@ h1 {
         font-size: 24px;     /* Increase font size for readability */
     }
 
-    #uploadSection, #deleteSection, #zIndexControlSection,
-    #deleteAllSection {
-        text-align: left;
-        width: 80%;
-        border: 1px solid black;
+    #uploadSection, #deleteSection, #zIndexControlSection, #deleteAllSection {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    #imageArea {
+        width: 90vw; /* 90% of the viewport width */
+        height: 70vh; /* 70% of the viewport height, you can adjust as per your need */
     }
 
 }
