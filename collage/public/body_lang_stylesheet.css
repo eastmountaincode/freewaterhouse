@@ -42,11 +42,11 @@ h1 {
 
 .selected {
     box-shadow: 0px 0px 10px black;
-    outline: 15px solid transparent;
+    outline: 25px solid transparent;
 }
 
 .selected:hover {
-    outline: 15px solid transparent;
+    outline: 25px solid transparent;
 }
 
 #uploadSection, #deleteSection, #zIndexControlSection,
