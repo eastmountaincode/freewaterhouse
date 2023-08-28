@@ -660,3 +660,22 @@ document.addEventListener('click', function(event) {
         confirmText.style.opacity = '0.3';
     }
 });
+
+const modal = document.getElementById("disconnectModal");
+const closeModal = document.querySelector(".close-btn");
+
+socket.addEventListener("close", (event) => {
+    console.log("WebSocket connection closed");
+    modal.style.display = "block";
+});
+
+closeModal.addEventListener('click', function() {
+    modal.style.display = "none";
+});
+
+// // Optionally: close the modal if the user clicks anywhere outside of the modal content.
+// window.onclick = function(event) {
+//     if (event.target === modal) {
+//         modal.style.display = "none";
+//     }
+// };
