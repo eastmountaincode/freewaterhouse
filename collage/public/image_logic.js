@@ -33,15 +33,6 @@ socket.addEventListener("open", (event) => {
     socket.send(JSON.stringify({
         type: 'getInitialPositionAndSize'
     }));
-
-    const closeSocketButton = document.getElementById("webSocketButton");
-    closeSocketButton.addEventListener('click', function () {
-        // Close the socket when button is clicked
-        if (socket.readyState === WebSocket.OPEN) {
-            socket.close();
-            console.log("WebSocket connection closed");
-        }
-    });
 });
 
 // Listen for messages
