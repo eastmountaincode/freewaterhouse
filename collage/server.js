@@ -377,45 +377,7 @@ Promise.all([dbPromise, webSocketPromise])
                     });
 
                 } else if (data.type === "deleteAllEvent") {
-                    // Remove everything from the database
-                    db.run("DELETE FROM images", (err) => {
-                        if (err) {
-                            console.error(err.message);
-                            return;
-                        }
-                
-                        // Delete all files from the 'uploaded_images' directory
-                        const directoryPath = path.join(__dirname, 'public', 'uploaded_images');
-                
-                        fs.readdir(directoryPath, (err, files) => {
-                            if (err) {
-                                console.error(`Error reading the directory: ${err.message}`);
-                                return;
-                            }
-                
-                            // Loop through and delete each file
-                            files.forEach(file => {
-                                const filePath = path.join(directoryPath, file);
-                                fs.unlink(filePath, (err) => {
-                                    if (err) {
-                                        console.error(`Error deleting the file: ${file}. Error: ${err.message}`);
-                                    } else {
-                                        console.log(`File: ${file} successfully deleted from the server.`);
-                                    }
-                                });
-                            });
-                        });
-                    });
-                
-                    // Inform everyone else on the socket
-                    wss.clients.forEach(function each(client) {
-                        // Exclude the client that made the request
-                        if (client !== ws && client.readyState === WebSocket.OPEN) {
-                            client.send(JSON.stringify({
-                                type: 'deleteAllEventOnSocket',
-                            }));
-                        }
-                    });
+                    handleDeleteAllEvent();
                 }
                 
                     
@@ -431,6 +393,56 @@ Promise.all([dbPromise, webSocketPromise])
         console.error('Failed to connect to either SQLite3 or WebSocket', err);
         process.exit(1);  // This will stop the server in case of a connection error
     });
+
+// It's ok for this to be here since it's a function declaration, 
+// not a function expression. 
+function handleDeleteAllEvent() {
+    // Remove everything from the database
+    db.run("DELETE FROM images", (err) => {
+        if (err) {
+            console.error(err.message);
+            return;
+        }
+
+        // Delete all files from the 'uploaded_images' directory
+        const directoryPath = path.join(__dirname, 'public', 'uploaded_images');
+
+        fs.readdir(directoryPath, (err, files) => {
+            if (err) {
+                console.error(`Error reading the directory: ${err.message}`);
+                return;
+            }
+
+            // Loop through and delete each file
+            files.forEach(file => {
+                const filePath = path.join(directoryPath, file);
+                fs.unlink(filePath, (err) => {
+                    if (err) {
+                        console.error(`Error deleting the file: ${file}. Error: ${err.message}`);
+                    } else {
+                        console.log(`File: ${file} successfully deleted from the server.`);
+                    }
+                });
+            });
+        });
+    });
+
+    // Inform everyone else on the socket
+    wss.clients.forEach(function each(client) {
+        // Exclude the client that made the request
+        if (client !== ws && client.readyState === WebSocket.OPEN) {
+            client.send(JSON.stringify({
+                type: 'deleteAllEventOnSocket',
+            }));
+        }
+    });
+}
+
+// Use the function in your condition:
+if (data.type === "deleteAllEvent") {
+    handleDeleteAllEvent();
+}
+    
 
 
 
