@@ -667,15 +667,17 @@ const closeModal = document.querySelector(".close-btn");
 socket.addEventListener("close", (event) => {
     console.log("WebSocket connection closed");
     modal.style.display = "block";
+
+    // Get highest z-index
+    const values = Object.values(zIndexLedger);
+    const maxZIndex = values.length > 0 ? Math.max(...values) : undefined;
+
+    modal.style.zIndex = maxZIndex + 1;
+
 });
 
 closeModal.addEventListener('click', function() {
     modal.style.display = "none";
 });
 
-// // Optionally: close the modal if the user clicks anywhere outside of the modal content.
-// window.onclick = function(event) {
-//     if (event.target === modal) {
-//         modal.style.display = "none";
-//     }
-// };
+
