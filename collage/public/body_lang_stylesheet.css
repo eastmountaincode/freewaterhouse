@@ -75,6 +75,21 @@ h1 {
     outline: 2px solid red;
 }
 
+#toggleButton {
+    display: block;
+    font-family: 'Helvetica';
+    font-size: 20px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+#more {
+    display: none;
+    padding: 10px 60px;  /* The first value is for top/bottom, the second for left/right. */
+    margin-top: 10px;
+    font: black;
+}
+
 
 
 /* This stuff is for when the web socket closes and we alert the user */
