@@ -23,18 +23,22 @@ cron.schedule('*/30 * * * * *', async function() {
 
 async function captureAndSaveScreenshot() {
     console.log('inside capture and save');
-    const browser = await puppeteer.launch({ headless: "new" });
-    console.log('after browser')
-    const page = await browser.newPage();
+    let browser;
+    try {
+        browser = await puppeteer.launch();
+        console.log('after browser');
 
-    await page.goto('http://localhost:3000/collage');  
+        const page = await browser.newPage();
+        await page.goto('http://localhost:3000/collage');  
+        const screenshotPath = path.join(__dirname, 'public', 'saved_screenshots', `screenshot_${Date.now()}.png`);
+        await page.screenshot({ path: screenshotPath });
+        console.log('Screenshot saved successfully at:', screenshotPath);
 
-    const screenshotPath = path.join(__dirname, 'public', 'saved_screenshots', `screenshot_${Date.now()}.png`);
-    await page.screenshot({ path: screenshotPath });
-
-    console.log('Screenshot saved successfully at:', screenshotPath);
-
-    await browser.close();
+    } catch (error) {
+        console.error('Error while capturing screenshot:', error);
+    } finally {
+        if (browser) await browser.close();
+    }
 }
 
 console.log(__dirname);
