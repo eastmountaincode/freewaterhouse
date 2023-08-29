@@ -437,10 +437,6 @@ function handleDeleteAllEvent() {
     });
 }
 
-// Use the function in your condition:
-if (data.type === "deleteAllEvent") {
-    handleDeleteAllEvent();
-}
     
 
 
