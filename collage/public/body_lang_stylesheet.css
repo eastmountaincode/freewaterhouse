@@ -80,13 +80,11 @@ h1 {
     font-family: 'Helvetica';
     font-size: 20px;
     text-align: center;
-    margin: 20px 0;
 }
 
 #more {
     display: none;
     padding: 10px 60px;  /* The first value is for top/bottom, the second for left/right. */
-    margin-top: 10px;
     font: black;
 }
 
