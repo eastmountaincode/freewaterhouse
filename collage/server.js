@@ -378,8 +378,7 @@ Promise.all([dbPromise, webSocketPromise])
 
                 } else if (data.type === "deleteAllEvent") {
                     handleDeleteAllEvent();
-                }
-                
+                }   
                     
             });
 
