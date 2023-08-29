@@ -22,6 +22,7 @@ cron.schedule('*/30 * * * * *', async function() {
 });
 
 async function captureAndSaveScreenshot() {
+    console.log('inside capture and save');
     const browser = await puppeteer.launch({ headless: "new" });
     const page = await browser.newPage();
 
