@@ -71,8 +71,9 @@ h1 {
     width: 100%;
 }
 
-.red-outline {
-    border: 2px solid red;
+.red-shadow {
+    box-shadow: 0 0 5px red;
+    transition: box-shadow 0.3s ease;
 }
 
 

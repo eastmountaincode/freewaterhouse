@@ -5,7 +5,6 @@ const uploadProgress = document.getElementById('uploadProgress');
 imageInput.addEventListener('change', function () {
     if (this.files && this.files[0]) {
         uploadButton.disabled = false;
-        uploadButton.classList.add('red-outline');
     }
 });
 
@@ -106,7 +105,6 @@ uploadButton.addEventListener('click', function () {
             // Reset the input, disable the upload button, and reset the progress bar
             imageInput.value = '';
             uploadButton.disabled = true;
-            uploadButton.classList.remove('red-outline');
             uploadProgress.value = 0;
 
         } else {
