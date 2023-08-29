@@ -11,6 +11,30 @@ const path = require('path');
 const multer = require('multer');
 const sizeOf = require('image-size');
 
+// These are for the weekly screenshot and canvas clear
+const puppeteer = require('puppeteer');
+const cron = require('node-cron');
+
+cron.schedule('*/30 * * * * *', async function() {
+    console.log('Running weekly tasks...');
+    await captureAndSaveScreenshot();
+    handleDeleteAllEvent();
+});
+
+async function captureAndSaveScreenshot() {
+    const browser = await puppeteer.launch({ headless: true });
+    const page = await browser.newPage();
+
+    await page.goto('http://localhost:3000/collage');  
+
+    const screenshotPath = path.join(__dirname, 'public', 'saved_screenshots', `screenshot_${Date.now()}.png`);
+    await page.screenshot({ path: screenshotPath });
+
+    console.log('Screenshot saved successfully at:', screenshotPath);
+
+    await browser.close();
+}
+
 console.log(__dirname);
 
 // MULTER STUFF
