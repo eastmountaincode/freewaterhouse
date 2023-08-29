@@ -26,7 +26,9 @@ async function captureAndSaveScreenshot() {
     
     let browser;
     try {
-        browser = await puppeteer.launch({ headless: "new" });
+        const browser = await puppeteer.launch({
+            executablePath: '/usr/bin/chromium-browser'
+        });
         console.log('after browser');
 
         const page = await browser.newPage();
