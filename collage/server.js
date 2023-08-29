@@ -63,6 +63,8 @@ async function captureAndSaveScreenshot() {
     }
 }
 
+// End weekly cleanup section
+
 
 
 console.log(__dirname);
@@ -93,6 +95,8 @@ app.use('/collage', express.static(path.join(__dirname, 'public')));
 let db;
 let server;
 let wss;
+
+let currentlyConnectedUsersNum = 0;
 
 const dbPromise = new Promise((resolve, reject) => {
     db = new sqlite3.Database('./images.db', (err) => {
@@ -174,6 +178,18 @@ Promise.all([dbPromise, webSocketPromise])
 
         wss.on('connection', function connection(ws) {
             console.log('A new client connected!');
+
+            // Increment the number of connected users and inform everyone on the socket, including self
+            currentlyConnectedUsersNum++;
+            wss.clients.forEach(function each(client) {
+                // DON'T exclude the client that made the request
+                if (client.readyState === WebSocket.OPEN) {
+                    client.send(JSON.stringify({
+                        type: 'updateCurrentlyConnectedUsersNum',
+                        num: currentlyConnectedUsersNum,
+                    }));
+                }
+            });
 
             db.all('SELECT id FROM images', [], (err, rows) => {
                 if (err) {
@@ -438,6 +454,18 @@ Promise.all([dbPromise, webSocketPromise])
 
             ws.on('close', () => {
                 console.log('Client disconnected');
+
+                // Decrement the number of connected users and inform everyone on the socket, including self
+                currentlyConnectedUsersNum--;
+                wss.clients.forEach(function each(client) {
+                    // DON'T exclude the client that made the request
+                    if (client.readyState === WebSocket.OPEN) {
+                        client.send(JSON.stringify({
+                            type: 'updateCurrentlyConnectedUsersNum',
+                            num: currentlyConnectedUsersNum,
+                        }));
+                    }
+                });
             });
             
         });

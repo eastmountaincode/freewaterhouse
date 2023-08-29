@@ -20,6 +20,8 @@ const confirmDeleteAllText = document.getElementById('confirmDeleteAllText');
 
 const downloadScreenshotButton = document.getElementById('downloadScreenshotButton');
 
+const currentlyConnectedUsersText = document.getElementById('currentlyConnectedUsersText');
+
 
 let zIndexLedger = {};
 
@@ -139,7 +141,7 @@ socket.addEventListener("message", (event) => {
             sendToFrontButton.disalbed = true;
             sendToBackButton.disabled = true;
 
-            confirmText.style.opacity = '0.4';
+            confirmText.style.opacity = '0.3';
         }
 
         // Determine the z-index of the deleted image
@@ -245,9 +247,11 @@ socket.addEventListener("message", (event) => {
             sendToFrontButton.disabled = true;
             sendToBackButton.disabled = true;
             
-            confirmText.style.opacity = '0.4';
+            confirmText.style.opacity = '0.3';
         }
         
+    } else if (data.type === "updateCurrentlyConnectedUsersNum") {
+        currentlyConnectedUsersText.textContent = `Currently connected users: ${data.num}`;
     } else {
         console.error('Received unknown message type: ', data.type);
     }
