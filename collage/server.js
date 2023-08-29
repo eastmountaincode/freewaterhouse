@@ -22,7 +22,7 @@ cron.schedule('*/30 * * * * *', async function() {
 });
 
 async function captureAndSaveScreenshot() {
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({ headless: "new" });
     const page = await browser.newPage();
 
     await page.goto('http://localhost:3000/collage');  
