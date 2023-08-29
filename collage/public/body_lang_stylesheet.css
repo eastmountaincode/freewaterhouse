@@ -71,6 +71,10 @@ h1 {
     width: 100%;
 }
 
+.red-outline {
+    border: 2px solid red;
+}
+
 
 
 /* This stuff is for when the web socket closes and we alert the user */
