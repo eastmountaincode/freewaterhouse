@@ -50,7 +50,7 @@ h1 {
 }
 
 #uploadSection, #deleteSection, #zIndexControlSection,
-#deleteAllSection, #downloadScreenshotSection {
+#deleteAllSection, #downloadScreenshotSection, #currentlyConnectedUsersSection {
     text-align: left;
     width: 70%;
     border: 1px solid black;
