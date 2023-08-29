@@ -450,10 +450,10 @@ function handleDeleteAllEvent() {
         });
     });
 
-    // Inform everyone else on the socket
+    // Inform everyone on the socket
     wss.clients.forEach(function each(client) {
-        // Exclude the client that made the request
-        if (client !== ws && client.readyState === WebSocket.OPEN) {
+        // DON'T exclude the client that made the request
+        if (client.readyState === WebSocket.OPEN) {
             client.send(JSON.stringify({
                 type: 'deleteAllEventOnSocket',
             }));
