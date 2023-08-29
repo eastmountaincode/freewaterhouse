@@ -593,7 +593,7 @@ document.addEventListener("DOMContentLoaded", function() {
             cancelDeleteButton.disabled = true;
             sendToFrontButton.disalbed = true;
             sendToBackButton.disabled = true;
-            confirmText.style.opacity = '0.4';
+            confirmText.style.opacity = '0.3';
         }
 
         // Set the buttons back
