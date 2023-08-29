@@ -479,7 +479,7 @@ document.addEventListener("DOMContentLoaded", function() {
         confirmDeleteButton.disabled = true;
         cancelDeleteButton.disabled = true;
 
-        confirmText.style.opacity = '0.4';
+        confirmText.style.opacity = '0.3';
     });
 
     sendToFrontButton.addEventListener('click', function() {
