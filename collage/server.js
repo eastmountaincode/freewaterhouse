@@ -15,7 +15,7 @@ const sizeOf = require('image-size');
 const puppeteer = require('puppeteer');
 const cron = require('node-cron');
 
-cron.schedule('*/2 * * * *', async function() {
+cron.schedule('0 0 * * SUN', async function() {
     console.log('Running weekly tasks...');
     await captureAndSaveScreenshot();
     handleDeleteAllEvent();
