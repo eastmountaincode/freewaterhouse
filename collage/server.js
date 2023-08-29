@@ -23,35 +23,44 @@ cron.schedule('*/30 * * * * *', async function() {
 
 async function captureAndSaveScreenshot() {
     console.log('inside capture and save');
-    const browser = await puppeteer.launch({ headless: "new" });
-    console.log('after browser');
-    const page = await browser.newPage();
-
-    await page.goto('http://localhost:3000/collage');
-
-    // Wait for the element to be rendered
-    const imageAreaElement = await page.waitForSelector('#imageArea');
-
-    // Get bounding box of the imageArea element
-    const boundingBox = await imageAreaElement.boundingBox();
-
-    const screenshotPath = path.join(__dirname, 'public', 'saved_screenshots', `screenshot_${Date.now()}.png`);
     
-    // Capture screenshot of the bounding box of the imageArea
-    await page.screenshot({ 
-        path: screenshotPath,
-        clip: {
-            x: boundingBox.x,
-            y: boundingBox.y,
-            width: boundingBox.width,
-            height: boundingBox.height
+    let browser;
+    try {
+        browser = await puppeteer.launch({ headless: "new" });
+        console.log('after browser');
+
+        const page = await browser.newPage();
+        await page.goto('http://localhost:3000/collage');
+
+        // Wait for the element to be rendered
+        const imageAreaElement = await page.waitForSelector('#imageArea');
+
+        // Get bounding box of the imageArea element
+        const boundingBox = await imageAreaElement.boundingBox();
+
+        const screenshotPath = path.join(__dirname, 'public', 'saved_screenshots', `screenshot_${Date.now()}.png`);
+    
+        // Capture screenshot of the bounding box of the imageArea
+        await page.screenshot({ 
+            path: screenshotPath,
+            clip: {
+                x: boundingBox.x,
+                y: boundingBox.y,
+                width: boundingBox.width,
+                height: boundingBox.height
+            }
+        });
+
+        console.log('Screenshot saved successfully at:', screenshotPath);
+    } catch (error) {
+        console.error('Error while capturing screenshot:', error);
+    } finally {
+        if (browser) {
+            await browser.close();
         }
-    });
-
-    console.log('Screenshot saved successfully at:', screenshotPath);
-
-    await browser.close();
+    }
 }
+
 
 
 console.log(__dirname);
