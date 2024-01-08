@@ -1,0 +1,73 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+#trashSchedule {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+}
+
+#trashSchedule h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#trashSchedule p {
+    color: #666;
+    margin: 5px 0;
+}
+
+#dutyDetails {
+    background-color: #eef2f3;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+#dutyDetails h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#dutyDetails ul {
+    list-style-type: none;
+    padding: 0;
+
+}
+
+#dutyDetails ul li {
+    text-align: left;
+    color: #555;
+    padding: 3px 0;
+}
+
+#dutyDetails ul li:before {
+    content: '• ';
+    color: #007bff; /* Change this color to suit your theme */
+    font-weight: bold;
+}
+
+#personContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+#personContainer p {
+    margin: 0 10px;
+    font-size: 20px;
+}
+
