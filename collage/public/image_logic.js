@@ -661,34 +661,14 @@ const closeModal = document.querySelector(".close-btn");
 
 socket.addEventListener("close", (event) => {
     // console.log("WebSocket connection closed");
-    // modal.style.display = "block";
+    modal.style.display = "block";
 
-    // // Get highest z-index
-    // const values = Object.values(zIndexLedger);
-    // const maxZIndex = values.length > 0 ? Math.max(...values) : undefined;
+    // Get highest z-index
+    const values = Object.values(zIndexLedger);
+    const maxZIndex = values.length > 0 ? Math.max(...values) : undefined;
 
-    // modal.style.zIndex = maxZIndex + 1;
-    console.log("WebSocket connection closed. Attempting to reconnect...");
-
-    function attemptReconnect() {
-        let newSocket = new WebSocket('wss://freewaterhouse.com/ws');
-
-        newSocket.addEventListener("open", (event) => {
-            console.log("Reconnected to websocket server");
-            Object.assign(socket, newSocket);
-            socket.send(JSON.stringify({
-                type: 'getInitialPositionAndSize'
-            }));
-        });
-
-        newSocket.addEventListener("error", (error) => {
-            console.error("Reconnection failed. Retrying in 5 seconds...");
-            setTimeout(attemptReconnect, 5000);
-        });
-    }
-
-    attemptReconnect();
-
+    modal.style.zIndex = maxZIndex + 1;
+    
 });
 
 closeModal.addEventListener('click', function () {
@@ -708,5 +688,14 @@ document.getElementById("toggleButton").addEventListener("click", function (e) {
         button.innerText = "About / How To ⬇";
     }
 });
+
+function setupAutoRefresh() {
+    const twoMinutesInMilliseconds = 1 * 10 * 1000;
+    setTimeout(() => {
+        location.reload();
+    }, twoMinutesInMilliseconds);
+}
+
+setupAutoRefresh();
 
 
