@@ -660,14 +660,33 @@ const modal = document.getElementById("disconnectModal");
 const closeModal = document.querySelector(".close-btn");
 
 socket.addEventListener("close", (event) => {
-    console.log("WebSocket connection closed");
-    modal.style.display = "block";
+    // console.log("WebSocket connection closed");
+    // modal.style.display = "block";
 
-    // Get highest z-index
-    const values = Object.values(zIndexLedger);
-    const maxZIndex = values.length > 0 ? Math.max(...values) : undefined;
+    // // Get highest z-index
+    // const values = Object.values(zIndexLedger);
+    // const maxZIndex = values.length > 0 ? Math.max(...values) : undefined;
 
-    modal.style.zIndex = maxZIndex + 1;
+    // modal.style.zIndex = maxZIndex + 1;
+    console.log("WebSocket connection closed. Attempting to reconnect...");
+    
+    function attemptReconnect() {
+        socket = new WebSocket('wss://freewaterhouse.com/ws');
+        
+        socket.addEventListener("open", (event) => {
+            console.log("Reconnected to websocket server");
+            socket.send(JSON.stringify({
+                type: 'getInitialPositionAndSize'
+            }));
+        });
+
+        socket.addEventListener("error", (error) => {
+            console.error("Reconnection failed. Retrying in 5 seconds...");
+            setTimeout(attemptReconnect, 5000);
+        });
+    }
+
+    attemptReconnect();
 
 });
 
