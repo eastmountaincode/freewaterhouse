@@ -27,7 +27,7 @@ let zIndexLedger = {};
 
 // Create WebSocket connection.
 const socket = new WebSocket('wss://freewaterhouse.com/ws');
- 
+
 // Connection opened
 socket.addEventListener("open", (event) => {
     console.log("Connected to websocket server");
@@ -40,12 +40,12 @@ socket.addEventListener("open", (event) => {
 // Listen for messages
 // This is if we get a message from the server...
 socket.addEventListener("message", (event) => {
-    console.log("Received from server: ", event.data); 
+    console.log("Received from server: ", event.data);
     const data = JSON.parse(event.data);
 
     if (data.type === 'initialImageNames') {
         console.log('entered initial names');
-        
+
         // Loop through each image name and create an img element
         data.images.forEach(imageName => {
             const imgElement = document.createElement("img");
@@ -94,7 +94,7 @@ socket.addEventListener("message", (event) => {
         imgElement.alt = imageName;
         imgElement.id = imageName;
 
-        imgElement.onload = function() {
+        imgElement.onload = function () {
             const originalWidth = this.naturalWidth;
             const originalHeight = this.naturalHeight;
             let newWidth, newHeight;
@@ -129,7 +129,7 @@ socket.addEventListener("message", (event) => {
 
     } else if (data.type === "deleteImageOnSocket") {
         let image = document.getElementById(data.id);
-        
+
         // Check if the image that's being deleted is currently selected
         if (selectedImage && selectedImage.id === data.id) {
             // Reset the selected image and button states
@@ -146,12 +146,12 @@ socket.addEventListener("message", (event) => {
 
         // Determine the z-index of the deleted image
         const deletedZIndex = zIndexLedger[data.id];
-        
+
         // Update z-indices in the ledger and on the actual elements
         for (let id in zIndexLedger) {
             if (zIndexLedger[id] > deletedZIndex) {
                 zIndexLedger[id] -= 1;
-                
+
                 // Also update the actual image's z-index
                 let affectedImage = document.getElementById(id);
                 if (affectedImage) {
@@ -159,10 +159,10 @@ socket.addEventListener("message", (event) => {
                 }
             }
         }
-    
+
         // Remove the deleted image from the zIndexLedger
         delete zIndexLedger[data.id];
-        
+
         // Remove the image from the DOM
         image.remove();
 
@@ -171,10 +171,10 @@ socket.addEventListener("message", (event) => {
         if (image) {
             const currentMaxZIndex = Math.max(...Object.values(zIndexLedger));
             const originalZIndex = parseInt(image.style.zIndex) || 0;
-            
+
             // Iterate through zIndexLedger and decrement the zIndex for images
             // that originally had a z-index greater than the selected image.
-    
+
             // updating socket zIndexLedger
             for (const [imageId, zIndex] of Object.entries(zIndexLedger)) {
                 if (zIndex > originalZIndex) {
@@ -185,7 +185,7 @@ socket.addEventListener("message", (event) => {
                     zIndexLedger[imageId] = zIndex - 1;
                 }
             }
-    
+
             // Update the zIndexLedger for the selected image
             zIndexLedger[image.id] = currentMaxZIndex;
             // Actually update the image
@@ -197,10 +197,10 @@ socket.addEventListener("message", (event) => {
 
         if (image) {
             const originalZIndex = parseInt(image.style.zIndex) || 0;
-            
+
             // Iterate through zIndexLedger and increment the zIndex for images
             // that originally had a z-index below than the selected image.
-    
+
             // updating socket zIndexLedger
             for (const [imageId, zIndex] of Object.entries(zIndexLedger)) {
                 if (zIndex < originalZIndex) {
@@ -211,7 +211,7 @@ socket.addEventListener("message", (event) => {
                     zIndexLedger[imageId] = zIndex + 1;
                 }
             }
-    
+
             // Update the zIndexLedger for the selected image
             zIndexLedger[image.id] = 0;
             // Actually update the image
@@ -221,7 +221,7 @@ socket.addEventListener("message", (event) => {
     } else if (data.type === "deleteAllEventOnSocket") {
         // empty the local zIndexLedger
         zIndexLedger = {};
-        
+
         // Select the imageArea div
         const imageArea = document.getElementById('imageArea');
 
@@ -232,7 +232,7 @@ socket.addEventListener("message", (event) => {
         images.forEach(image => {
             // You can access the image's ID with image.id
             console.log(`Deleting image with ID: ${image.id}`);  // Optional: Just to log the IDs being deleted
-            
+
             // Remove the image from the DOM
             imageArea.removeChild(image);
         });
@@ -246,10 +246,10 @@ socket.addEventListener("message", (event) => {
             cancelDeleteButton.disabled = true;
             sendToFrontButton.disabled = true;
             sendToBackButton.disabled = true;
-            
+
             confirmText.style.opacity = '0.3';
         }
-        
+
     } else if (data.type === "updateCurrentlyConnectedUsersNum") {
         currentlyConnectedUsersText.textContent = `Currently connected users: ${data.num}`;
     } else {
@@ -261,168 +261,168 @@ socket.addEventListener('error', (error) => {
     console.error('WebSocket Error:', error);
 });
 
-document.addEventListener("DOMContentLoaded", function() { 
+document.addEventListener("DOMContentLoaded", function () {
 
     interact("#imageArea img")
-    .draggable({
-        inertia: false,
-        restrict: {
-          restriction: "parent",
-          elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
-          endOnly: false,
-        },
-        autoScroll: true,
-  
-        // Event listeners for dragmove and dragend
-        listeners: {
-            move(event) {
-                var x = (parseFloat(event.target.getAttribute("data-x")) || 0) + event.dx;
-                var y = (parseFloat(event.target.getAttribute("data-y")) || 0) + event.dy;
-  
-                event.target.style.left = x + "px";
-                event.target.style.top = y + "px";
-
-                // Update the position attributes
-                event.target.setAttribute("data-x", x);
-                event.target.setAttribute("data-y", y);
-
-                if (shouldSendUpdateMove) {
-                    socket.send(JSON.stringify({
-                        type: 'updatePositionOnSocketDragging',
-                        id: event.target.id,
-                        x: x,
-                        y: y  
-                    }));
-                    shouldSendUpdateMove = false;
-                    setTimeout(() => {
-                        shouldSendUpdateMove = true;
-                    }, 25);
-                }
+        .draggable({
+            inertia: false,
+            restrict: {
+                restriction: "parent",
+                elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
+                endOnly: false,
             },
-            end(event) {
-                const target = event.target;
-                const id = target.id;
-                const x = parseFloat(target.getAttribute("data-x")) || 0;
-                const y = parseFloat(target.getAttribute("data-y")) || 0;
+            autoScroll: true,
 
-                socket.send(JSON.stringify({
-                    type: 'updatePositionInDatabase',
-                    id: id,
-                    x: x,
-                    y: y
-                }));
+            // Event listeners for dragmove and dragend
+            listeners: {
+                move(event) {
+                    var x = (parseFloat(event.target.getAttribute("data-x")) || 0) + event.dx;
+                    var y = (parseFloat(event.target.getAttribute("data-y")) || 0) + event.dy;
 
-                // Broadcast the final position to all clients to ensure sync
-                socket.send(JSON.stringify({
-                    type: 'broadcastFinalPosition',
-                    id: id,
-                    x: x,
-                    y: y
-                }));
+                    event.target.style.left = x + "px";
+                    event.target.style.top = y + "px";
 
-          }
-        }
-    })
-    .resizable({
-        preserveAspectRatio: true,
-        edges: { left: true, right: true, bottom: true, top: true },
-        modifiers: [
-            // // Maintain the aspect ratio.
-            // interact.modifiers.aspectRatio({
-            //     ratio: 'preserve', // Preserve the aspect ratio
-            // }),
-            // Restrict the size.
-            interact.modifiers.restrictSize({
-                min: { width: 25, height: 25 } // Minimum width and height
-            }),
-            // Restrict the edges.
-            interact.modifiers.restrictEdges({
-                outer: 'parent'
-            })
-        ],
-        listeners: {
-            move(event) {
-                var target = event.target,
-                    x = (parseFloat(target.getAttribute('data-x')) || 0),
-                    y = (parseFloat(target.getAttribute('data-y')) || 0);
+                    // Update the position attributes
+                    event.target.setAttribute("data-x", x);
+                    event.target.setAttribute("data-y", y);
 
-                target.style.width = event.rect.width + 'px';
-                target.style.height = event.rect.height + 'px';
+                    if (shouldSendUpdateMove) {
+                        socket.send(JSON.stringify({
+                            type: 'updatePositionOnSocketDragging',
+                            id: event.target.id,
+                            x: x,
+                            y: y
+                        }));
+                        shouldSendUpdateMove = false;
+                        setTimeout(() => {
+                            shouldSendUpdateMove = true;
+                        }, 25);
+                    }
+                },
+                end(event) {
+                    const target = event.target;
+                    const id = target.id;
+                    const x = parseFloat(target.getAttribute("data-x")) || 0;
+                    const y = parseFloat(target.getAttribute("data-y")) || 0;
 
-                x += event.deltaRect.left;
-                y += event.deltaRect.top;
-
-                target.style.left = x + 'px';
-                target.style.top = y + 'px';
-                target.setAttribute('data-x', x);
-                target.setAttribute('data-y', y);
-
-                if (shouldSendUpdateResize) {
                     socket.send(JSON.stringify({
-                        type: 'updateSizeOnSocketResizing',
-                        id: event.target.id,
+                        type: 'updatePositionInDatabase',
+                        id: id,
+                        x: x,
+                        y: y
+                    }));
+
+                    // Broadcast the final position to all clients to ensure sync
+                    socket.send(JSON.stringify({
+                        type: 'broadcastFinalPosition',
+                        id: id,
+                        x: x,
+                        y: y
+                    }));
+
+                }
+            }
+        })
+        .resizable({
+            preserveAspectRatio: true,
+            edges: { left: true, right: true, bottom: true, top: true },
+            modifiers: [
+                // // Maintain the aspect ratio.
+                // interact.modifiers.aspectRatio({
+                //     ratio: 'preserve', // Preserve the aspect ratio
+                // }),
+                // Restrict the size.
+                interact.modifiers.restrictSize({
+                    min: { width: 25, height: 25 } // Minimum width and height
+                }),
+                // Restrict the edges.
+                interact.modifiers.restrictEdges({
+                    outer: 'parent'
+                })
+            ],
+            listeners: {
+                move(event) {
+                    var target = event.target,
+                        x = (parseFloat(target.getAttribute('data-x')) || 0),
+                        y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+                    target.style.width = event.rect.width + 'px';
+                    target.style.height = event.rect.height + 'px';
+
+                    x += event.deltaRect.left;
+                    y += event.deltaRect.top;
+
+                    target.style.left = x + 'px';
+                    target.style.top = y + 'px';
+                    target.setAttribute('data-x', x);
+                    target.setAttribute('data-y', y);
+
+                    if (shouldSendUpdateResize) {
+                        socket.send(JSON.stringify({
+                            type: 'updateSizeOnSocketResizing',
+                            id: event.target.id,
+                            x: x,
+                            y: y,
+                            width: event.rect.width,
+                            height: event.rect.height
+                        }));
+                        shouldSendUpdateResize = false;
+                        setTimeout(() => {
+                            shouldSendUpdateResize = true;
+                        }, 25);
+                    }
+                },
+                end(event) {
+                    const target = event.target;
+                    const id = target.id;
+                    const width = event.rect.width;
+                    const height = event.rect.height;
+
+                    x = (parseFloat(target.getAttribute('data-x')) || 0),
+                        y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+                    x += event.deltaRect.left;
+                    y += event.deltaRect.top;
+
+                    socket.send(JSON.stringify({
+                        type: 'updateSizeInDatabase',
+                        id: id,
                         x: x,
                         y: y,
-                        width: event.rect.width,
-                        height: event.rect.height  
+                        width: width,
+                        height: height
+
                     }));
-                    shouldSendUpdateResize = false;
-                    setTimeout(() => {
-                        shouldSendUpdateResize = true;
-                    }, 25);
+
+                    // Broadcast the final size to all clients to ensure sync
+                    socket.send(JSON.stringify({
+                        type: 'broadcastFinalSize',
+                        id: id,
+                        x: x,
+                        y: y,
+                        width: width,
+                        height: height
+                    }));
+
                 }
-            },
-            end(event) {
-                const target = event.target;
-                const id = target.id;
-                const width = event.rect.width;
-                const height = event.rect.height;
-                
-                x = (parseFloat(target.getAttribute('data-x')) || 0),
-                y = (parseFloat(target.getAttribute('data-y')) || 0);
-
-                x += event.deltaRect.left;
-                y += event.deltaRect.top;
-
-                socket.send(JSON.stringify({
-                    type: 'updateSizeInDatabase',
-                    id: id,
-                    x: x,
-                    y: y,
-                    width: width,
-                    height: height
-
-                }));
-
-                // Broadcast the final size to all clients to ensure sync
-                socket.send(JSON.stringify({
-                    type: 'broadcastFinalSize',
-                    id: id,
-                    x: x,
-                    y: y,
-                    width: width,
-                    height: height
-                }));
-
             }
-        }
-    })
-    .on('tap', function(event) {
-        if (selectedImage) {
-            selectedImage.classList.remove('selected');
-        }
-        event.currentTarget.classList.add('selected');
-        selectedImage = event.currentTarget;
+        })
+        .on('tap', function (event) {
+            if (selectedImage) {
+                selectedImage.classList.remove('selected');
+            }
+            event.currentTarget.classList.add('selected');
+            selectedImage = event.currentTarget;
 
-        deleteButton.disabled = false; // enable the delete button on image selection
-        sendToFrontButton.disabled = false;
-        sendToBackButton.disabled = false;
+            deleteButton.disabled = false; // enable the delete button on image selection
+            sendToFrontButton.disabled = false;
+            sendToBackButton.disabled = false;
 
-        event.preventDefault();
-    });
+            event.preventDefault();
+        });
 
     // Delete button clicked
-    deleteButton.addEventListener('click', function() {
+    deleteButton.addEventListener('click', function () {
         // this is a bit redundant since the button will only be
         // enabled in the first place if an image is selected, but
         // here we are
@@ -436,7 +436,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Confirm deletion
-    confirmDeleteButton.addEventListener('click', function() {
+    confirmDeleteButton.addEventListener('click', function () {
         if (selectedImage) {
             selectedImage.remove();
             // send deletion info to server...
@@ -448,12 +448,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Determine the z-index of the deleted image
         const deletedZIndex = zIndexLedger[selectedImage.id];
-        
+
         // Update z-indices in the ledger and on the actual elements
         for (let id in zIndexLedger) {
             if (zIndexLedger[id] > deletedZIndex) {
                 zIndexLedger[id] -= 1;
-                
+
                 // Also update the actual image's z-index
                 let affectedImage = document.getElementById(id);
                 if (affectedImage) {
@@ -461,10 +461,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
         }
-    
+
         // Remove the deleted image from the zIndexLedger
         delete zIndexLedger[selectedImage.id];
-        
+
         selectedImage = null;
         deleteButton.disabled = true;
         confirmDeleteButton.disabled = true;
@@ -475,19 +475,19 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     // Cancel deletion
-    cancelDeleteButton.addEventListener('click', function() {
+    cancelDeleteButton.addEventListener('click', function () {
         confirmDeleteButton.disabled = true;
         cancelDeleteButton.disabled = true;
 
         confirmText.style.opacity = '0.3';
     });
 
-    sendToFrontButton.addEventListener('click', function() {
+    sendToFrontButton.addEventListener('click', function () {
         if (selectedImage) {
             console.log(zIndexLedger);
             const currentMaxZIndex = Math.max(...Object.values(zIndexLedger));
             const originalZIndex = parseInt(selectedImage.style.zIndex) || 0;
-    
+
             // Iterate through zIndexLedger and decrement the zIndex for images
             // that originally had a z-index greater than the selected image.
 
@@ -506,7 +506,7 @@ document.addEventListener("DOMContentLoaded", function() {
             zIndexLedger[selectedImage.id] = currentMaxZIndex;
             // Actually update the image
             selectedImage.style.zIndex = currentMaxZIndex;
-    
+
             // Notify the server about the selected image's z-index change
             if (typeof socket !== 'undefined' && socket.readyState === WebSocket.OPEN) {
                 socket.send(JSON.stringify({
@@ -517,10 +517,10 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    sendToBackButton.addEventListener('click', function() {
+    sendToBackButton.addEventListener('click', function () {
         if (selectedImage) {
             const originalZIndex = parseInt(selectedImage.style.zIndex) || 0;
-            
+
             // updating local zIndexLedger
             for (const [imageId, zIndex] of Object.entries(zIndexLedger)) {
                 if (zIndex < originalZIndex) {
@@ -547,26 +547,26 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    deleteAllButton.addEventListener('click', function() {
+    deleteAllButton.addEventListener('click', function () {
         // Enable the confirmation buttons
         confirmDeleteAllButton.disabled = false;
         cancelDeleteAllButton.disabled = false;
-    
+
         // Set opacity of the "Are you sure" text for deleting all images
         confirmDeleteAllText.style.opacity = '1.0';
     });
 
-    cancelDeleteAllButton.addEventListener('click', function() {
+    cancelDeleteAllButton.addEventListener('click', function () {
         confirmDeleteAllButton.disabled = true;
         cancelDeleteAllButton.disabled = true;
 
         confirmDeleteAllText.style.opacity = '0.3';
     });
 
-    confirmDeleteAllButton.addEventListener('click', function() {
+    confirmDeleteAllButton.addEventListener('click', function () {
         // empty the local zIndexLedger
         zIndexLedger = {};
-        
+
         // Select the imageArea div
         const imageArea = document.getElementById('imageArea');
 
@@ -577,7 +577,7 @@ document.addEventListener("DOMContentLoaded", function() {
         images.forEach(image => {
             // You can access the image's ID with image.id
             console.log(`Deleting image with ID: ${image.id}`);  // Optional: Just to log the IDs being deleted
-            
+
             // Remove the image from the DOM
             imageArea.removeChild(image);
         });
@@ -610,32 +610,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
     });
 
-    downloadScreenshotButton.addEventListener('click', function() {
+    downloadScreenshotButton.addEventListener('click', function () {
         var imageArea = document.getElementById('imageArea');
-        
+
         // Store the original border style
         var originalBorderStyle = imageArea.style.border;
-        
+
         // Modify the border style
         imageArea.style.border = 'none';
-    
-        html2canvas(imageArea).then(function(canvas) {
+
+        html2canvas(imageArea).then(function (canvas) {
             var imgDataUrl = canvas.toDataURL();
             var a = document.createElement('a');
             a.href = imgDataUrl;
             a.download = 'screenshot.png';
             a.click();
-    
+
             // Revert the border style back to its original state
             imageArea.style.border = originalBorderStyle;
         });
     });
-    
+
 });
 
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
     // Check if the clicked element is not an image inside the #imageArea
-    if (!event.target.matches('#imageArea img') 
+    if (!event.target.matches('#imageArea img')
         && event.target !== selectedImage
         && !event.target.classList.contains('buttonCheck')) {
 
@@ -669,18 +669,19 @@ socket.addEventListener("close", (event) => {
 
     // modal.style.zIndex = maxZIndex + 1;
     console.log("WebSocket connection closed. Attempting to reconnect...");
-    
+
     function attemptReconnect() {
-        socket = new WebSocket('wss://freewaterhouse.com/ws');
-        
-        socket.addEventListener("open", (event) => {
+        let newSocket = new WebSocket('wss://freewaterhouse.com/ws');
+
+        newSocket.addEventListener("open", (event) => {
             console.log("Reconnected to websocket server");
+            Object.assign(socket, newSocket);
             socket.send(JSON.stringify({
                 type: 'getInitialPositionAndSize'
             }));
         });
 
-        socket.addEventListener("error", (error) => {
+        newSocket.addEventListener("error", (error) => {
             console.error("Reconnection failed. Retrying in 5 seconds...");
             setTimeout(attemptReconnect, 5000);
         });
@@ -690,12 +691,12 @@ socket.addEventListener("close", (event) => {
 
 });
 
-closeModal.addEventListener('click', function() {
+closeModal.addEventListener('click', function () {
     modal.style.display = "none";
 });
 
-document.getElementById("toggleButton").addEventListener("click", function(e) {
-    e.preventDefault(); 
+document.getElementById("toggleButton").addEventListener("click", function (e) {
+    e.preventDefault();
     var moreText = document.getElementById("more");
     var button = document.getElementById("toggleButton");
     var computedStyle = window.getComputedStyle(moreText);
