@@ -690,7 +690,7 @@ document.getElementById("toggleButton").addEventListener("click", function (e) {
 });
 
 function setupAutoRefresh() {
-    const twoMinutesInMilliseconds = 1 * 10 * 1000;
+    const twoMinutesInMilliseconds = 2 * 60 * 1000;
     setTimeout(() => {
         location.reload();
     }, twoMinutesInMilliseconds);
